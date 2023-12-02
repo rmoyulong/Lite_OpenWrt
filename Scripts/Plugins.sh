@@ -36,7 +36,7 @@ svn export https://github.com/NueXini/NueXini_Packages/trunk/luci-app-vlmcsd pac
 
 # 科学上网插件
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
+svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 svn export https://github.com/haiibo/packages/trunk/luci-app-vssr package/luci-app-vssr
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-bypass package/luci-app-bypass
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
