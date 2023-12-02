@@ -212,6 +212,7 @@ jobs:
           #设置Openclash
           cd ./package
           
+          #全版添加openclash预设置
           if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/$DIY_P3_SH
           fi          
