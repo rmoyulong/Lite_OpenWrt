@@ -211,7 +211,7 @@ jobs:
           #设置Openclash
           cd ./package
           
-          if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
+          if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/$DIY_P3_SH
           fi          
           
@@ -221,11 +221,11 @@ jobs:
         run: |
           rm -rf ./tmp* ./.config*
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
-          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES openwrt/files
+          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES ./files
           
           #nftable设置
           if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
-            [ -e $GITHUB_WORKSPACE/patch/files ] && mv $GITHUB_WORKSPACE/patch/files openwrt/files
+            [ -e $GITHUB_WORKSPACE/patch/files ] && mv $GITHUB_WORKSPACE/patch/files ./files
           fi
           
           make defconfig
