@@ -228,6 +228,11 @@ jobs:
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
           [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES openwrt/files
           
+          #nftable设置
+          if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
+            [ -e $GITHUB_WORKSPACE/patch/files ] && mv $GITHUB_WORKSPACE/patch/files openwrt/files
+          fi
+          
           make defconfig
           make download -j$(nproc)
           #make download -j8
