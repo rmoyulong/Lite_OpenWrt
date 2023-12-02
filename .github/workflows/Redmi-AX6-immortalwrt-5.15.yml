@@ -32,7 +32,7 @@ jobs:
       #源码版本
       OWRT_BRANCH: openwrt-23.05
       #自定义config
-      OWRT_CFG: 5.15-diy.config     
+      OWRT_CFG: 5.15-diy.config
       #设备类型
       OWRT_TYPE: 红米AX6
       OWRT_LINUX: 5.15.x

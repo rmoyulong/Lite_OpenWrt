@@ -152,7 +152,7 @@ jobs:
               exit 1
           fi
           
-          if [[ $OWRT_LINUX == *"5.15"* ]] ; then
+          if [[ $OWRT_LINUX == *"5.15.x"* ]] ; then
             REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
           fi
           
