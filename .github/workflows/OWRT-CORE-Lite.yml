@@ -226,7 +226,7 @@ jobs:
         run: |
           rm -rf ./tmp* ./.config*
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
-          mv $GITHUB_WORKSPACE/$OWRT_FILES files
+          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES openwrt/files
           
           make defconfig
           make download -j$(nproc)
