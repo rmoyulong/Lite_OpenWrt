@@ -78,6 +78,7 @@ svn co https://github.com/NueXini/NueXini_Packages/trunk/UnblockNeteaseMusic-Go 
 svn co https://github.com/NueXini/NueXini_Packages/trunk/UnblockNeteaseMusic package/UnblockNeteaseMusic
 svn co https://github.com/kenzok8/small-package/trunk/aria2 package/aria2
 svn co https://github.com/kenzok8/small-package/trunk/ariang package/ariang
+svn co https://github.com/kenzok8/small-package/trunk/qBittorrent-static package/qBittorrent-static
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
