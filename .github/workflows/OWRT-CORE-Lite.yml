@@ -47,12 +47,9 @@ on:
       DIY_P3_SH:
         required: true
         type: string
-      GITHUB_TOKEN:
-        required: true
-        type: string
         
 env:
-  GITHUB_TOKEN: ${{inputs.GITHUB_TOKEN}}
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   OWRT_TARGET: ${{inputs.OWRT_TARGET}}
   OWRT_THEME: ${{inputs.OWRT_THEME}}
   OWRT_NAME: ${{inputs.OWRT_NAME}}
