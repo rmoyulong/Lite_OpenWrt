@@ -1,0 +1,43 @@
+#CI项目名
+name: immortalwrt仓库版[大于30M]
+
+on:
+  #自动编译：每天早上4点
+  #schedule:
+    #- cron: 0 20 * * *
+  #手动编译
+  workflow_dispatch:
+
+#CI权限
+permissions: write-all
+
+#CI任务
+jobs:
+  owrt_config:
+    #调用公用编译核心OWRT-CORE.yml
+    uses: ./.github/workflows/OWRT-CORE-Lite.yml
+    with:
+      #编译平台，X64包含X86
+      OWRT_TARGET: Redmi-AX6-immortalwrt
+      #默认主题
+      OWRT_THEME: argon
+      #默认主机名
+      OWRT_NAME: Redmi-AX6
+      #默认密码，仅作展示，更改无效
+      OWRT_PW: password
+      #默认地址
+      OWRT_IP: 192.168.31.1
+      #默认源码
+      OWRT_URL: https://github.com/immortalwrt/immortalwrt
+      #源码版本
+      OWRT_BRANCH: master
+      #自定义config
+      OWRT_CFG: 6.1-full.config      
+      #设备类型
+      OWRT_TYPE: 红米AX6
+      OWRT_LINUX: 6.1.x
+      OWRT_FILES: immortalwrt/files
+      DIY_P1_SH: Plugins.sh
+      DIY_P2_SH: Settings.sh      
+      DIY_P3_SH: custom.sh
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

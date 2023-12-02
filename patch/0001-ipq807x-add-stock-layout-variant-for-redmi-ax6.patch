@@ -1,0 +1,271 @@
+From 6a01a7b07b7459ac3ae54544c83a7aa68913343d Mon Sep 17 00:00:00 2001
+From: Tianling Shen <cnsztl@immortalwrt.org>
+Date: Tue, 17 Jan 2023 19:53:29 +0800
+Subject: [PATCH] ipq807x: add stock layout variant for redmi ax6
+
+Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
+---
+ .../uboot-envtools/files/qualcommax_ipq807x   |  2 +
+ .../boot/dts/qcom/ipq8071-ax3600-stock.dts    | 61 +++++++++++++++++++
+ .../arm64/boot/dts/qcom/ipq8071-ax6-stock.dts | 56 +++++++++++++++++
+ target/linux/qualcommax/image/ipq807x.mk      | 16 +++++
+ .../ipq807x/base-files/etc/board.d/01_leds    |  4 +-
+ .../ipq807x/base-files/etc/board.d/02_network |  4 +-
+ .../etc/hotplug.d/firmware/11-ath10k-caldata  | 20 ++++++
+ .../etc/hotplug.d/firmware/11-ath11k-caldata  |  2 +
+ .../ipq807x/base-files/etc/init.d/bootcount   |  7 +++
+ .../base-files/lib/upgrade/platform.sh        | 27 ++++++++
+ 10 files changed, 197 insertions(+), 2 deletions(-)
+ create mode 100644 target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+ create mode 100644 target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
+ create mode 100644 target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath10k-caldata
+
+diff --git a/package/boot/uboot-envtools/files/qualcommax_ipq807x b/package/boot/uboot-envtools/files/qualcommax_ipq807x
+index 297c727857..2b84078099 100644
+--- a/package/boot/uboot-envtools/files/qualcommax_ipq807x
++++ b/package/boot/uboot-envtools/files/qualcommax_ipq807x
+@@ -28,7 +28,9 @@ edimax,cax1800)
+ 		ubootenv_add_uci_config "/dev/mtd$idx" "0x0" "0x10000" "0x20000"
+ 	;;
+ redmi,ax6|\
++redmi,ax6-stock|\
+ xiaomi,ax3600|\
++xiaomi,ax3600-stock|\
+ xiaomi,ax9000)
+ 	idx="$(find_mtd_index 0:appsblenv)"
+ 	[ -n "$idx" ] && \
+diff --git a/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts b/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+new file mode 100644
+index 0000000000..8d82c2d29e
+--- /dev/null
++++ b/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+@@ -0,0 +1,61 @@
++// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
++
++#include "ipq8071-ax3600.dts"
++
++/ {
++	model = "Xiaomi AX3600 (stock layout)";
++	compatible = "xiaomi,ax3600-stock", "qcom,ipq8074";
++
++	aliases {
++		/* Aliases as required by u-boot to patch MAC addresses */
++		ethernet1 = &dp2;
++		ethernet2 = &dp3;
++		ethernet3 = &dp4;
++		ethernet4 = &dp5;
++	};
++
++	chosen {
++		bootargs-append = " root=/dev/ubiblock0_1";
++	};
++};
++
++&qpic_nand {
++	/delete-node/ partitions;
++	/delete-node/ nand@0;
++
++	nand@0 {
++		reg = <0>;
++		nand-ecc-strength = <4>;
++		nand-ecc-step-size = <512>;
++		nand-bus-width = <8>;
++
++		partitions {
++			compatible = "qcom,smem-part";
++		};
++	};
++};
++
++&dp2 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&dp3 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&dp4 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&dp5 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&wifi0 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
+diff --git a/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts b/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
+new file mode 100644
+index 0000000000..13c8114058
+--- /dev/null
++++ b/target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
+@@ -0,0 +1,56 @@
++// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
++
++#include "ipq8071-ax6.dts"
++
++/ {
++	model = "Redmi AX6 (stock layout)";
++	compatible = "redmi,ax6-stock", "qcom,ipq8074";
++
++	aliases {
++		/* Aliases as required by u-boot to patch MAC addresses */
++		ethernet1 = &dp2;
++		ethernet2 = &dp3;
++		ethernet3 = &dp4;
++		ethernet4 = &dp5;
++	};
++
++	chosen {
++		bootargs-append = " root=/dev/ubiblock0_1";
++	};
++};
++
++&qpic_nand {
++	/delete-node/ partitions;
++	/delete-node/ nand@0;
++
++	nand@0 {
++		reg = <0>;
++		nand-ecc-strength = <4>;
++		nand-ecc-step-size = <512>;
++		nand-bus-width = <8>;
++
++		partitions {
++			compatible = "qcom,smem-part";
++		};
++	};
++};
++
++&dp2 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&dp3 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&dp4 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
++
++&dp5 {
++	/delete-property/ nvmem-cells;
++	/delete-property/ nvmem-cell-names;
++};
+diff --git a/target/linux/qualcommax/image/ipq807x.mk b/target/linux/qualcommax/image/ipq807x.mk
+index 440a267497..0e190f7a5e 100644
+--- a/target/linux/qualcommax/image/ipq807x.mk
++++ b/target/linux/qualcommax/image/ipq807x.mk
+@@ -164,6 +164,14 @@ define Device/redmi_ax6
+ endef
+ TARGET_DEVICES += redmi_ax6
+ 
++define Device/redmi_ax6-stock
++	$(call Device/redmi_ax6)
++	DEVICE_VARIANT := (stock layout)
++	KERNEL_SIZE :=
++	ARTIFACTS :=
++endef
++TARGET_DEVICES += redmi_ax6-stock
++
+ define Device/xiaomi_ax3600
+ 	$(call Device/FitImage)
+ 	$(call Device/UbiFit)
+@@ -182,6 +190,14 @@ endif
+ endef
+ TARGET_DEVICES += xiaomi_ax3600
+ 
++define Device/xiaomi_ax3600-stock
++	$(call Device/xiaomi_ax3600)
++	DEVICE_VARIANT := (stock layout)
++	KERNEL_SIZE :=
++	ARTIFACTS :=
++endef
++TARGET_DEVICES += xiaomi_ax3600-stock
++
+ define Device/xiaomi_ax9000
+ 	$(call Device/FitImage)
+ 	$(call Device/UbiFit)
+diff --git a/target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network b/target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
+index 3953ae8db2..6c81461fa9 100644
+--- a/target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
++++ b/target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
+@@ -36,7 +36,9 @@ ipq807x_setup_interfaces()
+ 		;;
+ 	compex,wpq873|\
+ 	redmi,ax6|\
+-	xiaomi,ax3600)
++	redmi,ax6-stock|\
++	xiaomi,ax3600|\
++	xiaomi,ax3600-stock)
+ 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" "wan"
+ 		;;
+ 	zyxel,nbg7815)
+diff --git a/target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount b/target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
+index 6917446a9b..d79e79a53d 100755
+--- a/target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
++++ b/target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
+@@ -9,5 +9,12 @@ boot() {
+ 		# Unset changed flag after sysupgrade complete
+ 		fw_setenv changed
+ 	;;
++	redmi,ax6-stock|\
++	xiaomi,ax3600-stock)
++		# OTA handling should not be used. Reset it just in case.
++		fw_setenv flag_ota_reboot 0
++		# Not strictly needed but useful to handle partition crash condition
++		fw_setenv flag_boot_success 1
++	;;
+ 	esac
+ }
+diff --git a/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh b/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
+index a7af1cc1df..f04ee71d8b 100644
+--- a/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
++++ b/target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
+@@ -114,5 +114,32 @@ platform_do_upgrade() {
+ 	*)
+ 		default_do_upgrade "$1"
+ 		;;
++	redmi,ax6-stock|\
++	xiaomi,ax3600-stock)
++		part_num="$(fw_printenv -n flag_boot_rootfs)"
++		if [ "$part_num" -eq "1" ]; then
++			CI_UBIPART="rootfs_1"
++			target_num=1
++			# Reset fail flag for the current partition
++			# With both partition set to fail, the partition 2 (bit 1)
++			# is loaded
++			fw_setenv flag_try_sys2_failed 0
++		else
++			CI_UBIPART="rootfs"
++			target_num=0
++			# Reset fail flag for the current partition
++			# or uboot will skip the loading of this partition
++			fw_setenv flag_try_sys1_failed 0
++		fi
++
++		# Tell uboot to switch partition
++		fw_setenv flag_boot_rootfs "$target_num"
++		fw_setenv flag_last_success "$target_num"
++
++		# Reset success flag
++		fw_setenv flag_boot_success 0
++
++		nand_do_upgrade "$1"
++		;;
+ 	esac
+ }
+-- 
+2.39.1.windows.1
+
