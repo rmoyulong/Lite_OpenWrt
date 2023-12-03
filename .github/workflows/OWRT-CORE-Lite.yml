@@ -186,6 +186,7 @@ jobs:
             #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
             #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
             #cp -rf $GITHUB_WORKSPACE/patch/qualcommax_ipq807x package/boot/uboot-envtools/files/qualcommax_ipq807x
+            svn co https://github.com/NueXini/NueXini_Packages/trunk/upx package/upx
           else
             echo "不是openwrt库不用打补丁！"
           fi         
