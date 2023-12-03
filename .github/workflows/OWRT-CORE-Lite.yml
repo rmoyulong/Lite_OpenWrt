@@ -186,9 +186,9 @@ jobs:
             #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
             #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
             #cp -rf $GITHUB_WORKSPACE/patch/qualcommax_ipq807x package/boot/uboot-envtools/files/qualcommax_ipq807x
-            svn co https://github.com/kenzok8/small-package/trunk/upx package/upx
-            svn co https://github.com/kenzok8/small-package/trunk/upx-static package/upx-static
-            svn co https://github.com/kenzok8/small-package/trunk/ucl package/ucl
+            #svn co https://github.com/kenzok8/small-package/trunk/upx package/upx
+            #svn co https://github.com/kenzok8/small-package/trunk/upx-static package/upx-static
+            #svn co https://github.com/kenzok8/small-package/trunk/ucl package/ucl
           else
             echo "不是openwrt库不用打补丁！"
           fi         
