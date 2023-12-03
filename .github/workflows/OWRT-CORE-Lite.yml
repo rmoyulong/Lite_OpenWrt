@@ -185,7 +185,6 @@ jobs:
             #cp -rf $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
             #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
             #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
-            #cp -rf $GITHUB_WORKSPACE/patch/qualcommax_ipq807x package/boot/uboot-envtools/files/qualcommax_ipq807x
             #svn co https://github.com/kenzok8/small-package/trunk/upx package/upx
             #svn co https://github.com/kenzok8/small-package/trunk/upx-static package/upx-static
             #svn co https://github.com/kenzok8/small-package/trunk/ucl package/ucl
@@ -211,7 +210,7 @@ jobs:
           cp -rf $GITHUB_WORKSPACE/ax6/banner  openwrt/package/base-files/files/etc/banner
           cd openwrt
           $GITHUB_WORKSPACE/Scripts/$DIY_P2_SH
-          
+         
           #设置Openclash
           cd ./package
           
@@ -227,6 +226,12 @@ jobs:
           rm -rf ./tmp* ./.config*
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
           [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES ./files
+          
+          #只给immortalwrt添加unblockneteasemusic设置
+          if [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
+            #echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
+            echo -e 'CONFIG_PACKAGE_luci-app-unblockneteasemusic=y' >> .config
+          fi
           
           #nftable设置
           if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
