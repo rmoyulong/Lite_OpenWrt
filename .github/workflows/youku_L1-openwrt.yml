@@ -1,5 +1,5 @@
 #CI项目名
-name: lede-Phicomm_K2
+name: lede-youku_L1
 
 on:
   #自动编译：每天早上4点
@@ -18,11 +18,11 @@ jobs:
     uses: ./.github/workflows/OWRT-CORE-Lite.yml
     with:
       #编译平台，X64包含X86
-      OWRT_TARGET: Phicomm_K2
+      OWRT_TARGET: youku_L1
       #默认主题
       OWRT_THEME: argon
       #默认主机名
-      OWRT_NAME: Phicomm_K2
+      OWRT_NAME: youku_L1
       #默认密码，仅作展示，更改无效
       OWRT_PW: password
       #默认地址
@@ -32,11 +32,11 @@ jobs:
       #源码版本
       OWRT_BRANCH: main
       #自定义config
-      OWRT_CFG: k2.config
+      OWRT_CFG: youku_L1.config
       #设备类型
-      OWRT_TYPE: 斐讯K2
+      OWRT_TYPE: 优酷路由宝L1
       OWRT_LINUX: 5.10.x
-      OWRT_FILES: k2/files
+      OWRT_FILES: youku/files
       DIY_P1_SH: Plugins.sh
       DIY_P2_SH: Settings.sh
       DIY_P3_SH: custom.sh
