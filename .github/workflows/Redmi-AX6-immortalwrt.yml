@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/OWRT-CORE-Lite.yml
     with:
       #编译平台，X64包含X86
-      OWRT_TARGET: Redmi-AX6-immortalwrt
+      OWRT_TARGET: Redmi-AX6
       #默认主题
       OWRT_THEME: argon
       #默认主机名
@@ -32,7 +32,7 @@ jobs:
       #源码版本
       OWRT_BRANCH: master
       #自定义config
-      OWRT_CFG: 6.1-full.config      
+      OWRT_CFG: 6.1-full.config
       #设备类型
       OWRT_TYPE: 红米AX6
       OWRT_LINUX: 6.1.x
