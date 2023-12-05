@@ -21,21 +21,13 @@ rm -rf feeds/luci/applications/luci-app-openclash
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
 # 添加额外插件
-#git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
-#git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
-#git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app-ikoolproxy
-#git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-#git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-#svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
 svn export https://github.com/Lienol/openwrt-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
-#svn export https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-eqos package/luci-app-eqos
-# svn export https://github.com/syb999/openwrt-19.07.1/trunk/package/network/services/msd_lite package/msd_lite
-#svn export https://github.com/NueXini/NueXini_Packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
-#svn export https://github.com/NueXini/NueXini_Packages/trunk/luci-app-qbittorrent package/luci-app-qbittorrent
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-homeproxy package/luci-app-homeproxy
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-easymesh package/luci-app-easymesh
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockmusic package/luci-app-unblockmusic
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
 
 # 科学上网插件
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
@@ -48,6 +40,7 @@ svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwal
 svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
 # 科学上网插件依赖
+svn so  https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
 svn co https://github.com/kenzok8/small-package/trunk/v2dat package/v2dat
 svn co https://github.com/kenzok8/small-package/trunk/shadow-tls package/shadow-tls
 svn co https://github.com/kenzok8/small-package/trunk/brook package/brook
@@ -75,13 +68,9 @@ svn co https://github.com/kenzok8/small-package/trunk/xray-plugin package/xray-p
 svn co https://github.com/kenzok8/small-package/trunk/lua-neturl package/lua-neturl
 svn co https://github.com/kenzok8/small-package/trunk/trojan package/trojan
 svn co https://github.com/kenzok8/small-package/trunk/redsocks2 package/redsocks2
-#svn co https://github.com/NueXini/NueXini_Packages/trunk/ipv6-helper package/ipv6-helper
 svn co https://github.com/kenzok8/small-package/trunk/UnblockNeteaseMusic-Go package/UnblockNeteaseMusic-Go
 svn co https://github.com/kenzok8/small-package/trunk/UnblockNeteaseMusic package/UnblockNeteaseMusic
-#svn co https://github.com/kenzok8/small-package/trunk/aria2 package/aria2
-#svn co https://github.com/kenzok8/small-package/trunk/ariang package/ariang
-#svn co https://github.com/kenzok8/small-package/trunk/qBittorrent-static package/qBittorrent-static
-#svn co https://github.com/NueXini/NueXini_Packages/trunk/vlmcsd package/vlmcsd
+
 
 # Themes
 #git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
