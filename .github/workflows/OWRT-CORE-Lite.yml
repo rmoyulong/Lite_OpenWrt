@@ -255,14 +255,18 @@ jobs:
 
       - name: 整理固件
         run: |
+          cd $GITHUB_WORKSPACE
+          tar -zcvf AllPackages.tar.gz openwrt/bin/packages
+          cp AllPackages.tar.gz openwrt/bin/targets/*/*
+          
           cd openwrt && mkdir ./upload
-
+          
           rm -rf $(find ./bin/targets/ -iregex ".*\(json\|manifest\|buildinfo\|sha256sums\|packages\)$")
           cp -rf $(find ./bin/targets/ -type f -iname "*.*") ./upload/
           cp -rf ./.config ./upload/Config_"$OWRT_TARGET"_"$OWRT_SOURCE"_"$OWRT_DATE".txt
-
+          
           cd ./upload
-
+          
           $GITHUB_WORKSPACE/Scripts/Renames.sh
           
       - name: 生成固件标签
