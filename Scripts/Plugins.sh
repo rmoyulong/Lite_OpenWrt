@@ -32,6 +32,7 @@ svn export https://github.com/kenzok8/small-package/trunk/luci-app-ssr-mudb-serv
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-eqos package/luci-app-eqos
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-easymesh package/luci-app-easymesh
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-ramfree package/luci-app-ramfree
+svn export https://github.com/kenzok8/small-package/trunk/luci-app-kodexplorer package/luci-app-kodexplorer
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockmusic package/luci-app-unblockmusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
@@ -127,4 +128,3 @@ find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/controller/*.lua
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/model/cbi/v2ray_server/*.lua
 # sed -i 's/services/vpn/g' feeds/luci/applications/luci-app-v2ray-server/luasrc/view/v2ray_server/*.htm
-
