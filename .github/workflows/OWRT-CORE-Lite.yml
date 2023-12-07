@@ -172,19 +172,20 @@ jobs:
         run: |
           if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
             cd openwrt 
-            mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
-            git apply 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
+            #mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
+            #git apply 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
         
             chmod +x $GITHUB_WORKSPACE/patch/*.sh
-            cp -rf $GITHUB_WORKSPACE/patch/01_leds target/linux/qualcommax/ipq807x/base-files/etc/board.d/01_leds
-            #cp -rf $GITHUB_WORKSPACE/patch/02_network target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
-            cp -rf $GITHUB_WORKSPACE/patch/11-ath10k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath10k-caldata
-            cp -rf $GITHUB_WORKSPACE/patch/11-ath11k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath11k-caldata
-            #cp -rf $GITHUB_WORKSPACE/patch/bootcount target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
-            #cp -rf $GITHUB_WORKSPACE/patch/platform.sh target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
-            #cp -rf $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
-            #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
-            #cp -rf $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+            chmod -Rf 755 $GITHUB_WORKSPACE/patch/*
+            mv $GITHUB_WORKSPACE/patch/01_leds target/linux/qualcommax/ipq807x/base-files/etc/board.d/01_leds
+            mv $GITHUB_WORKSPACE/patch/02_network target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
+            mv $GITHUB_WORKSPACE/patch/11-ath10k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath10k-caldata
+            mv $GITHUB_WORKSPACE/patch/11-ath11k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath11k-caldata
+            mv $GITHUB_WORKSPACE/patch/bootcount target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
+            mv $GITHUB_WORKSPACE/patch/platform.sh target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
+            mv $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
+            mv $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
+            mv $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
             #svn co https://github.com/kenzok8/small-package/trunk/upx package/upx
             #svn co https://github.com/kenzok8/small-package/trunk/upx-static package/upx-static
             #svn co https://github.com/kenzok8/small-package/trunk/ucl package/ucl
