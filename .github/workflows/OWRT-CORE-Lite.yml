@@ -228,10 +228,10 @@ jobs:
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
           [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES ./files
           
-          #只给immortalwrt添加unblockneteasemusic设置
-          if [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
+          #只给openwrt库增加redmi_ax6普通构架编译
+          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
             #echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
-            echo -e 'CONFIG_PACKAGE_luci-app-unblockneteasemusic=y' >> .config
+            echo -e 'CONFIG_TARGET_qualcommax_ipq807x_DEVICE_redmi_ax6=y\n' >> .config
           fi
           
           #nftable设置
