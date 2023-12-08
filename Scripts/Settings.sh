@@ -19,6 +19,7 @@ sed -i 's/\"services\"/\"network\"/g' feeds/luci/applications/luci-app-upnp/luas
 #
 # > 修改插件名字
 sed -i 's/\"CPU 使用率（%）\"/\"CPU负载\"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
+sed -i 's/\"Temperature\"/\"温度\"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
 sed -i 's/\"Argon 主题设置\"/\"主题设置\"/g' package/community/luci-app-argon-config/po/zh-cn/argon-config.po
 sed -i 's/\"TTYD 终端\"/\"网页终端\"/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
 sed -i 's/\"解锁网易云灰色歌曲\"/\"NeteaseMusic\"/g' package/lean/luci-app-unblockmusic/po/zh-cn/unblockmusic.po
