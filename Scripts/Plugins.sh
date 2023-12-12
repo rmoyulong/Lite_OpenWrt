@@ -33,7 +33,7 @@ svn export https://github.com/kenzok8/small-package/trunk/luci-app-eqos package/
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-easymesh package/luci-app-easymesh
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-ramfree package/luci-app-ramfree
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-kodexplorer package/luci-app-kodexplorer
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-wrtbwmon package/luci-app-wrtbwmon
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-wrtbwmon package/luci-app-wrtbwmon
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockmusic package/luci-app-unblockmusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
@@ -62,14 +62,14 @@ svn co https://github.com/kenzok8/small-package/trunk/trojan-plus package/trojan
 svn co https://github.com/kenzok8/small-package/trunk/sagernet-core package/sagernet-core
 svn co https://github.com/kenzok8/small-package/trunk/lua-neturl package/lua-neturl
 svn co https://github.com/kenzok8/small-package/trunk/redsocks2 package/redsocks2
-svn co https://github.com/kenzok8/small-package/trunk/UnblockNeteaseMusic-Go package/UnblockNeteaseMusic-Go
-svn co https://github.com/kenzok8/small-package/trunk/UnblockNeteaseMusic package/UnblockNeteaseMusic
 svn co https://github.com/kenzok8/small-package/trunk/aria2 package/aria2
 svn co https://github.com/kenzok8/small-package/trunk/ariang package/ariang
 svn co https://github.com/kenzok8/small-package/trunk/filebrowser package/filebrowser
 svn co https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
 svn co https://github.com/kiddin9/openwrt-packages/trunk/sing-box package/sing-box
-
+svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/UnblockNeteaseMusic-Go
+svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic package/UnblockNeteaseMusic
+svn co https://github.com/kiddin9/openwrt-packages/trunk/wrtbwmon package/wrtbwmon
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
 git clone --depth=1 https://github.com/Joecaicai/luci-theme-ifit package/luci-theme-ifit 
@@ -111,7 +111,7 @@ svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-
 svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
 
 # 在线用户
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-onliner package/luci-app-onliner
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-onliner package/luci-app-onliner
 #sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
 #sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
 chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
