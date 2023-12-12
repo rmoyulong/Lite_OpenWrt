@@ -1,4 +1,10 @@
 #!/bin/bash
+rm -rf $(find ./feeds/ -type d -regex ".*\(homeproxy\).*")
+git clone --depth=1 https://github.com/immortalwrt/homeproxy package/luci-app-homeproxy
+./scripts/feeds update -a
+./scripts/feeds install -a
+		  
+
 #补充汉化
 echo -e "\nmsgid \"Control\"" >> feeds/luci/modules/luci-base/po/zh-cn/base.po
 echo -e "msgstr \"控制\"" >> feeds/luci/modules/luci-base/po/zh-cn/base.po
