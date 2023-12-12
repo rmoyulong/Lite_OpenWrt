@@ -16,5 +16,3 @@ echo 'src-git kenzo8 https://github.com/kenzok8/small-package' >> feeds.conf.def
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-zerotier package/luci-app-zerotier
 svn co https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
-# 修改本地时间格式
-sed -i 's/os.date()/os.date("%a %Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/*/index.htm
