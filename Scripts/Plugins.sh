@@ -33,7 +33,7 @@ svn export https://github.com/kenzok8/small-package/trunk/luci-app-eqos package/
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-easymesh package/luci-app-easymesh
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-ramfree package/luci-app-ramfree
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-kodexplorer package/luci-app-kodexplorer
-#svn export https://github.com/kenzok8/small-package/trunk/luci-app-wrtbwmon package/luci-app-wrtbwmon
+svn export https://github.com/kenzok8/small-package/trunk/luci-app-onliner package/luci-app-onliner
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockmusic package/luci-app-unblockmusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
@@ -109,12 +109,6 @@ svn export https://github.com/sbwml/luci-app-alist/trunk/alist package/alist
 # iStore
 svn export https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
 svn export https://github.com/linkease/istore/trunk/luci package/luci-app-store
-
-# 在线用户
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-onliner package/luci-app-onliner
-sed -i '$i uci set nlbwmon.@nlbwmon[0].refresh_interval=2s' package/lean/default-settings/files/zzz-default-settings
-sed -i '$i uci commit nlbwmon' package/lean/default-settings/files/zzz-default-settings
-chmod 755 package/luci-app-onliner/root/usr/share/onliner/setnlbw.sh
 
 # 修改本地时间格式
 sed -i 's/os.date()/os.date("%a %Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/*/index.htm
