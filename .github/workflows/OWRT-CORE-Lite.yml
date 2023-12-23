@@ -60,7 +60,6 @@ env:
   OWRT_BRANCH: ${{inputs.OWRT_BRANCH}}
   OWRT_TYPE: ${{inputs.OWRT_TYPE}}
   OWRT_LINUX: ${{inputs.OWRT_LINUX}}
-  OWRT_FILES: ${{inputs.OWRT_FILES}}
   DIY_P1_SH: ${{inputs.DIY_P1_SH}}
   DIY_P2_SH: ${{inputs.DIY_P2_SH}}
   DIY_P3_SH: ${{inputs.DIY_P3_SH}}

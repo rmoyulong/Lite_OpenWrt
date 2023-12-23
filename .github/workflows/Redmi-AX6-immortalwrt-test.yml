@@ -2,11 +2,11 @@
 name: immortalwrt仓库测试版[大于30M]
 
 on:
-  #自动编译：每天早上4点
-  #schedule:
-    #- cron: 0 20 * * *
-  #手动编译
+  #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月4日/18日16点编译一次
+  #关闭则手动编译
   workflow_dispatch:
+  schedule:
+    - cron: 0 8 4,18 * *
 
 #CI权限
 permissions: write-all
