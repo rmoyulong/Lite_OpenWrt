@@ -128,8 +128,8 @@ jobs:
           echo "OWRT_FILES=$OWRT_FILES" >> $GITHUB_ENV
           echo "DIY_P1_SH=$DIY_P1_SH" >> $GITHUB_ENV
           echo "DIY_P2_SH=$DIY_P2_SH" >> $GITHUB_ENV
-          echo "GITHUB_TOKEN=$GITHUB_TOKEN" >> $GITHUB_ENV
-
+          echo "DIY_P3_SH=$DIY_P3_SH" >> $GITHUB_ENV
+          
       - name: 检查脚本
         run: |
           cd ./Scripts
