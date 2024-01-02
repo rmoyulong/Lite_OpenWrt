@@ -156,9 +156,9 @@ jobs:
           fi
           
           df -hT $PWD
-          #git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
+          git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
           
-          git clone $REPO_URL -b $REPO_BRANCH openwrt
+          #git clone $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
 
@@ -243,13 +243,14 @@ jobs:
           fi
           
           make defconfig
-          make download -j$(nproc)
-          #make download -j8
+          #make download -j$(nproc)
+          make download -j8
           #make -j16 download
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
 
       - name: 编译固件
+        id: compile
         run: |
           cd openwrt
           echo -e "$(nproc) thread compile"
