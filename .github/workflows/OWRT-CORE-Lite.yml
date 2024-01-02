@@ -221,8 +221,8 @@ jobs:
           
           
       - name: 下载编译依赖
-        working-directory: ./openwrt
         run: |
+          cd openwrt
           rm -rf ./tmp* ./.config*
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
           [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES ./files
@@ -248,8 +248,8 @@ jobs:
           find dl -size -1024c -exec rm -f {} \;
 
       - name: 编译固件
-        working-directory: ./openwrt
-        run: |     
+        run: |
+          cd openwrt
           echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 || make -j1 V=s
           echo "status=success" >> $GITHUB_OUTPUT
