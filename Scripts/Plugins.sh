@@ -28,12 +28,12 @@ git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/luci-app
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-eqos package/luci-app-eqos
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-easymesh package/luci-app-easymesh
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-ramfree package/luci-app-ramfree
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-kodexplorer package/luci-app-kodexplorer
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-filebrowser package/luci-app-filebrowser
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-ssr-mudb-server package/luci-app-ssr-mudb-server
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-eqos package/luci-app-eqos
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-easymesh package/luci-app-easymesh
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-ramfree package/luci-app-ramfree
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-kodexplorer package/luci-app-kodexplorer
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-wrtbwmon package/luci-app-wrtbwmon
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockmusic package/luci-app-unblockmusic
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
@@ -55,17 +55,17 @@ git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb package/lua-maxmi
 svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
 # 科学上网插件依赖
-svn co https://github.com/kenzok8/small-package/trunk/v2dat package/v2dat
-svn co https://github.com/kenzok8/small-package/trunk/shadowsocks-libev package/shadowsocks-libev
-svn co https://github.com/kenzok8/small-package/trunk/brook package/brook
-svn co https://github.com/kenzok8/small-package/trunk/trojan-go package/trojan-go
-svn co https://github.com/kenzok8/small-package/trunk/trojan-plus package/trojan-plus
-svn co https://github.com/kenzok8/small-package/trunk/sagernet-core package/sagernet-core
-svn co https://github.com/kenzok8/small-package/trunk/lua-neturl package/lua-neturl
-svn co https://github.com/kenzok8/small-package/trunk/redsocks2 package/redsocks2
-svn co https://github.com/kenzok8/small-package/trunk/aria2 package/aria2
-svn co https://github.com/kenzok8/small-package/trunk/ariang package/ariang
-svn co https://github.com/kenzok8/small-package/trunk/filebrowser package/filebrowser
+svn co https://github.com/kiddin9/openwrt-packages/trunk/v2dat package/v2dat
+svn co https://github.com/kiddin9/openwrt-packages/trunk/shadowsocks-libev package/shadowsocks-libev
+svn co https://github.com/kiddin9/openwrt-packages/trunk/brook package/brook
+svn co https://github.com/kiddin9/openwrt-packages/trunk/trojan-go package/trojan-go
+svn co https://github.com/kiddin9/openwrt-packages/trunk/trojan-plus package/trojan-plus
+svn co https://github.com/kiddin9/openwrt-packages/trunk/sagernet-core package/sagernet-core
+svn co https://github.com/kiddin9/openwrt-packages/trunk/lua-neturl package/lua-neturl
+svn co https://github.com/kiddin9/openwrt-packages/trunk/redsocks2 package/redsocks2
+svn co https://github.com/kiddin9/openwrt-packages/trunk/aria2 package/aria2
+svn co https://github.com/kiddin9/openwrt-packages/trunk/ariang package/ariang
+svn co https://github.com/kiddin9/openwrt-packages/trunk/filebrowser package/filebrowser
 svn co https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
 svn co https://github.com/kiddin9/openwrt-packages/trunk/sing-box package/sing-box
 svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/UnblockNeteaseMusic-Go
@@ -96,8 +96,8 @@ git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-a
 git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
 # MosDNS
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-mosdns package/luci-app-mosdns
-svn export https://github.com/kenzok8/small-package/trunk/mosdns package/mosdns
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-mosdns package/luci-app-mosdns
+svn export https://github.com/kiddin9/openwrt-packages/trunk/mosdns package/mosdns
 
 # DDNS.to
 svn export https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto package/luci-app-ddnsto
