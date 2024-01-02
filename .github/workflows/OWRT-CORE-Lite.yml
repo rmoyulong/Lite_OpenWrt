@@ -133,7 +133,7 @@ jobs:
       - name: 检查脚本
         run: |
           cd ./Scripts
-
+          
           dos2unix ./*.sh
           chmod +x ./*.sh
 
@@ -171,8 +171,14 @@ jobs:
         run: |
           cd openwrt
           
-          #echo 'src-git mo_small https://github.com/kenzok8/small-package' >>feeds.conf.default
-          echo 'src-git mo_small https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
+          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
+            $GITHUB_WORKSPACE/Scripts/Plugins_openwrt.sh
+          else
+            #echo 'src-git mo_small https://github.com/kenzok8/small-package' >>feeds.conf.default
+            #echo 'src-git mo_small https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
+            $GITHUB_WORKSPACE/Scripts/Plugins.sh            
+          fi
+          
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 给openwrt库打补丁
