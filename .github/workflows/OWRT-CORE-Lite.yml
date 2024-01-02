@@ -173,8 +173,8 @@ jobs:
         run: |
           cd openwrt
           
-          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
           $GITHUB_WORKSPACE/Scripts/$DIY_P1_SH
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
  
       - name: 给openwrt库打补丁
         run: |
