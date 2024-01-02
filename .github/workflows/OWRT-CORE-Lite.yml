@@ -1,5 +1,5 @@
 #云编译公用核心
-name: OWRT-CORE-Lite
+name: OWRT-CORE-LITE
 
 on:
   #公用核心标识
@@ -47,7 +47,6 @@ on:
       DIY_P3_SH:
         required: true
         type: string
-        
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   OWRT_TARGET: ${{inputs.OWRT_TARGET}}
@@ -60,6 +59,7 @@ env:
   OWRT_BRANCH: ${{inputs.OWRT_BRANCH}}
   OWRT_TYPE: ${{inputs.OWRT_TYPE}}
   OWRT_LINUX: ${{inputs.OWRT_LINUX}}
+  OWRT_FILES: ${{inputs.OWRT_FILES}}
   DIY_P1_SH: ${{inputs.DIY_P1_SH}}
   DIY_P2_SH: ${{inputs.DIY_P2_SH}}
   DIY_P3_SH: ${{inputs.DIY_P3_SH}}
@@ -67,12 +67,12 @@ env:
   #USE_CACHEWRTBUILD: true
   
 jobs:
-  owrt_core_source_Lite:
+  owrt_core_lite:
     runs-on: ubuntu-latest
     steps:
       - name: 项目检查
         uses: actions/checkout@main
-
+        
       - name: 检查分配的服务器性能
         run: |
           echo "警告⚠"
@@ -86,7 +86,7 @@ jobs:
           echo -e "$(sudo lshw -short -C memory | grep GiB) \n"
           echo "--------------------------硬盘信息--------------------------"
           echo "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT        
-          
+
       - name: 初始化编译环境
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -110,7 +110,7 @@ jobs:
           sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS /workdir
           echo "status=success" >> ${GITHUB_OUTPUT}
-          df -Th        
+          df -Th         
 
       - name: 初始化变量
         run: |
@@ -129,7 +129,7 @@ jobs:
           echo "DIY_P1_SH=$DIY_P1_SH" >> $GITHUB_ENV
           echo "DIY_P2_SH=$DIY_P2_SH" >> $GITHUB_ENV
           echo "DIY_P3_SH=$DIY_P3_SH" >> $GITHUB_ENV
-          
+
       - name: 检查脚本
         run: |
           cd ./Scripts
@@ -158,14 +158,12 @@ jobs:
               exit 1
           fi
           
-          if [[ $OWRT_LINUX == *"5.15.x"* ]] ; then
+          if [[ $OWRT_LINUX == *"5.15"* ]] ; then
             REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
           fi
           
           df -hT $PWD
-          git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
-          
-          #git clone $REPO_URL -b $REPO_BRANCH openwrt
+          git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt          
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
 
@@ -173,16 +171,17 @@ jobs:
         run: |
           cd openwrt
           
-          $GITHUB_WORKSPACE/Scripts/$DIY_P1_SH
+          #echo 'src-git mo_small https://github.com/kenzok8/small-package' >>feeds.conf.default
+          echo 'src-git mo_small https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
- 
+
       - name: 给openwrt库打补丁
         run: |
           if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
             cd openwrt 
             #mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
             #git apply 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
-        
+            
             chmod +x $GITHUB_WORKSPACE/patch/*.sh
             chmod -Rf 755 $GITHUB_WORKSPACE/patch/*
             mv $GITHUB_WORKSPACE/patch/01_leds target/linux/qualcommax/ipq807x/base-files/etc/board.d/01_leds
@@ -196,47 +195,46 @@ jobs:
             mv $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
           else
             echo "不是openwrt库不用打补丁！"
-          fi         
+          fi           
 
       - name: 启动缓存[第二次起生效]
         uses: rmoyulong/cachewrtbuild@main
         with:
           ccache: 'true'
           prefix: ${{ github.workspace }}/openwrt
-          mixkey: ${{ env.OWRT_URL }}/tree/${{ env.OWRT_BRANCH }}?device=${{ env.DEVICE_NAME }}-${{ env.OWRT_NAME }} 
+          mixkey: ${{ env.OWRT_URL }}/tree/${{ env.OWRT_BRANCH }}?device=${{ env.DEVICE_NAME }}-${{ env.OWRT_LINUX }}  	  
 
       - name: 更新订阅源
         run: |
           cd openwrt
+
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+
+      - name: 自定义脚本
+        run: |
+          cd openwrt
           
+          cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
+          $GITHUB_WORKSPACE/Scripts/Settings.sh
+          
+          if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
+            cd ./package          
+            $GITHUB_WORKSPACE/Scripts/custom.sh
+          fi
+
       - name: 自定义设置
         run: |
-          cp -rf $GITHUB_WORKSPACE/ax6/banner  openwrt/package/base-files/files/etc/banner
+          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES openwrt/files
           cd openwrt
-          $GITHUB_WORKSPACE/Scripts/$DIY_P2_SH
-         
-          #设置Openclash
-          cd ./package
-          
-          #全版添加openclash预设置
-          if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
-            $GITHUB_WORKSPACE/Scripts/$DIY_P3_SH
-          fi          
-          
-          
-      - name: 下载编译依赖
-        run: |
-          cd openwrt
+
           rm -rf ./tmp* ./.config*
+          #rm -rf $(find ./ -type f -iname "*.config*") 
+          #make dirclean
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && mv $GITHUB_WORKSPACE/Config/$OWRT_CFG .config
-          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES ./files
           
-          #只给openwrt库增加redmi_ax6普通构架编译[不支持unblockneteasemusic]
+          #openwrt库[不支持unblockneteasemusic unblockmusic]
           if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            #echo -e 'CONFIG_TARGET_MULTI_PROFILE=y\n' >> .config
-            #echo -e 'CONFIG_TARGET_qualcommax_ipq807x_DEVICE_redmi_ax6=y\n' >> .config
             echo -e 'CONFIG_PACKAGE_luci-app-unblockmusic=n\n' >> .config
             echo -e 'CONFIG_PACKAGE_luci-app-unblockneteasemusic=n\n' >> .config
           fi
@@ -247,6 +245,10 @@ jobs:
           fi
           
           make defconfig
+
+      - name: 下载编译依赖
+        working-directory: ./openwrt
+        run: |
           make download -j$(nproc)
           #make download -j8
           #make -j16 download
@@ -254,37 +256,32 @@ jobs:
           find dl -size -1024c -exec rm -f {} \;
 
       - name: 编译固件
-        id: compile
-        run: |
-          cd openwrt
+        working-directory: ./openwrt
+        run: |     
           echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 || make -j1 V=s
           echo "status=success" >> $GITHUB_OUTPUT
-          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV 
+          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV  
 
       - name: 整理固件
         run: |
-          cd $GITHUB_WORKSPACE
-          tar -zcvf AllPackages.tar.gz openwrt/bin/packages
-          cp AllPackages.tar.gz openwrt/bin/targets/*/*
-          
           cd openwrt && mkdir ./upload
-          
+
           rm -rf $(find ./bin/targets/ -iregex ".*\(json\|manifest\|buildinfo\|sha256sums\|packages\)$")
           cp -rf $(find ./bin/targets/ -type f -iname "*.*") ./upload/
           cp -rf ./.config ./upload/Config_"$OWRT_TARGET"_"$OWRT_SOURCE"_"$OWRT_DATE".txt
-          
+
           cd ./upload
-          
+
           $GITHUB_WORKSPACE/Scripts/Renames.sh
-          
+
       - name: 生成固件标签
         uses: rmoyulong/action-gh-release@master
         with:
           tag_name: ${{env.OWRT_TARGET}}_${{env.OWRT_SOURCE}}_${{env.OWRT_DATE}}
           files: openwrt/upload/*.*
           body: |
-            个人使用的${{env.OWRT_TYPE}}固件！
+            个人使用的AX6固件！
             刷机有风险！刷前需谨慎！
 
             源码：${{env.OWRT_SOURCE}}
@@ -297,7 +294,7 @@ jobs:
       - name: 清理Releases
         uses: rmoyulong/delete-older-releases@master
         with:
-          keep_latest: 3
+          keep_latest: 6
           delete_tags: true
 
       - name: 清理Workflows
