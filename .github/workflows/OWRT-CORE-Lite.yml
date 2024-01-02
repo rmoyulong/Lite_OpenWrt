@@ -244,7 +244,7 @@ jobs:
           
           make defconfig
           make download -j$(nproc)
-          make download -j8
+          #make download -j8
           #make -j16 download
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
