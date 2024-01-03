@@ -224,9 +224,11 @@ jobs:
           cd openwrt
           
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
-          $GITHUB_WORKSPACE/Scripts/Settings.sh
           
           if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
+            $GITHUB_WORKSPACE/Scripts/Settings.sh
+          else
+            $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件 
             rm -rf feeds/kiddin9/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
           fi
