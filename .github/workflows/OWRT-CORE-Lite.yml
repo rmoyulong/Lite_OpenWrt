@@ -300,7 +300,7 @@ jobs:
       - name: 清理Releases
         uses: rmoyulong/delete-older-releases@master
         with:
-          keep_latest: 6
+          keep_latest: 10
           delete_tags: true
 
       - name: 清理Workflows
