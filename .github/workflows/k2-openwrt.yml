@@ -37,6 +37,6 @@ jobs:
       OWRT_TYPE: 斐讯K2
       OWRT_LINUX: 5.10.x
       OWRT_FILES: k2/files
-      DIY_P1_SH: Plugins.sh
+      DIY_P1_SH: Plugins_k2_L1.sh
       DIY_P2_SH: Settings.sh
       DIY_P3_SH: custom.sh
