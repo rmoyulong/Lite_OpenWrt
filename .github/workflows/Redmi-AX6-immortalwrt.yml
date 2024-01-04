@@ -1,5 +1,5 @@
 #CI项目名
-name: immortalwrt仓库版[大于30M]
+name: immortalwrt仓库增强版[大于30M]
 
 on:
   #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月3日/17日16点编译一次
