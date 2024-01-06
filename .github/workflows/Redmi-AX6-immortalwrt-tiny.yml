@@ -2,11 +2,11 @@
 name: immortalwrt仓库精英版[大于30M]
 
 on:
-  #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月5日/19日16点编译一次
+  #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月6日/20日16点编译一次
   #关闭则手动编译
   workflow_dispatch:
-  #schedule:
-    #- cron: 0 8 5,19 * *
+  schedule:
+    - cron: 0 8 6,20 * *
 
 #CI权限
 permissions: write-all
