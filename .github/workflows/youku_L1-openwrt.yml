@@ -37,6 +37,6 @@ jobs:
       OWRT_TYPE: 优酷路由宝L1
       OWRT_LINUX: 5.10.x
       OWRT_FILES: youku/files
-      DIY_P1_SH: Plugins_k2_L1.sh
+      DIY_P1_SH: Plugins.sh
       DIY_P2_SH: Settings.sh
       DIY_P3_SH: custom.sh
