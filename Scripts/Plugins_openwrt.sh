@@ -24,18 +24,25 @@ rm -rf feeds/luci/modules/luci-mod-status
 rm -rf feeds/packages/utils/coremark
 rm -rf package/emortal/default-settings
 
+cat > backup.txt <<EOF
 git clone https://github.com/immortalwrt/immortalwrt  imm
-cp -rf imm/package/emortal/default-settings package/emortal/default-settings
+mv imm/package/emortal/default-settings package/emortal/default-settings
 rm -rf imm
 
 git clone https://github.com/immortalwrt/packages  ipackages
-cp -rf ipackages/utils/coremark package/new/coremark
+mv ipackages/utils/coremark package/new/coremark
 rm -rf ipackages
 
 git clone https://github.com/immortalwrt/luci  iluci
-cp -rf iluci/modules/luci-base feeds/luci/modules/luci-base
-cp -rf iluci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
+mv iluci/modules/luci-base feeds/luci/modules/luci-base
+mv iluci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
 rm -rf iluci
+EOF
+
+svn export https://github.com/immortalwrt/immortalwrt/trunk/package/emortal/default-settings package/emortal/default-settings
+svn export https://github.com/immortalwrt/packages/trunk/utils/coremark package/new/coremark
+svn export https://github.com/immortalwrt/luci/trunk/modules/luci-base feeds/luci/modules/luci-base
+svn export https://github.com/immortalwrt/luci/trunk/modules/luci-mod-status feeds/luci/modules/luci-mod-status
 
 chmod -Rf 755 feeds/luci/modules/luci-base
 chmod -Rf 755 feeds/luci/modules/luci-mod-status
