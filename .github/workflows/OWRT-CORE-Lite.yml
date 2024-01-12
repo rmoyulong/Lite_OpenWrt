@@ -169,28 +169,30 @@ jobs:
 
       - name: 加载自定义订阅源
         run: |
-          cd openwrt
-          
+         
           if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
+            cd openwrt
             $GITHUB_WORKSPACE/Scripts/Plugins_k2_L1.sh
           elif [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            rm -rf feeds/luci/modules/luci-base
-            rm -rf feeds/luci/modules/luci-mod-status
-            rm -rf feeds/packages/utils/coremark
-            rm -rf package/emortal/default-settings
+            rm -rf openwrt/feeds/luci/modules/luci-base
+            rm -rf openwrt/feeds/luci/modules/luci-mod-status
+            rm -rf openwrt/feeds/packages/utils/coremark
+            rm -rf openwrt/package/emortal/default-settings
             
-            mv ../mo_diy/package/emortal/default-settings package/emortal/default-settings
-            mv ../mo_diy/package/new/coremark package/new/coremark
-            mv ../mo_diy/feeds/luci/modules/luci-base feeds/luci/modules/luci-base
-            mv ../mo_diy/feeds/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
+            mv mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
+            mv mo_diy/package/new/coremark openwrt/package/new/coremark
+            mv mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
+            mv mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
             
             chmod -Rf 755 feeds/luci/modules/luci-base
             chmod -Rf 755 feeds/luci/modules/luci-mod-status
             chmod -Rf 755 package/new/coremark            
             chmod -Rf 755 package/emortal/default-settings
             
+            cd openwrt
             $GITHUB_WORKSPACE/Scripts/Plugins_openwrt.sh
           elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
+            cd openwrt
             #echo 'src-git mo_small https://github.com/kenzok8/small-package' >>feeds.conf.default
             #echo 'src-git mo_small https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
             $GITHUB_WORKSPACE/Scripts/Plugins.sh            
