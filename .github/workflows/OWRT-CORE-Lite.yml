@@ -169,35 +169,13 @@ jobs:
 
       - name: 加载自定义订阅源
         run: |
-         
-          if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
-            cd openwrt
+          cd openwrt
+          
+          if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then            
             $GITHUB_WORKSPACE/Scripts/Plugins_k2_L1.sh
           elif [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            sudo rm -rf openwrt/feeds/luci/modules/luci-base
-            sudo rm -rf openwrt/feeds/luci/modules/luci-mod-status
-            sudo rm -rf openwrt/feeds/packages/utils/coremark
-            sudo rm -rf openwrt/package/emortal/default-settings
-            
-            sudo mkdir -p openwrt/package/emortal/default-settings
-            sudo mkdir -p openwrt/package/new/coremark
-            sudo mkdir -p openwrt/feeds/luci/modules/luci-base
-            sudo mkdir -p openwrt/feeds/luci/modules/luci-mod-status
-            
-            sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
-            sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
-            sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
-            sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
-            
-            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
-            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
-            sudo chmod -Rf 755 openwrt/package/new/coremark            
-            sudo chmod -Rf 755 openwrt/package/emortal/default-settings
-            
-            cd openwrt
             $GITHUB_WORKSPACE/Scripts/Plugins_openwrt.sh
           elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
-            cd openwrt
             #echo 'src-git mo_small https://github.com/kenzok8/small-package' >>feeds.conf.default
             #echo 'src-git mo_small https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
             $GITHUB_WORKSPACE/Scripts/Plugins.sh            
@@ -237,9 +215,33 @@ jobs:
       - name: 更新订阅源
         run: |
           cd openwrt
-
+          
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          
+      - name: 部分替换为immortalwrt库配置
+        run: |
+          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
+            sudo rm -rf openwrt/feeds/luci/modules/luci-base
+            sudo rm -rf openwrt/feeds/luci/modules/luci-mod-status
+            sudo rm -rf openwrt/feeds/packages/utils/coremark
+            sudo rm -rf openwrt/package/emortal/default-settings
+            
+            sudo mkdir -p openwrt/package/emortal/default-settings
+            sudo mkdir -p openwrt/package/new/coremark
+            sudo mkdir -p openwrt/feeds/luci/modules/luci-base
+            sudo mkdir -p openwrt/feeds/luci/modules/luci-mod-status
+            
+            sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
+            sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
+            sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
+            sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
+            
+            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
+            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
+            sudo chmod -Rf 755 openwrt/package/new/coremark            
+            sudo chmod -Rf 755 openwrt/package/emortal/default-settings
+          fi
 
       - name: 自定义脚本
         run: |
