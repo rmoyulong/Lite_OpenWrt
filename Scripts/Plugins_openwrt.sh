@@ -29,7 +29,6 @@ sudo mv $GITHUB_WORKSPACE/mo_diy/package/new/coremark package/new/coremark
 sudo mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-base feeds/luci/modules/luci-base
 sudo mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
 
-
 chmod -Rf 755 feeds/luci/modules/luci-base
 chmod -Rf 755 feeds/luci/modules/luci-mod-status
 chmod -Rf 755 package/new/coremark
