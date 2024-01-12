@@ -24,11 +24,19 @@ rm -rf feeds/luci/modules/luci-mod-status
 rm -rf feeds/packages/utils/coremark
 rm -rf package/emortal/default-settings
 
-svn export https://github.com/immortalwrt/luci/branches/master/modules/luci-base feeds/luci/modules/luci-base
-svn export https://github.com/immortalwrt/luci/branches/master/modules/luci-mod-status feeds/luci/modules/luci-mod-status
-svn export https://github.com/immortalwrt/packages/branches/master/utils/coremark package/new/coremark
-svn export https://github.com/immortalwrt/immortalwrt/branches/master/package/emortal/default-settings package/emortal/default-settings
-# svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-23.05/package/utils/mhz package/utils/mhz
+git clone https://github.com/immortalwrt/immortalwrt  immortalwrt
+cp -rf immortalwrt/package/emortal/default-settings package/emortal/default-settings
+rm -rf immortalwrt
+
+git clone https://github.com/immortalwrt/packages  ipackages
+cp -rf ipackages/utils/coremark package/new/coremark
+rm -rf ipackages
+
+git clone https://github.com/immortalwrt/luci  iluci
+cp -rf iluci/modules/luci-base feeds/luci/modules/luci-base
+cp -rf iluci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
+rm -rf iluci
+
 chmod -Rf 755 feeds/luci/modules/luci-base
 chmod -Rf 755 feeds/luci/modules/luci-mod-status
 chmod -Rf 755 package/new/coremark
