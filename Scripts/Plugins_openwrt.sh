@@ -24,10 +24,10 @@ rm -rf feeds/luci/modules/luci-mod-status
 rm -rf feeds/packages/utils/coremark
 rm -rf package/emortal/default-settings
 
-sudo mv $GITHUB_WORKSPACE/mo_diy/package/emortal/default-settings package/emortal/default-settings
-sudo mv $GITHUB_WORKSPACE/mo_diy/package/new/coremark package/new/coremark
-sudo mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-base feeds/luci/modules/luci-base
-sudo mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
+mv $GITHUB_WORKSPACE/mo_diy/package/emortal/default-settings package/emortal/default-settings
+mv $GITHUB_WORKSPACE/mo_diy/package/new/coremark package/new/coremark
+mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-base feeds/luci/modules/luci-base
+mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
 
 chmod -Rf 755 feeds/luci/modules/luci-base
 chmod -Rf 755 feeds/luci/modules/luci-mod-status
