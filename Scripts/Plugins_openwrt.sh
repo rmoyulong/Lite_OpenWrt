@@ -18,18 +18,3 @@ echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >> feeds.conf
 #svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
 #svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-zerotier package/luci-app-zerotier
 #svn co https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
-
-rm -rf feeds/luci/modules/luci-base
-rm -rf feeds/luci/modules/luci-mod-status
-rm -rf feeds/packages/utils/coremark
-rm -rf package/emortal/default-settings
-
-mv $GITHUB_WORKSPACE/mo_diy/package/emortal/default-settings package/emortal/default-settings
-mv $GITHUB_WORKSPACE/mo_diy/package/new/coremark package/new/coremark
-mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-base feeds/luci/modules/luci-base
-mv $GITHUB_WORKSPACE/mo_diy/feeds/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
-
-chmod -Rf 755 feeds/luci/modules/luci-base
-chmod -Rf 755 feeds/luci/modules/luci-mod-status
-chmod -Rf 755 package/new/coremark
-chmod -Rf 755 package/emortal/default-settings
