@@ -218,30 +218,30 @@ jobs:
           
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          
-      - name: 部分替换为immortalwrt库配置
-        run: |
-          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            sudo rm -rf openwrt/feeds/luci/modules/luci-base
-            sudo rm -rf openwrt/feeds/luci/modules/luci-mod-status
-            sudo rm -rf openwrt/feeds/packages/utils/coremark
-            sudo rm -rf openwrt/package/emortal/default-settings
+  
+      #- name: 部分替换为immortalwrt库配置
+        #run: |
+          #if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
+            #sudo rm -rf openwrt/feeds/luci/modules/luci-base
+            #sudo rm -rf openwrt/feeds/luci/modules/luci-mod-status
+            #sudo rm -rf openwrt/feeds/packages/utils/coremark
+            #sudo rm -rf openwrt/package/emortal/default-settings
             
-            sudo mkdir -p openwrt/package/emortal/default-settings
-            sudo mkdir -p openwrt/package/new/coremark
-            sudo mkdir -p openwrt/feeds/luci/modules/luci-base
-            sudo mkdir -p openwrt/feeds/luci/modules/luci-mod-status
+            #sudo mkdir -p openwrt/package/emortal/default-settings
+            #sudo mkdir -p openwrt/package/new/coremark
+            #sudo mkdir -p openwrt/feeds/luci/modules/luci-base
+            #sudo mkdir -p openwrt/feeds/luci/modules/luci-mod-status
             
-            sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
-            sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
-            sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
-            sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
+            #sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
+            #sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
+            #sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
+            #sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
             
-            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
-            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
-            sudo chmod -Rf 755 openwrt/package/new/coremark            
-            sudo chmod -Rf 755 openwrt/package/emortal/default-settings
-          fi
+            #sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
+            #sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
+            #sudo chmod -Rf 755 openwrt/package/new/coremark            
+            #sudo chmod -Rf 755 openwrt/package/emortal/default-settings
+          #fi
 
       - name: 自定义脚本
         run: |
