@@ -174,20 +174,25 @@ jobs:
             cd openwrt
             $GITHUB_WORKSPACE/Scripts/Plugins_k2_L1.sh
           elif [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            rm -rf openwrt/feeds/luci/modules/luci-base
-            rm -rf openwrt/feeds/luci/modules/luci-mod-status
-            rm -rf openwrt/feeds/packages/utils/coremark
-            rm -rf openwrt/package/emortal/default-settings
+            sudo rm -rf openwrt/feeds/luci/modules/luci-base
+            sudo rm -rf openwrt/feeds/luci/modules/luci-mod-status
+            sudo rm -rf openwrt/feeds/packages/utils/coremark
+            sudo rm -rf openwrt/package/emortal/default-settings
+            
+            sudo mkdir -p openwrt/package/emortal/default-settings
+            sudo mkdir -p openwrt/package/new/coremark
+            sudo mkdir -p openwrt/feeds/luci/modules/luci-base
+            sudo mkdir -p openwrt/feeds/luci/modules/luci-mod-status
             
             sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
             sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
             sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
             sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
             
-            chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
-            chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
-            chmod -Rf 755 openwrt/package/new/coremark            
-            chmod -Rf 755 openwrt/package/emortal/default-settings
+            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
+            sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
+            sudo chmod -Rf 755 openwrt/package/new/coremark            
+            sudo chmod -Rf 755 openwrt/package/emortal/default-settings
             
             cd openwrt
             $GITHUB_WORKSPACE/Scripts/Plugins_openwrt.sh
