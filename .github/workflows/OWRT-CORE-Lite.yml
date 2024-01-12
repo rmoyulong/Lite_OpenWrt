@@ -179,15 +179,15 @@ jobs:
             rm -rf openwrt/feeds/packages/utils/coremark
             rm -rf openwrt/package/emortal/default-settings
             
-            mv mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
-            mv mo_diy/package/new/coremark openwrt/package/new/coremark
-            mv mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
-            mv mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
+            sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
+            sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
+            sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
+            sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
             
-            chmod -Rf 755 feeds/luci/modules/luci-base
-            chmod -Rf 755 feeds/luci/modules/luci-mod-status
-            chmod -Rf 755 package/new/coremark            
-            chmod -Rf 755 package/emortal/default-settings
+            chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
+            chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
+            chmod -Rf 755 openwrt/package/new/coremark            
+            chmod -Rf 755 openwrt/package/emortal/default-settings
             
             cd openwrt
             $GITHUB_WORKSPACE/Scripts/Plugins_openwrt.sh
@@ -207,17 +207,17 @@ jobs:
             #mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
             #git apply 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
             
-            chmod +x $GITHUB_WORKSPACE/patch/*.sh
-            chmod -Rf 755 $GITHUB_WORKSPACE/patch/*
-            mv $GITHUB_WORKSPACE/patch/01_leds target/linux/qualcommax/ipq807x/base-files/etc/board.d/01_leds
-            mv $GITHUB_WORKSPACE/patch/02_network target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
-            mv $GITHUB_WORKSPACE/patch/11-ath10k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath10k-caldata
-            mv $GITHUB_WORKSPACE/patch/11-ath11k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath11k-caldata
-            mv $GITHUB_WORKSPACE/patch/bootcount target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
-            mv $GITHUB_WORKSPACE/patch/platform.sh target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
-            mv $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
-            mv $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
-            mv $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+            sudo chmod +x $GITHUB_WORKSPACE/patch/*.sh
+            sudo chmod -Rf 755 $GITHUB_WORKSPACE/patch/*
+            sudo mv $GITHUB_WORKSPACE/patch/01_leds target/linux/qualcommax/ipq807x/base-files/etc/board.d/01_leds
+            sudo mv $GITHUB_WORKSPACE/patch/02_network target/linux/qualcommax/ipq807x/base-files/etc/board.d/02_network
+            sudo mv $GITHUB_WORKSPACE/patch/11-ath10k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath10k-caldata
+            sudo mv $GITHUB_WORKSPACE/patch/11-ath11k-caldata target/linux/qualcommax/ipq807x/base-files/etc/hotplug.d/firmware/11-ath11k-caldata
+            sudo mv $GITHUB_WORKSPACE/patch/bootcount target/linux/qualcommax/ipq807x/base-files/etc/init.d/bootcount
+            sudo mv $GITHUB_WORKSPACE/patch/platform.sh target/linux/qualcommax/ipq807x/base-files/lib/upgrade/platform.sh
+            sudo mv $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
+            sudo mv $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
+            sudo mv $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
           else
             echo "不是openwrt库不用打补丁！"
           fi           
