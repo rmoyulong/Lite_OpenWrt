@@ -24,9 +24,9 @@ rm -rf feeds/luci/modules/luci-mod-status
 rm -rf feeds/packages/utils/coremark
 rm -rf package/emortal/default-settings
 
-git clone https://github.com/immortalwrt/immortalwrt  immortalwrt
-cp -rf immortalwrt/package/emortal/default-settings package/emortal/default-settings
-rm -rf immortalwrt
+git clone https://github.com/immortalwrt/immortalwrt  imm
+cp -rf imm/package/emortal/default-settings package/emortal/default-settings
+rm -rf imm
 
 git clone https://github.com/immortalwrt/packages  ipackages
 cp -rf ipackages/utils/coremark package/new/coremark
