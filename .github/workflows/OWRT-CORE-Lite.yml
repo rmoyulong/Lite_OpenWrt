@@ -171,17 +171,7 @@ jobs:
         run: |
           cd openwrt
           
-          if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then            
-            $GITHUB_WORKSPACE/Scripts/Plugins_k2_L1.sh
-          elif [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            $GITHUB_WORKSPACE/Scripts/quick.sh
-          elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
-            #echo 'src-git mo_small https://github.com/kenzok8/small-package' >>feeds.conf.default
-            #echo 'src-git mo_small https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
-            #$GITHUB_WORKSPACE/Scripts/Plugins.sh
-            $GITHUB_WORKSPACE/Scripts/quick.sh
-          fi
-          
+          ${GITHUB_WORKSPACE}/${OWRT_DIY_P1_SH}
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 给openwrt库打补丁
@@ -252,6 +242,10 @@ jobs:
           
           if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
+          elif [[ $DIY_P1_SH == *"Plugins.sh"*  ]] ; then
+            $GITHUB_WORKSPACE/Scripts/Settings.sh
+            #删除冲突的插件 
+            rm -rf feeds/kiddin9/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
           else
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件 
