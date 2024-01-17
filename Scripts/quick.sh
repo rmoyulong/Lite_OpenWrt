@@ -35,7 +35,6 @@ git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-a
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-filebrowser
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-ssr-mudb-server
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-eqos
-git_sparse_clone main https://github.com/kenzok8/small-package luci-app-easymesh
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-ramfree
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-kodexplorer
 git_sparse_clone main https://github.com/kenzok8/small-package luci-app-xlnetacc
@@ -53,6 +52,7 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-hom
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-vsftpd
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-easymesh
 
 # 科学上网插件
 git clone --depth=1 https://github.com/immortalwrt/homeproxy package/luci-app-homeproxy
