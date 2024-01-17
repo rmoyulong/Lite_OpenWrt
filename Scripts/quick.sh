@@ -88,6 +88,11 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages qBittorrent-
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages qBittorrent
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages qt6base
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages qt6tools
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages n2n
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages adbyby
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages dns-forwarder
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages upx-static
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages upx
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
