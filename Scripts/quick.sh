@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # 移除要替换的包
 rm -rf feeds/packages/net/mosdns
