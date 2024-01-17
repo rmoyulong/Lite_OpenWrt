@@ -242,14 +242,14 @@ jobs:
           
           if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
-          elif [[ $DIY_P1_SH == *"Plugins.sh"*  ]] ; then
-            $GITHUB_WORKSPACE/Scripts/Settings.sh
-            #删除冲突的插件 
-            rm -rf feeds/kiddin9/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
-          else
+          elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件 
             #rm -rf feeds/kiddin9/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
+          else
+            $GITHUB_WORKSPACE/Scripts/Settings.sh
+            #删除冲突的插件 
+            rm -rf feeds/kiddin9/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
           fi
           
           if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
