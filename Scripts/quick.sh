@@ -104,7 +104,6 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages adbyby
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages dns-forwarder
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages upx
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages ucl
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-base
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages aria2
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages ariang
 
@@ -128,9 +127,8 @@ git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-a
 git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
 # MosDNS
-#git_sparse_clone main https://github.com/kenzok8/small-package luci-app-mosdns
-#git_sparse_clone main https://github.com/kenzok8/small-package mosdns
-git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-mosdns
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages mosdns
 
 # DDNS.to
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ddnsto
