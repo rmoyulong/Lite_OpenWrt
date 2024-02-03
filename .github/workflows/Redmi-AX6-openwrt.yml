@@ -32,7 +32,7 @@ jobs:
       #源码版本
       OWRT_BRANCH: main
       #自定义config
-      OWRT_CFG: 6.1-full.config
+      OWRT_CFG: 6.1-full-openwrt.config
       #设备类型
       OWRT_TYPE: 红米AX6
       OWRT_LINUX: 6.1.x
