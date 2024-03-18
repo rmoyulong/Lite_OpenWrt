@@ -249,8 +249,10 @@ jobs:
       - name: 自定义脚本
         run: |
           cd openwrt
-          rm -rf feeds/packages/lang/golang
-          git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
+            rm -rf feeds/packages/lang/golang
+            git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+          fi
           
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           
