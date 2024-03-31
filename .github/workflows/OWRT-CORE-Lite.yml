@@ -270,11 +270,6 @@ jobs:
             cat feeds/packages/net/miniupnpd/files/upnpd.config |grep upnp_lease_file
             echo '=========Alert upnp binding file directory!========='
             
-            添加主页的CPU温度显示
-            sed -i "/<tr><td width=\"33%\"><%:Load Average%>/a \ \t\t<tr><td width=\"33%\"><%:CPU Temperature%></td><td><%=luci.sys.exec(\"sed 's/../&./g' /sys/class/thermal/thermal_zone0/temp|cut -c1-4\")%></td></tr>" feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-            cat feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm |grep Temperature
-            echo "Add CPU Temperature in Admin Index OK====================="
-            
           elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件 
