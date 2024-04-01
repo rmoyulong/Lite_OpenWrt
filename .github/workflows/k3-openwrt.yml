@@ -35,7 +35,7 @@ jobs:
       OWRT_CFG: k3.config
       #设备类型
       OWRT_TYPE: 斐讯K2
-      OWRT_LINUX: 5.10.x
+      OWRT_LINUX: 5.4.x
       OWRT_FILES: k3/files
       DIY_P1_SH: Plugins_k3.sh
       DIY_P2_SH: Settings.sh
