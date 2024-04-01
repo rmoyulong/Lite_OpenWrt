@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/OWRT-CORE-Lite.yml
     with:
       #编译平台，X64包含X86
-      OWRT_TARGET: Phicomm_K3
+      OWRT_TARGET: bcm53xx
       #默认主题
       OWRT_THEME: argon
       #默认主机名
@@ -30,7 +30,7 @@ jobs:
       #默认源码
       OWRT_URL: https://github.com/coolsnowwolf/lede
       #源码版本
-      OWRT_BRANCH: openwrt-21.02
+      OWRT_BRANCH: master
       #自定义config
       OWRT_CFG: k3.config
       #设备类型
