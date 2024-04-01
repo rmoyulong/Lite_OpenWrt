@@ -5,7 +5,7 @@ echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.de
 echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
 #src-git routing https://github.com/coolsnowwolf/routing
 echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
-echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >> feeds.conf.default
+echo 'src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02' >> feeds.conf.default
 
 # 科学上网插件
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
