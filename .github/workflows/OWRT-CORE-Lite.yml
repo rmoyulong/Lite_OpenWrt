@@ -347,7 +347,7 @@ jobs:
           tag_name: ${{env.OWRT_TARGET}}_${{env.OWRT_SOURCE}}_${{env.OWRT_DATE}}
           files: openwrt/upload/*.*
           body: |
-            个人使用的AX6固件！
+            个人使用的路由器固件！
             刷机有风险！刷前需谨慎！
 
             源码：${{env.OWRT_SOURCE}}
