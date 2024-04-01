@@ -1,0 +1,7 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+iwconfig wlan0 txpower 20
+iwconfig wlan1 txpower 20
+
+exit 0
