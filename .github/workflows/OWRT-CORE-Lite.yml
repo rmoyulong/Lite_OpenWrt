@@ -275,7 +275,7 @@ jobs:
             echo '=========Alert upnp binding file directory!========='
             
             echo '替换无线驱动'
-            sudo mv $GITHUB_WORKSPACE/k3/brcmfmac4366c-pcie.bin.69027 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
+            sudo cp -rf $GITHUB_WORKSPACE/k3/brcmfmac4366c-pcie.bin.69027 package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
             echo '=========update brcmfmac4366c-pcie.bin file!========='
             
           elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
