@@ -34,7 +34,7 @@ jobs:
       #自定义config
       OWRT_CFG: ax5.config
       #设备类型
-      OWRT_TYPE: 斐讯K3
+      OWRT_TYPE: 红米AX5
       OWRT_LINUX: 6.1
       OWRT_FILES: ax5/files
       DIY_P1_SH: Plugins_k2_L1.sh
