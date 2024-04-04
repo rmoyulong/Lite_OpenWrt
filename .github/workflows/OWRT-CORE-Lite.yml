@@ -157,10 +157,14 @@ jobs:
               REPO_URL="https://github.com/openwrt/openwrt"
               REPO_BRANCH="main"
               TAGS_NAME="official"
-          elif [[ "${{ inputs.OWRT_URL }}" == *"lede"* ]]; then
+          elif [[ "${{ inputs.OWRT_URL }}" == *"coolsnowwolf/lede"* ]]; then
               REPO_URL="https://github.com/coolsnowwolf/lede"
               REPO_BRANCH="master"
               TAGS_NAME="lede"
+          elif [[ "${{ inputs.OWRT_URL }}" == *"P3N99/lede"* ]]; then
+              REPO_URL="https://github.com/P3N99/lede"
+              REPO_BRANCH="master"
+              TAGS_NAME="lede"              
           elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
               REPO_URL="https://github.com/immortalwrt/immortalwrt"
               REPO_BRANCH="master"
