@@ -28,7 +28,8 @@ jobs:
       #默认地址
       OWRT_IP: 192.168.31.1
       #默认源码
-      OWRT_URL: https://github.com/P3N99/lede
+      #OWRT_URL: https://github.com/P3N99/lede
+      OWRT_URL: https://github.com/coolsnowwolf/lede
       #源码版本
       OWRT_BRANCH: master
       #自定义config
