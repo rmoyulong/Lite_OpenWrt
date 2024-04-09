@@ -189,7 +189,7 @@ jobs:
           
           if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then
             cd openwrt
-            sudo rm -rf package/kernel/r8101/patches/020-6.6-support.patch
+            #sudo rm -rf package/kernel/r8101/patches/020-6.6-support.patch
           fi
 
       - name: 加载自定义订阅源
