@@ -177,7 +177,7 @@ jobs:
           if [[ $OWRT_LINUX == *"5.15"* ]] ; then
             REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
           fi
-
+          
           if [[ $OWRT_LINUX == *"5.4"* ]] ; then
             REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
           fi
@@ -186,6 +186,11 @@ jobs:
           git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt          
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
+          
+          if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then
+            cd openwrt
+            sudo rm -rf package/kernel/r8101/patches/020-6.6-support.patch
+          fi
 
       - name: 加载自定义订阅源
         run: |
