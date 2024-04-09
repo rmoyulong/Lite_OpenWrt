@@ -32,10 +32,10 @@ jobs:
       #源码版本
       OWRT_BRANCH: master
       #自定义config
-      OWRT_CFG: 6.6-test.config
+      OWRT_CFG: 6.1-test.config
       #设备类型
       OWRT_TYPE: 红米AX6
-      OWRT_LINUX: 6.6.x
+      OWRT_LINUX: 6.1-test
       OWRT_FILES: immortalwrt/files
       DIY_P1_SH: quick.sh
       DIY_P2_SH: Settings.sh      
