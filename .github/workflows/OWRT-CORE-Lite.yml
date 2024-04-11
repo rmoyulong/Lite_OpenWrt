@@ -153,7 +153,7 @@ jobs:
         working-directory: /workdir
         run: |
           # Set up compilation source code
-          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
+          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt/openwrt"* ]]; then
               REPO_URL="https://github.com/openwrt/openwrt"
               REPO_BRANCH="main"
               TAGS_NAME="official"
@@ -165,13 +165,14 @@ jobs:
               REPO_URL="https://github.com/P3N99/lede"
               REPO_BRANCH="master"
               TAGS_NAME="lede"              
-          elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt"* ]]; then
+          elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt/immortalwrt"* ]]; then
               REPO_URL="https://github.com/immortalwrt/immortalwrt"
               REPO_BRANCH="master"
               TAGS_NAME="immortalwrt"
-          else
-              echo "Unknown source code repository."
-              exit 1
+          elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt-ipq6018"* ]]; then
+              REPO_URL="https://github.com/rmoyulong/immortalwrt-ipq6018"
+              REPO_BRANCH="master"
+              TAGS_NAME="immortalwrt"
           fi
           
           if [[ $OWRT_LINUX == *"5.15"* ]] ; then
