@@ -161,18 +161,14 @@ jobs:
               REPO_URL="https://github.com/coolsnowwolf/lede"
               REPO_BRANCH="master"
               TAGS_NAME="lede"
-          elif [[ "${{ inputs.OWRT_URL }}" == *"P3N99/lede"* ]]; then
-              REPO_URL="https://github.com/P3N99/lede"
-              REPO_BRANCH="master"
-              TAGS_NAME="lede"              
           elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt/immortalwrt"* ]]; then
               REPO_URL="https://github.com/immortalwrt/immortalwrt"
               REPO_BRANCH="master"
               TAGS_NAME="immortalwrt"
-          elif [[ "${{ inputs.OWRT_URL }}" == *"immortalwrt-ipq6018"* ]]; then
-              REPO_URL="https://github.com/rmoyulong/immortalwrt-ipq6018"
-              REPO_BRANCH="master"
-              TAGS_NAME="immortalwrt"
+          else
+              REPO_URL="${{ inputs.OWRT_URL }}"
+              REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
+              TAGS_NAME="${{ inputs.OWRT_TARGET }}"
           fi
           
           if [[ $OWRT_LINUX == *"5.15"* ]] ; then
@@ -237,29 +233,18 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
   
-      #- name: 部分替换为immortalwrt库配置
-        #run: |
-          #if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            #sudo rm -rf openwrt/feeds/luci/modules/luci-base
-            #sudo rm -rf openwrt/feeds/luci/modules/luci-mod-status
-            #sudo rm -rf openwrt/feeds/packages/utils/coremark
-            #sudo rm -rf openwrt/package/emortal/default-settings
-            
-            #sudo mkdir -p openwrt/package/emortal/default-settings
-            #sudo mkdir -p openwrt/package/new/coremark
-            #sudo mkdir -p openwrt/feeds/luci/modules/luci-base
-            #sudo mkdir -p openwrt/feeds/luci/modules/luci-mod-status
-            
-            #sudo cp -rf mo_diy/package/emortal/default-settings openwrt/package/emortal/default-settings
-            #sudo cp -rf mo_diy/package/new/coremark openwrt/package/new/coremark
-            #sudo cp -rf mo_diy/feeds/luci/modules/luci-base openwrt/feeds/luci/modules/luci-base
-            #sudo cp -rf mo_diy/feeds/luci/modules/luci-mod-status openwrt/feeds/luci/modules/luci-mod-status
-            
-            #sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-base
-            #sudo chmod -Rf 755 openwrt/feeds/luci/modules/luci-mod-status
-            #sudo chmod -Rf 755 openwrt/package/new/coremark            
-            #sudo chmod -Rf 755 openwrt/package/emortal/default-settings
-          #fi
+      - name: 更新ipq6018补丁   
+        run: |
+          if [[ $REPO_URL == *"rmoyulong/ipq60xx-6.1"* ]] ; then
+            cd openwrt        
+            git config --global user.name "OpenWrt Builder"
+            git config --global user.email "buster-openwrt@ovvo.uk"
+            cd feeds/luci
+            wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
+            git am 0001-show-soc-status-on-luci.patch
+          else
+            echo "不是ipq6018不用打补丁！"
+          fi
 
       - name: 自定义脚本
         run: |
