@@ -29,9 +29,11 @@ jobs:
       OWRT_IP: 192.168.31.1
       #默认源码
       #OWRT_URL: https://github.com/P3N99/lede
-      OWRT_URL: https://github.com/rmoyulong/ipq60xx-6.1
+      #OWRT_URL: https://github.com/rmoyulong/ipq60xx-6.1
+      OWRT_URL: https://github.com/coolsnowwolf/lede
       #源码版本
-      OWRT_BRANCH: main
+      #OWRT_BRANCH: main
+      OWRT_BRANCH: master
       #自定义config
       OWRT_CFG: ax5-pub.config
       #设备类型
