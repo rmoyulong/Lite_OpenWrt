@@ -195,16 +195,16 @@ jobs:
             sudo mv $GITHUB_WORKSPACE/ax6/6.1/Makefile target/linux/qualcommax/Makefile
           fi
           
+      - name: 加载自定义订阅源
+        run: |
+          cd openwrt          
           if [[ "${{ inputs.OWRT_URL }}" == *"rmoyulong/ipq60xx-6.1"* ]]; then
             # ax5 feeds.conf.default
             sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default ./feeds.conf.default
+          else
+            ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}         
           fi
-
-      - name: 加载自定义订阅源
-        run: |
-          cd openwrt
           
-          ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 给openwrt库打补丁
