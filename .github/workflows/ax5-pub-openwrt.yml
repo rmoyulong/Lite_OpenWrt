@@ -33,7 +33,7 @@ jobs:
       #源码版本
       OWRT_BRANCH: master
       #自定义config
-      OWRT_CFG: ax5-pub.config
+      OWRT_CFG: ax5.4.4.config
       #设备类型
       OWRT_TYPE: 红米AX5[超简]
       OWRT_LINUX: 4.4.*
