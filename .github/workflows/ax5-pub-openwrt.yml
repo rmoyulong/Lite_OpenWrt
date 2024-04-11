@@ -31,7 +31,7 @@ jobs:
       #OWRT_URL: https://github.com/P3N99/lede
       OWRT_URL: https://github.com/rmoyulong/ipq60xx-6.1
       #源码版本
-      OWRT_BRANCH: kernel-6.1
+      OWRT_BRANCH: main
       #自定义config
       OWRT_CFG: ax5-pub.config
       #设备类型
