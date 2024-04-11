@@ -198,9 +198,9 @@ jobs:
       - name: 加载自定义订阅源
         run: |
           cd openwrt          
-          if [[ "${{ inputs.OWRT_URL }}" == *"rmoyulong/ipq60xx-6.1"* ]]; then
+          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5-pub.config"* ]]; then
             # ax5 feeds.conf.default
-            sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default ./feeds.conf.default
+            sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
           else
             ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}         
           fi
