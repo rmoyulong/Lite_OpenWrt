@@ -28,14 +28,14 @@ jobs:
       #默认地址
       OWRT_IP: 192.168.31.1
       #默认源码
-      OWRT_URL: https://github.com/P3N99/lede
+      OWRT_URL: https://github.com/rmoyulong/immortalwrt-ipq6018
       #源码版本
       OWRT_BRANCH: master
       #自定义config
       OWRT_CFG: ax5.config
       #设备类型
       OWRT_TYPE: 红米AX5
-      OWRT_LINUX: 6.1
+      OWRT_LINUX: 4.4.*
       OWRT_FILES: ax5/files
       DIY_P1_SH: Plugins_k2_L1.sh
       DIY_P2_SH: Settings.sh
