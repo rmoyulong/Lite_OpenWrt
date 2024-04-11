@@ -189,8 +189,6 @@ jobs:
             [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV            
           fi
           
-
-          
           cd openwrt
           if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then            
             #返回6.1内核版本
