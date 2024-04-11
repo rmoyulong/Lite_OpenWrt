@@ -184,10 +184,15 @@ jobs:
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV
           
-          if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then
-            cd openwrt
+          cd openwrt
+          if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then            
             #返回6.1内核版本
             sudo mv $GITHUB_WORKSPACE/ax6/6.1/Makefile target/linux/qualcommax/Makefile
+          fi
+          
+          if [[ "${{ inputs.OWRT_URL }}" == *"rmoyulong/ipq60xx-6.1"* ]]; then
+            # ax5 feeds.conf.default
+            sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default ./feeds.conf.default
           fi
 
       - name: 加载自定义订阅源
