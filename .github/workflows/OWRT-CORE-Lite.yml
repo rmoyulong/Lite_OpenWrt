@@ -201,8 +201,10 @@ jobs:
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5-pub.config"* ]]; then
             # ax5 feeds.conf.default
             sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
+            sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/mac80211/*
+            sudo mv $GITHUB_WORKSPACE/ax5/mac80211 package/kernel/mac80211
           else
-            ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}         
+            ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
           fi
           
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
