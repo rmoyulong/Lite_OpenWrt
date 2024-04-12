@@ -1,32 +1,32 @@
-From a67d1901741c162645eda0dbdc3a2c0c2aff5cf4 Mon Sep 17 00:00:00 2001
-From: Robert Marko <robimarko@gmail.com>
-Date: Tue, 21 Dec 2021 14:49:36 +0100
-Subject: [PATCH] arm64: dts: ipq8074: Add WLAN node
+From 153c74fc80b9f33ed1a50d7790bf6979fdceb370 Mon Sep 17 00:00:00 2001
+From: Mantas Pucka <mantas@8devices.com>
+Date: Tue, 16 Jan 2024 11:41:06 +0200
+Subject: [PATCH 19/19] arm64: dts: qcom: ipq6018: add wifi node
 
-IPQ8074 has a AHB based Q6v5 802.11ax radios that are supported
+IPQ6018 has a AHB based Q6v5 802.11ax radios that are supported
 by the ath11k.
 
 Add the required DT node to enable the built-in radios.
 
-Signed-off-by: Robert Marko <robimarko@gmail.com>
+Signed-off-by: Mantas Pucka <mantas@8devices.com>
 ---
- arch/arm64/boot/dts/qcom/ipq8074.dtsi | 111 ++++++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
+ arch/arm64/boot/dts/qcom/ipq6018.dtsi | 96 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 96 insertions(+)
 
---- a/arch/arm64/boot/dts/qcom/ipq8074.dtsi
-+++ b/arch/arm64/boot/dts/qcom/ipq8074.dtsi
-@@ -1030,6 +1030,117 @@
- 				};
+--- a/arch/arm64/boot/dts/qcom/ipq6018.dtsi
++++ b/arch/arm64/boot/dts/qcom/ipq6018.dtsi
+@@ -807,6 +807,102 @@
  			};
  		};
-+
-+		wifi: wifi@c0000000 {
-+			compatible = "qcom,ipq8074-wifi";
-+			reg = <0xc000000 0x2000000>;
-+
+ 
++		wifi: wifi@c000000 {
++			compatible = "qcom,ipq6018-wifi";
++			reg = <0x0 0xc000000 0x0 0x1000000>;
++			qcom,rproc = <&q6v5_wcss>;
 +			interrupts = <GIC_SPI 320 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 319 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 318 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 317 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 316 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 315 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 314 IRQ_TYPE_EDGE_RISING>,
@@ -75,30 +75,15 @@ Signed-off-by: Robert Marko <robimarko@gmail.com>
 +				     <GIC_SPI 158 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 157 IRQ_TYPE_EDGE_RISING>,
 +				     <GIC_SPI 156 IRQ_TYPE_EDGE_RISING>;
-+
-+			interrupt-names = "misc-pulse1",
-+					  "misc-latch",
-+					  "sw-exception",
-+					  "ce0",
-+					  "ce1",
-+					  "ce2",
-+					  "ce3",
-+					  "ce4",
-+					  "ce5",
-+					  "ce6",
-+					  "ce7",
-+					  "ce8",
-+					  "ce9",
-+					  "ce10",
-+					  "ce11",
-+					  "host2wbm-desc-feed",
-+					  "host2reo-re-injection",
-+					  "host2reo-command",
++			interrupt-names = "misc-pulse1", "misc-latch", "sw-exception",
++					  "watchdog", "ce0", "ce1", "ce2", "ce3", "ce4",
++					  "ce5", "ce6", "ce7", "ce8", "ce9", "ce10",
++					  "ce11", "host2wbm-desc-feed",
++					  "host2reo-re-injection", "host2reo-command",
 +					  "host2rxdma-monitor-ring3",
 +					  "host2rxdma-monitor-ring2",
 +					  "host2rxdma-monitor-ring1",
-+					  "reo2ost-exception",
-+					  "wbm2host-rx-release",
++					  "reo2ost-exception", "wbm2host-rx-release",
 +					  "reo2host-status",
 +					  "reo2host-destination-ring4",
 +					  "reo2host-destination-ring3",
@@ -127,9 +112,9 @@ Signed-off-by: Robert Marko <robimarko@gmail.com>
 +					  "wbm2host-tx-completions-ring2",
 +					  "wbm2host-tx-completions-ring1",
 +					  "tcl2host-status-ring";
-+			qcom,rproc = <&q6v5_wcss>;
 +			status = "disabled";
 +		};
- 	};
- 
- 	timer {
++
+ 		q6v5_wcss: remoteproc@cd00000 {
+ 			compatible = "qcom,ipq6018-wcss-pil";
+ 			reg = <0x0 0x0cd00000 0x0 0x4040>,
