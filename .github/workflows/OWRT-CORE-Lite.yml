@@ -193,7 +193,6 @@ jobs:
           if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then            
             #返回6.1内核版本
             sudo mv $GITHUB_WORKSPACE/ax6/6.1/Makefile target/linux/qualcommax/Makefile
-            sudo mv $GITHUB_WORKSPACE/ax6/6.1/kernel-6.1 include/kernel-6.1
           fi
           
       - name: 加载自定义订阅源
