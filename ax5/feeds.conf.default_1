@@ -6,10 +6,10 @@ src-git telephony https://git.openwrt.org/feed/telephony.gi
 #src-git video https://github.com/openwrt/video.git
 #src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
-#src-link custom /usr/src/openwrt/custom-feed
 src-git extras https://github.com/openwrt-ipq60xx/extras.git
 src-git sqm_scripts_nss https://github.com/rickkdotnet/sqm-scripts-nss.git
-src-git kenzok8 https://github.com/kenzok8/openwrt-packages
-src-git helloworld https://github.com/fw876/helloworld.git
 #src-git small https://github.com/kenzok8/small
 #src-git smallpackeges https://github.com/Glunefish/small-package.git
+#src-link custom /usr/src/openwrt/custom-feed
+src-git kenzok8 https://github.com/kenzok8/openwrt-packages
+src-git helloworld https://github.com/fw876/helloworld.git
