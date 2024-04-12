@@ -183,21 +183,12 @@ jobs:
           git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt 
           
-          if [[ "${{ inputs.OWRT_URL }}" == *"rmoyulong/ipq60xx-6.1"* ]]; then
+          if [[ "${{ inputs.OWRT_URL }}" == *"多版本编译"* ]]; then
             echo "DEVICE_NAME=redmi_ax5" >> $GITHUB_ENV
           else
             [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV            
           fi
-          
-          cd openwrt
-          if [[ $OWRT_LINUX == *"6.1-test"* ]] ; then            
-            #返回6.1内核版本
-            sudo mv $GITHUB_WORKSPACE/ax6/6.1/Makefile target/linux/qualcommax/Makefile
-            sudo mv $GITHUB_WORKSPACE/ax6/6.1/kernel-6.1 include/kernel-6.1
-            sudo mv $GITHUB_WORKSPACE/ax6/6.1/patches-6.1 target/linux/qualcommax/patches-6.1
-            sudo mv $GITHUB_WORKSPACE/ax6/6.1/config-6.1 target/linux/qualcommax/config-6.1
-          fi
-          
+         
       - name: 加载自定义订阅源
         run: |
           cd openwrt          
@@ -258,7 +249,7 @@ jobs:
             wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
             git am 0001-show-soc-status-on-luci.patch
           else
-            echo "不是ipq6018不用打补丁！"
+            echo "不是ipq6018自定义库不用打补丁！"
           fi
 
       - name: 自定义脚本
