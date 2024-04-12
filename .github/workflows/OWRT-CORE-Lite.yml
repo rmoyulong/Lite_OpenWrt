@@ -206,7 +206,7 @@ jobs:
             sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
             sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/mac80211/*
             sudo mv $GITHUB_WORKSPACE/ax5/mac80211 package/kernel/mac80211
-          elif [[ "${{ inputs.OWRT_CFG }}" == *"ax5-wifi.config"* ]]; then
+          elif [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default ./feeds.conf.default          
           else
             ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
