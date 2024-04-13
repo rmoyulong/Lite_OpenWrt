@@ -183,7 +183,7 @@ jobs:
           git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt 
           
-          if [[ "${{ inputs.OWRT_URL }}" == *"多版本编译"* ]]; then
+          if [[ "${{ inputs.OWRT_URL }}" == *"ax5_wifi.config"* ]]; then
             echo "DEVICE_NAME=redmi_ax5" >> $GITHUB_ENV
           else
             [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV            
@@ -191,12 +191,11 @@ jobs:
           
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             cd openwrt
-            #sudo mv $GITHUB_WORKSPACE/ax5/wifi/kernel-6.1 include/kernel-6.1
-            sudo mv $GITHUB_WORKSPACE/ax5/wifi/qualcommax_ipq60xx package/boot/uboot-envtools/files/qualcommax_ipq60xx
-            #sudo mv $GITHUB_WORKSPACE/ax5/wifi/qualcommax_ipq807x package/boot/uboot-envtools/files/qualcommax_ipq807x
-            sudo mv $GITHUB_WORKSPACE/ax5/wifi/ipq-wifi package/firmware/ipq-wifi
-            sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/wifi/qualcommax/*
-            sudo mv $GITHUB_WORKSPACE/ax5/wifi/qualcommax target/linux/qualcommax
+            sudo mv $GITHUB_WORKSPACE/ax5/6.6/feeds.conf.default ./feeds.conf.default
+            sudo mv $GITHUB_WORKSPACE/ax5/6.6/qualcommax_ipq60xx package/boot/uboot-envtools/files/qualcommax_ipq60xx
+            sudo mv $GITHUB_WORKSPACE/ax5/6.6/ipq-wifi package/firmware/ipq-wifi
+            sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/6.6/qualcommax/*
+            sudo mv $GITHUB_WORKSPACE/ax5/6.6/qualcommax target/linux/qualcommax
           fi
          
       - name: 加载自定义订阅源
