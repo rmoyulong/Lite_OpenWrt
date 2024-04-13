@@ -180,11 +180,7 @@ jobs:
           fi
           
           df -hT $PWD
-          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
-            git clone $REPO_URL -b $REPO_BRANCH openwrt
-          else
-            git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
-          fi
+          git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt 
           
           if [[ "${{ inputs.OWRT_URL }}" == *"多版本编译"* ]]; then
