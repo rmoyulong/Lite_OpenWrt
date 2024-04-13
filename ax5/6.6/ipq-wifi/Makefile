@@ -27,10 +27,13 @@ endef
 # <https://wireless.wiki.kernel.org/en/users/drivers/ath10k/boardfiles>
 
 ALLWIFIBOARDS:= \
+	redmi_ax5 \	
+	xiaomi_ax1800 \
+	redmi_ax5-jdcloud \
 	8devices_mango \
 	arcadyan_aw1000 \
 	buffalo_wxr-5950ax12 \
-  cmiot_ax18 \
+	cmiot_ax18 \
 	cmcc_rm2-6 \
 	compex_wpq873 \
 	dynalink_dl-wrx36 \
@@ -39,7 +42,7 @@ ALLWIFIBOARDS:= \
 	glinet_gl-ax1800 \
 	glinet_gl-axt1800 \
 	jdc_ax1800-pro \
-  linksys_mx4200 \
+	linksys_mx4200 \
 	linksys_mx5300 \
 	netgear_lbr20 \
 	netgear_rax120v2 \
@@ -49,18 +52,14 @@ ALLWIFIBOARDS:= \
 	netgear_wax630 \
 	prpl_haze \
 	qnap_301w \
-  qihoo_v6 \
-  redmi_ax5 \
-  redmi_ax5-jdcloud \
+	qihoo_v6 \
 	redmi_ax6 \
 	wallys_dr40x9 \
-  xiaomi_ax1800 \
 	xiaomi_ax3600 \
 	xiaomi_ax9000 \
 	yyets_le1 \
 	yuncore_ax880 \
-  zn_m2 \
-	yuncore_fap650 \
+	zn_m2 \
 	zte_mf269 \
 	zte_mf287 \
 	zte_mf287plus \
