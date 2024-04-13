@@ -6,10 +6,9 @@ PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL=$(PROJECT_GIT)/project/firmware/qca-wireless.git
-PKG_SOURCE_DATE:=2024-03-04
-PKG_SOURCE_VERSION:=38c02ae4302f9cb73f6914574239fe84799caa84
-PKG_MIRROR_HASH:=0f6a2dea8466ea0e8df3262bff643d60b1725f2218589c41d9f87fb37843c362
-
+PKG_SOURCE_DATE:=2024-03-20
+PKG_SOURCE_VERSION:=87717baa8a7c922942f4202a0ec3de3cb5643941
+PKG_MIRROR_HASH:=a88124db0cd9a386d2cbd905e48408e7131f057240bcc7da93f7c5fc10ea4892
 PKG_FLAGS:=nonshared
 
 include $(INCLUDE_DIR)/package.mk
@@ -28,10 +27,13 @@ endef
 # <https://wireless.wiki.kernel.org/en/users/drivers/ath10k/boardfiles>
 
 ALLWIFIBOARDS:= \
+	redmi_ax5 \	
+	xiaomi_ax1800 \
+	redmi_ax5-jdcloud \
 	8devices_mango \
 	arcadyan_aw1000 \
 	buffalo_wxr-5950ax12 \
-  cmiot_ax18 \
+	cmiot_ax18 \
 	cmcc_rm2-6 \
 	compex_wpq873 \
 	dynalink_dl-wrx36 \
@@ -40,7 +42,7 @@ ALLWIFIBOARDS:= \
 	glinet_gl-ax1800 \
 	glinet_gl-axt1800 \
 	jdc_ax1800-pro \
-  linksys_mx4200 \
+	linksys_mx4200 \
 	linksys_mx5300 \
 	netgear_lbr20 \
 	netgear_rax120v2 \
@@ -50,17 +52,14 @@ ALLWIFIBOARDS:= \
 	netgear_wax630 \
 	prpl_haze \
 	qnap_301w \
-  qihoo_v6 \
-	redmi_ax5 \
-	redmi_ax5-jdcloud \
+	qihoo_v6 \
 	redmi_ax6 \
 	wallys_dr40x9 \
 	xiaomi_ax3600 \
 	xiaomi_ax9000 \
-	xiaomi_ax1800 \
 	yyets_le1 \
 	yuncore_ax880 \
-  zn_m2 \
+	zn_m2 \
 	zte_mf269 \
 	zte_mf287 \
 	zte_mf287plus \
