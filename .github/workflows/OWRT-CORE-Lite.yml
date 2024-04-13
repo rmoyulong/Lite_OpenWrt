@@ -189,15 +189,6 @@ jobs:
             [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV            
           fi
           
-          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
-            cd openwrt
-            #sudo mv $GITHUB_WORKSPACE/ax5/6.6/feeds.conf.default ./feeds.conf.default
-            sudo mv $GITHUB_WORKSPACE/ax5/6.6/qualcommax_ipq60xx package/boot/uboot-envtools/files/qualcommax_ipq60xx
-            sudo mv $GITHUB_WORKSPACE/ax5/6.6/ipq-wifi package/firmware/ipq-wifi
-            sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/6.6/qualcommax/*
-            sudo mv $GITHUB_WORKSPACE/ax5/6.6/qualcommax target/linux/qualcommax
-          fi
-         
       - name: 加载自定义订阅源
         run: |
           cd openwrt          
