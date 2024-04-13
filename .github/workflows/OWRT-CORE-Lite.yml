@@ -191,7 +191,7 @@ jobs:
           
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             cd openwrt
-            sudo mv $GITHUB_WORKSPACE/ax5/6.6/feeds.conf.default ./feeds.conf.default
+            #sudo mv $GITHUB_WORKSPACE/ax5/6.6/feeds.conf.default ./feeds.conf.default
             sudo mv $GITHUB_WORKSPACE/ax5/6.6/qualcommax_ipq60xx package/boot/uboot-envtools/files/qualcommax_ipq60xx
             sudo mv $GITHUB_WORKSPACE/ax5/6.6/ipq-wifi package/firmware/ipq-wifi
             sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/6.6/qualcommax/*
