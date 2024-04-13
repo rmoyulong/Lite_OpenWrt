@@ -28,7 +28,7 @@ jobs:
       #默认地址
       OWRT_IP: 192.168.31.1
       #默认源码
-      OWRT_URL: https://github.com/rmoyulong/openwrt_ipq6018
+      OWRT_URL: https://github.com/rmoyulong/ipq60xx-6.6
       #源码版本
       OWRT_BRANCH: main
       #自定义config
