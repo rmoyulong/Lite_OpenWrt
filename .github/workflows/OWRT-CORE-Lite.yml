@@ -183,7 +183,7 @@ jobs:
           git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt 
           
-          if [[ "${{ inputs.OWRT_URL }}" == *"rmoyulong/openwrt_ipq6018"* ]]; then
+          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             echo "DEVICE_NAME=redmi_ax5" >> $GITHUB_ENV
           else
             [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV            
