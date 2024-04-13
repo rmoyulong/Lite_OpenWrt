@@ -6,5 +6,5 @@ src-git nss_packages https://github.com/JiaY-shi/nss-packages.git;k6.6
 #src-git small https://github.com/kenzok8/small
 #src-git smallpackeges https://github.com/Glunefish/small-package.git
 #src-link custom /usr/src/openwrt/custom-feed
-src-git kenzok8 https://github.com/kenzok8/openwrt-packages
-src-git helloworld https://github.com/fw876/helloworld.git
+#src-git kenzok8 https://github.com/kenzok8/openwrt-packages
+#src-git helloworld https://github.com/fw876/helloworld.git
