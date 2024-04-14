@@ -200,7 +200,7 @@ jobs:
             echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
           elif [[ "${{ inputs.OWRT_CFG }}" == *"ax5-pub.config"* ]]; then
             # ax5 feeds.conf.default
-            #sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
+            sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
             #echo 'src-git nss_packages https://github.com/JiaY-shi/nss-packages.git' >> feeds.conf.default
             sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/*
             sudo mv $GITHUB_WORKSPACE/ax5/mac80211 package/kernel/mac80211
@@ -208,7 +208,7 @@ jobs:
             sudo mv $GITHUB_WORKSPACE/ax5/ath11k-firmware package/firmware/ath11k-firmware
             sudo mv $GITHUB_WORKSPACE/ax5/ipq-wifi package/firmware/ipq-wifi
             sudo mv $GITHUB_WORKSPACE/ax5/qualcommax target/linux/qualcommax
-            ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
+            #${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
           else
             ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
           fi
