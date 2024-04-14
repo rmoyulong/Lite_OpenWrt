@@ -185,6 +185,8 @@ jobs:
           
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             echo "DEVICE_NAME=redmi_ax5" >> $GITHUB_ENV
+          elif [[ "${{ inputs.OWRT_CFG }}" == *"ax5-pub.config"* ]]; then
+            echo "DEVICE_NAME=redmi_ax5" >> $GITHUB_ENV
           else
             [ -e $GITHUB_WORKSPACE/Config/$OWRT_CFG ] && echo "DEVICE_NAME=$(grep '^CONFIG_TARGET_.*_.*_DEVICE_.*=y' $GITHUB_WORKSPACE/Config/$OWRT_CFG | sed -r 's/.*DEVICE_(.*)=y/\1/')" >> $GITHUB_ENV            
           fi
