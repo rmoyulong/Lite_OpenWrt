@@ -251,7 +251,7 @@ jobs:
   
       - name: 更新ipq6018补丁   
         run: |
-          if [[ "${{ inputs.OWRT_NAME }}" == *"Readmi-Ax5"* ]]; then
+          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]
             cd openwrt        
             git config --global user.name "OpenWrt Builder"
             git config --global user.email "buster-openwrt@ovvo.uk"
