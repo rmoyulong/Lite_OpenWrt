@@ -30,7 +30,7 @@ jobs:
       #默认源码
       OWRT_URL: https://github.com/coolsnowwolf/lede
       #源码版本
-      OWRT_BRANCH: main
+      OWRT_BRANCH: master
       #自定义config
       OWRT_CFG: youku_L1.config
       #设备类型
