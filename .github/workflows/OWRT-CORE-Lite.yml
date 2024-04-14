@@ -194,7 +194,8 @@ jobs:
           cd openwrt
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default ./feeds.conf.default
-            ${GITHUB_WORKSPACE}/Scripts/quick.sh
+            #${GITHUB_WORKSPACE}/Scripts/quick.sh
+            echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
           elif [[ "${{ inputs.OWRT_CFG }}" == *"ax5-pub.config"* ]]; then
             # ax5 feeds.conf.default
             sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
