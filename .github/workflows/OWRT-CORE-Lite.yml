@@ -201,7 +201,7 @@ jobs:
           elif [[ "${{ inputs.OWRT_CFG }}" == *"ax5-pub.config"* ]]; then
             # ax5 feeds.conf.default
             #sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default_1 ./feeds.conf.default
-            echo 'src-git nss_packages https://github.com/JiaY-shi/nss-packages.git' >> feeds.conf.default
+            #echo 'src-git nss_packages https://github.com/JiaY-shi/nss-packages.git' >> feeds.conf.default
             #echo 'src-git extras https://github.com/openwrt-ipq60xx/extras.git' >> feeds.conf.default
             #echo 'src-git sqm_scripts_nss https://github.com/rickkdotnet/sqm-scripts-nss.git' >> feeds.conf.default
             sudo chmod -Rf 755 $GITHUB_WORKSPACE/ax5/*
