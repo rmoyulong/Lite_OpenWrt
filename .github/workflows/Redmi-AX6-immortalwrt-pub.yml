@@ -6,7 +6,7 @@ on:
   #关闭则手动编译
   workflow_dispatch:
   schedule:
-    - cron: 0 8 5,19 * *
+    - cron: 0 8 4,18 * *
 
 #CI权限
 permissions: write-all
