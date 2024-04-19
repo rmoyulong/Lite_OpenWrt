@@ -170,11 +170,7 @@ jobs:
               REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
               TAGS_NAME="${{ inputs.OWRT_TARGET }}"
           fi
-          
-          if [[ $OWRT_LINUX == *"5.15"* ]] ; then
-            REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
-          fi
-          
+         
           if [[ $OWRT_LINUX == *"5.4"* ]] ; then
             REPO_BRANCH="${{ inputs.OWRT_BRANCH }}"
           fi
