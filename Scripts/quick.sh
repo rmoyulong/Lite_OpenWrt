@@ -17,7 +17,6 @@ rm -rf feeds/luci/applications/luci-app-serverchan
 #rm -rf feeds/luci/applications/luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-openclash
 
-
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
@@ -37,6 +36,9 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages ariang
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-kodexplorer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
+
+rm -rf small/luci-app-ssr-plus
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ssr-plus
 
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
