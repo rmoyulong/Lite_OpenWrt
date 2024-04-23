@@ -14,8 +14,4 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-git_sparse_clone master https://github.com/kiddin9/cups-bjnp cups-bjnp
-git_sparse_clone master https://github.com/kiddin9/cups cups
-git_sparse_clone master https://github.com/kiddin9/luci-app-cupsd luci-app-cupsd
-
 
