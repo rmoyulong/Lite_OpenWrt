@@ -256,6 +256,11 @@ jobs:
             git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
           fi
           
+          if [[ "${{ inputs.DIY_P1_SH }}" == *"quick.sh"* ]]; then
+            rm -rf feeds/packages/net/shadowsocks-libev
+            rm -rf package/feeds/packages/shadowsocks-libev
+          fi
+          
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           
           if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
