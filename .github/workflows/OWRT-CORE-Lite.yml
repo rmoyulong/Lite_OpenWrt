@@ -257,8 +257,7 @@ jobs:
           fi
           
           if [[ "${{ inputs.DIY_P1_SH }}" == *"quick.sh"* ]]; then
-            rm -rf feeds/packages/net/shadowsocks-libev
-            rm -rf package/feeds/packages/shadowsocks-libev
+            rm -rf feeds/small/shadowsocksr-libev
           fi
           
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
