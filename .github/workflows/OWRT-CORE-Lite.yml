@@ -107,7 +107,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+          #sudo rm /etc/apt/sources.list.d/microsoft-prod.list
           sudo -E apt-get -qq update --fix-missing
           sudo -E apt-get -qq full-upgrade
           sudo -E apt-get -qq install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
