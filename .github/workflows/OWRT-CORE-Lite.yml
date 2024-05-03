@@ -278,9 +278,6 @@ jobs:
             echo "Add CPU Temperature in Admin Index OK====================="
            
           elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
-            #rm -rf feeds/small/luci-app-ssr-plus
-            #rm -rf feeds/small/shadowsocksr-libev
-            rm -rf package/feeds/packages/shadowsocks-libev            
             
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件 
