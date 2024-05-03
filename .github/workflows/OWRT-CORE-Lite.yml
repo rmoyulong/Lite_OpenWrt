@@ -255,11 +255,7 @@ jobs:
             rm -rf feeds/packages/lang/golang
             git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
           fi
-          
-          if [[ "${{ inputs.DIY_P1_SH }}" == *"quick.sh"* ]]; then
-            rm -rf feeds/small/shadowsocksr-libev
-          fi
-          
+         
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           
           if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
@@ -282,7 +278,10 @@ jobs:
             echo "Add CPU Temperature in Admin Index OK====================="
            
           elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
-            rm -rf feeds/small/luci-app-ssr-plus
+            #rm -rf feeds/small/luci-app-ssr-plus
+            #rm -rf feeds/small/shadowsocksr-libev
+            rm -rf package/feeds/packages/shadowsocks-libev            
+            
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件 
             #rm -rf feeds/kiddin9/{base-files,dnsmasq,fk3irewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
