@@ -42,8 +42,8 @@ echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-kodexplorer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ssr-plus
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadowsocksr-libev
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages dns-forwarder
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages dnsforwarder
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-bypass
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-passwall
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-passwall2
