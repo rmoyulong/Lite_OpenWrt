@@ -289,7 +289,7 @@ jobs:
           fi
           
           #删除冲突的插件
-          $GITHUB_WORKSPACE/sh/remove.sh
+          $GITHUB_WORKSPACE/Scripts/remove.sh
           
           
           if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
