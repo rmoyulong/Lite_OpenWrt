@@ -2,8 +2,8 @@
 
 # 移除要替换的包
 rm -rf feeds/packages/net/alist
-#rm -rf feeds/packages/net/aria2
-#rm -rf feeds/packages/net/ariang
+rm -rf feeds/packages/net/aria2
+rm -rf feeds/packages/net/ariang
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/msd_lite
 rm -rf feeds/packages/net/smartdns
@@ -32,21 +32,30 @@ function git_sparse_clone() {
 }
 
 echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
-echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
-#echo 'src-git my_luci https://github.com/rmoyulong/my_luci' >> feeds.conf.default
+#echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
+######################################################################################
 #echo 'src-git homeproxy https://github.com/immortalwrt/homeproxy' >> feeds.conf.default
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages aria2
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages ariang
-#it_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-vlmcsd
+######################################################################################
+#echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
+#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >> feeds.conf.default
+#echo 'src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' >> feeds.conf.default
+#######################################################################################
+git_sparse_clone master https://github.com/fw876/helloworld helloworld
+git_sparse_clone main https://github.com/xiaorouji/openwrt-passwall openwrt-passwall
+git_sparse_clone main https://github.com/xiaorouji/openwrt-passwall2 openwrt-passwall2
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages dnsforwarder
+git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede pcre
+#git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede aria2
+#git_sparse_clone main https://github.com/kenzok8/small-package ariang
+git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede zerotier
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-zerotier
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-bypass
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-vlmcsd
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-kodexplorer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages dns-forwarder
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages dnsforwarder
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-bypass
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-passwall
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-passwall2
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadowsocksr-libev
+#echo 'src-git my_luci https://github.com/rmoyulong/my_luci' >> feeds.conf.default
 
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
