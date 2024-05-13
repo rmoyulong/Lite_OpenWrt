@@ -197,9 +197,6 @@ jobs:
             ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
           fi
           
-          #qca
-          #cp -rf $GITHUB_WORKSPACE/patch/qca package/qca
-          
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: 给openwrt库打补丁
