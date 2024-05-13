@@ -220,7 +220,7 @@ jobs:
             
             #mosdns
             git_sparse_cloneA master https://github.com/kiddin9/openwrt-packages mosdns
-            
+           
           else
             echo "不是openwrt库不用打补丁！"
           fi
@@ -254,8 +254,6 @@ jobs:
       - name: 自定义脚本
         run: |
           cd openwrt
-          rm -rf feeds/packages/lang/golang
-          git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
          
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           
@@ -281,6 +279,8 @@ jobs:
           elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
             
             $GITHUB_WORKSPACE/Scripts/Settings.sh
+            rm -rf feeds/packages/lang/golang
+            git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
             
             #删除冲突的插件
             $GITHUB_WORKSPACE/Scripts/remove.sh
