@@ -204,6 +204,16 @@ jobs:
 
       - name: 给openwrt库打补丁
         run: |
+          # Git稀疏克隆，只克隆指定目录到本地
+          function git_sparse_cloneA() {
+            branch="$1" repourl="$2" && shift 2
+            git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+            repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+            cd $repodir && git sparse-checkout set $@
+            mv -f $@ ../package
+            cd .. && rm -rf $repodir
+          }
+          
           if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
             cd openwrt 
             #mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
@@ -220,6 +230,10 @@ jobs:
             sudo mv $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
             sudo mv $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
             sudo mv $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+            
+            #mosdns
+            git_sparse_cloneA master https://github.com/kiddin9/openwrt-packages mosdns
+            
           else
             echo "不是openwrt库不用打补丁！"
           fi           
