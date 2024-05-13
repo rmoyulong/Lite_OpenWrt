@@ -303,15 +303,11 @@ jobs:
           elif [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
             
             $GITHUB_WORKSPACE/Scripts/Settings.sh
-            #删除冲突的插件 
-            #rm -rf feeds/kiddin9/{base-files,dnsmasq,fk3irewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
             
             #删除冲突的插件
             $GITHUB_WORKSPACE/Scripts/remove.sh
           else
             $GITHUB_WORKSPACE/Scripts/Settings.sh
-            #删除冲突的插件 
-            #rm -rf feeds/kiddin9/{base-files,dnsmasq,fk3irewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
           fi
           
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
@@ -323,8 +319,6 @@ jobs:
             cd ./package          
             $GITHUB_WORKSPACE/Scripts/custom.sh
           fi
-          
-i
 
       - name: 自定义设置
         run: |
