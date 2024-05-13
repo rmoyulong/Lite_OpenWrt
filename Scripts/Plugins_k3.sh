@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# 移除要替换的包
+rm -rf feeds/packages/net/alist
+rm -rf feeds/packages/net/aria2
+rm -rf feeds/packages/net/ariang
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/msd_lite
+rm -rf feeds/packages/net/smartdns
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/luci/applications/luci-app-msd_lite
+rm -rf feeds/luci/applications/luci-app-smartdns
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-netgear
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-homeproxy
+rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/luci/applications/luci-app-passwall2
+rm -rf feeds/luci/applications/luci-app-turboacc
+#rm -rf feeds/packages/net/shadowsocks-libev
+
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
@@ -10,8 +31,34 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede qca
-git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede pcre
+echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
+#echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
+######################################################################################
+#echo 'src-git homeproxy https://github.com/immortalwrt/homeproxy' >> feeds.conf.default
+######################################################################################
+#git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-bypass
+#######################################################################################
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages dnsforwarder
+#git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede qca
+#git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede pcre
+#git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede aria2
+#git_sparse_clone main https://github.com/kenzok8/small-package ariang
+git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede zerotier
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-zerotier
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ssr-plus
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadow-tls
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages lua-neturl
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages redsocks2
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-kodexplorer
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadowsocksr-libev
+#echo 'src-git my_luci https://github.com/rmoyulong/my_luci' >> feeds.conf.default
   
 #lede
 echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
@@ -20,9 +67,6 @@ echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
 echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
 echo 'src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02' >> feeds.conf.default
 
-# 科学上网插件
-git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-echo 'src-git kenzok8 https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
 
 echo '添加lwz322的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
