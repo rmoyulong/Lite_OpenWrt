@@ -211,8 +211,10 @@ jobs:
             cd .. && rm -rf $repodir
           }
           
+          cd openwrt
+          
           if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
-            cd openwrt 
+             
             #mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
             #git apply 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
             
@@ -233,7 +235,12 @@ jobs:
             
           else
             echo "不是openwrt库不用打补丁！"
-          fi           
+          fi
+          
+          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
+            git_sparse_cloneA master https://github.com/rmoyulong/AX6-Actions_Lede qca
+            git_sparse_cloneA master https://github.com/rmoyulong/AX6-Actions_Lede pcre
+          fi          
 
       - name: 启动缓存[第二次起生效]
         uses: rmoyulong/cachewrtbuild@main
