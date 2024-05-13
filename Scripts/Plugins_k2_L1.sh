@@ -13,7 +13,8 @@ function git_sparse_clone() {
   mv -f $@ ../package
   cd .. && rm -rf $repodir
 }
-  
+
+git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede qca
 git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede pcre
 
 
