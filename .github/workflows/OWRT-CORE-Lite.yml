@@ -107,16 +107,10 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          #sudo rm /etc/apt/sources.list.d/microsoft-prod.list
           sudo -E apt-get -qq update --fix-missing
           sudo -E apt-get -qq full-upgrade
-          sudo -E apt-get -qq install ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
-          bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
-          git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
-          libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
-          mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
-          rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev dos2unix
-          sudo -E apt-get -qq install time gn
+          sudo -E apt-get -y install $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
+          sudo -E apt-get -qq install dos2unix time gn clang
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "$TZ"
@@ -189,13 +183,7 @@ jobs:
       - name: 加载自定义订阅源
         run: |
           cd openwrt
-          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
-            sudo mv $GITHUB_WORKSPACE/ax5/feeds.conf.default ./feeds.conf.default
-            ${GITHUB_WORKSPACE}/Scripts/quick.sh
-            #echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >> feeds.conf.default
-          else
-            ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
-          fi
+          ${GITHUB_WORKSPACE}/Scripts/${DIY_P1_SH}
           
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
@@ -236,13 +224,7 @@ jobs:
           else
             echo "不是openwrt库不用打补丁！"
           fi
-          
-          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
-            git_sparse_cloneA master https://github.com/rmoyulong/AX6-Actions_Lede qca
-            git_sparse_cloneA master https://github.com/rmoyulong/AX6-Actions_Lede pcre
-            git_sparse_cloneA master https://github.com/rmoyulong/AX6-Actions_Lede zerotier
-            git_sparse_cloneA master https://github.com/kiddin9/openwrt-packages luci-app-zerotier
-          fi          
+        
 
       - name: 启动缓存[第二次起生效]
         uses: rmoyulong/cachewrtbuild@main
@@ -262,8 +244,6 @@ jobs:
         run: |
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
             cd openwrt        
-            git config --global user.name "OpenWrt Builder"
-            git config --global user.email "buster-openwrt@ovvo.uk"
             cd feeds/luci
             wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
             git am 0001-show-soc-status-on-luci.patch
@@ -307,11 +287,6 @@ jobs:
           else
             $GITHUB_WORKSPACE/Scripts/Settings.sh
           fi
-          
-          if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
-            #删除冲突的插件
-            $GITHUB_WORKSPACE/Scripts/remove.sh          
-          fi          
           
           if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
             cd ./package          
