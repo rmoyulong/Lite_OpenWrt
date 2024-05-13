@@ -37,6 +37,6 @@ jobs:
       OWRT_TYPE: 红米AX5[wifi]
       OWRT_LINUX: 6.6
       OWRT_FILES: ax5/files
-      DIY_P1_SH: Plugins_k2_L1.sh
+      DIY_P1_SH: quick.sh
       DIY_P2_SH: Settings.sh
       DIY_P3_SH: custom.sh
