@@ -262,9 +262,7 @@ jobs:
          
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           
-          if [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"*  ]] ; then
-            $GITHUB_WORKSPACE/Scripts/Settings.sh
-          elif [[ $DIY_P1_SH == *"Plugins_k3.sh"*  ]] ; then
+          if [[ $DIY_P1_SH == *"Plugins_k3.sh"*  ]] ; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             
             echo '移除主页跑分信息显示'
