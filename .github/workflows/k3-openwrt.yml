@@ -37,6 +37,6 @@ jobs:
       OWRT_TYPE: 斐讯K3
       OWRT_LINUX: 5.4.x
       OWRT_FILES: k3/files
-      DIY_P1_SH: Plugins_k3.sh
+      DIY_P1_SH: quick.sh
       DIY_P2_SH: Settings.sh
       DIY_P3_SH: custom.sh
