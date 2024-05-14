@@ -290,6 +290,9 @@ jobs:
             
             #删除冲突的插件
             $GITHUB_WORKSPACE/Scripts/remove.sh
+            
+          elif [[ $DIY_P1_SH == *"k3_immortalwrt"* ]]; then
+            $GITHUB_WORKSPACE/Scripts/Settings.sh
           else
             $GITHUB_WORKSPACE/Scripts/Settings.sh
           fi
