@@ -248,10 +248,10 @@ jobs:
       - name: 更新ipq6018补丁   
         run: |
           if [[ "${{ inputs.OWRT_CFG }}" == *"ax5_wifi.config"* ]]; then
-            cd openwrt        
-            cd feeds/luci
-            wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
+            cd openwrt/feeds/luci
+            cp -rf $GITHUB_WORKSPACE/ax5/0001-show-soc-status-on-luci.patch .
             git am 0001-show-soc-status-on-luci.patch
+            
           else
             echo "不是ipq6018自定义库不用打补丁！"
           fi
