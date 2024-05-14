@@ -265,6 +265,10 @@ jobs:
           cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
           
           if [[ "${{ inputs.OWRT_CFG }}" == *"k3.config"* ]]; then
+            
+            #删除冲突的插件
+            $GITHUB_WORKSPACE/Scripts/remove.sh
+            
             echo '移除主页跑分信息显示'
             sed -i 's/ <%=luci.sys.exec("cat \/etc\/bench.log") or ""%>//g' package/lean/autocore/files/arm/index.htm
             echo '=========Remove benchmark display in index OK!========='            
