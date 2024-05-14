@@ -206,7 +206,7 @@ jobs:
           
           cd openwrt
           
-          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt/openwrt"* ]]; then
+          if [[ "${{ inputs.OWRT_URL }}" == *"openwrt"* ]]; then
              
             #mv $GITHUB_WORKSPACE/patch/0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
             #git apply 0001-ipq807x-add-stock-layout-variant-for-redmi-ax6.patch
