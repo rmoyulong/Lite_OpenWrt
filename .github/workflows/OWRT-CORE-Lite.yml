@@ -293,6 +293,7 @@ jobs:
             
           elif [[ $DIY_P1_SH == *"k3_immortalwrt"* ]]; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
+            rm -rf feeds/packages/net/shadowsocks-libev
           else
             $GITHUB_WORKSPACE/Scripts/Settings.sh
           fi
