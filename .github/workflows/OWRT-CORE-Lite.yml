@@ -309,6 +309,7 @@ jobs:
       - name: 自定义设置
         run: |
           cd openwrt
+          
           [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES files
           
           rm -rf ./tmp* ./.config*
@@ -326,7 +327,7 @@ jobs:
           if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
             [ -e $GITHUB_WORKSPACE/patch/files ] && mv $GITHUB_WORKSPACE/patch/files ./files
           fi
-         
+          
           make defconfig
 
       - name: 下载编译依赖
