@@ -308,8 +308,8 @@ jobs:
 
       - name: 自定义设置
         run: |
-          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES openwrt/files
           cd openwrt
+          [ -e $GITHUB_WORKSPACE/$OWRT_FILES ] && mv $GITHUB_WORKSPACE/$OWRT_FILES files
           
           rm -rf ./tmp* ./.config*
           #rm -rf $(find ./ -type f -iname "*.config*") 
