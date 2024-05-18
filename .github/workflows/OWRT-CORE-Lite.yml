@@ -263,7 +263,7 @@ jobs:
         run: |
           cd openwrt
          
-          cp -rf $GITHUB_WORKSPACE/ax6/banner package/base-files/files/etc/banner
+          curl -L -o package/base-files/files/etc/banner https://raw.githubusercontent.com/rmoyulong/AX6-Actions_Lede/master/ax6/cats_banner
           
           if [[ "${{ inputs.OWRT_CFG }}" == *"k3.config"* ]]; then
             
