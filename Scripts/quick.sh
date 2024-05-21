@@ -49,7 +49,6 @@ git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede qca
 git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede pcre
 #git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede aria2
 #git_sparse_clone main https://github.com/kenzok8/small-package ariang
-git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede zerotier
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-zerotier
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages v2dat
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-mosdns
@@ -59,7 +58,7 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages lua-neturl
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages redsocks2
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages lua-maxminddb
-#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-kodexplorer
+#git_sparse_clone main https://github.com/kenzok8/small-package luci-app-kodexplorer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadowsocksr-libev
 #echo 'src-git my_luci https://github.com/rmoyulong/my_luci' >> feeds.conf.default
