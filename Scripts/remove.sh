@@ -6,7 +6,7 @@ rm -rf feeds/luci/applications/luci-app-homeproxy
 rm -rf feeds/kenzo/homeproxy
 rm -rf feeds/kenzo/luci-app-homeproxy
 ####################################################
-#解决shadowsocks-libev编译错误
+#彻底解决shadowsocks-libev编译错误
 git clone https://github.com/rmoyulong/AX6-Actions_Lede rmoyulong
 rm -rf feeds/packages/net/shadowsocks-libev
 cp -rf ./rmoyulong/shadowsocks-libev feeds/packages/net/
