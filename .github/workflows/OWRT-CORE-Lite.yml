@@ -223,6 +223,7 @@ jobs:
             sudo mv $GITHUB_WORKSPACE/patch/ipq807x.mk target/linux/qualcommax/image/ipq807x.mk 
             sudo mv $GITHUB_WORKSPACE/patch/ipq8071-ax6-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax6-stock.dts
             sudo mv $GITHUB_WORKSPACE/patch/ipq8071-ax3600-stock.dts target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600-stock.dts
+            sudo mv $GITHUB_WORKSPACE/patch/qualcommax_ipq807x package/boot/uboot-envtools/files/qualcommax_ipq807x
             
             #mosdns
             git_sparse_cloneA master https://github.com/kiddin9/openwrt-packages mosdns
