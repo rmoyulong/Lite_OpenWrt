@@ -14,9 +14,11 @@ cp -rf ./rmoyulong/shadowsocks-libev feeds/packages/net/
 rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
 rm -rf package/libs/uclient
+rm -rf package/libs/pcre
 cp -rf ./rmoyulong/libs/mbedtls package/libs/
 cp -rf ./rmoyulong/libs/ustream-ssl package/libs/
 cp -rf ./rmoyulong/libs/uclient package/libs/
+cp -rf ./rmoyulong/libs/pcre package/libs/
 
 rm -rf rmoyulong
 #####################################################
