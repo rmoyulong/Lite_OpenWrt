@@ -297,9 +297,14 @@ jobs:
             
           elif [[ $DIY_P1_SH == *"k3_immortalwrt"* ]]; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
-            rm -rf feeds/packages/net/shadowsocks-libev
+            #删除冲突的插件
+            $GITHUB_WORKSPACE/Scripts/remove.sh
+          elif [[ $DIY_P1_SH == *"k3.config"* ]]; then
+            $GITHUB_WORKSPACE/Scripts/Settings.sh
           else
             $GITHUB_WORKSPACE/Scripts/Settings.sh
+            #删除冲突的插件
+            $GITHUB_WORKSPACE/Scripts/remove.sh
           fi
           
           if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
