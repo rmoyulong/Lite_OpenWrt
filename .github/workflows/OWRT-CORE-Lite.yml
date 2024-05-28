@@ -295,7 +295,7 @@ jobs:
             #删除冲突的插件
             $GITHUB_WORKSPACE/Scripts/remove.sh
             
-          elif [[ $DIY_P1_SH == *"k3_immortalwrt"* ]]; then
+          elif [[ $DIY_P1_SH == *"Plugins_k3_immortalwrt.sh"* ]]; then
             $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件
             $GITHUB_WORKSPACE/Scripts/remove.sh
