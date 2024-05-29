@@ -267,10 +267,8 @@ jobs:
          
           curl -L -o package/base-files/files/etc/banner https://raw.githubusercontent.com/rmoyulong/AX6-Actions_Lede/master/ax6/cats_banner
           
+          #lede k3专用设置
           if [[ "${{ inputs.OWRT_CFG }}" == *"k3.config"* ]]; then
-            
-            #删除冲突的插件
-            $GITHUB_WORKSPACE/Scripts/remove.sh
             
             echo '移除主页跑分信息显示'
             sed -i 's/ <%=luci.sys.exec("cat \/etc\/bench.log") or ""%>//g' package/lean/autocore/files/arm/index.htm
@@ -287,36 +285,29 @@ jobs:
             echo "Add CPU Temperature in Admin Index OK====================="
           fi
           
+          #替换golang
           if [[ $DIY_P1_SH == *"quick.sh"*  ]] ; then
-            
-            $GITHUB_WORKSPACE/Scripts/Settings.sh
             rm -rf feeds/packages/lang/golang
             git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
-            
-            #删除冲突的插件
-            $GITHUB_WORKSPACE/Scripts/remove.sh
-            
-          elif [[ $DIY_P1_SH == *"Plugins_k3_immortalwrt.sh"* ]]; then
-            $GITHUB_WORKSPACE/Scripts/Settings.sh
-            #删除冲突的插件
-            $GITHUB_WORKSPACE/Scripts/remove.sh
-          elif [[ $DIY_P1_SH == *"Plugins_k3.sh"* ]]; then
-            $GITHUB_WORKSPACE/Scripts/Settings.sh
-          elif [[ $DIY_P1_SH == *"Plugins_k2_L1.sh"* ]]; then
+          fi
           
-            if [[ "${{ inputs.OWRT_CFG }}" == *"youku_L1.config"* ]]; then
-              $GITHUB_WORKSPACE/Scripts/Settings.sh
-            else
-              $GITHUB_WORKSPACE/Scripts/Settings.sh
-              #删除冲突的插件
-              $GITHUB_WORKSPACE/Scripts/remove.sh
-            fi
+          #通用设置
+          $GITHUB_WORKSPACE/Scripts/Settings.sh
+          
+          if [[ "${{ inputs.OWRT_CFG }}" == *"k2.config"* ]]; then
+            echo "lede 不需要删除冲突的插件"
+          elif [[ "${{ inputs.OWRT_CFG }}" == *"k2t.config"* ]]; then
+            echo "lede 不需要删除冲突的插件"
+          elif [[ "${{ inputs.OWRT_CFG }}" == *"youku_L1.config"* ]]; then
+            echo "lede 不需要删除冲突的插件
+          elif [[ "${{ inputs.OWRT_CFG }}" == *"k3.config"* ]]; then
+            echo "lede 不需要删除冲突的插件        
           else
-            $GITHUB_WORKSPACE/Scripts/Settings.sh
             #删除冲突的插件
             $GITHUB_WORKSPACE/Scripts/remove.sh
           fi
           
+          #6.1.x标识的需要安装openclash
           if [[ $OWRT_LINUX == *"6.1.x"*  ]] ; then
             cd ./package          
             $GITHUB_WORKSPACE/Scripts/custom.sh
