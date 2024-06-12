@@ -334,7 +334,7 @@ jobs:
           if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
             [ -e $GITHUB_WORKSPACE/patch/files ] && mv $GITHUB_WORKSPACE/patch/files ./files
           fi
-          cat /bin/sh
+          #cat /bin/sh
 
       - name: 下载编译依赖
         working-directory: ./openwrt
