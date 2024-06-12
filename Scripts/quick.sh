@@ -58,8 +58,12 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages lua-neturl
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages redsocks2
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages lua-maxminddb
-rm -rf  package/openwrt-passwall/shadowsocks-rust
+#######################################################################################
+rm -rf package/openwrt-passwall/shadowsocks-rust
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadowsocks-rust
+rm -rf package/openwrt-passwall/hysteria
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages hysteria
+#######################################################################################
 #git_sparse_clone main https://github.com/kenzok8/small-package luci-app-kodexplorer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-usb-printer
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages shadowsocksr-libev
