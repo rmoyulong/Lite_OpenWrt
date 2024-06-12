@@ -334,12 +334,12 @@ jobs:
           if [[ $OWRT_LINUX == *"6.1"*  ]] ; then
             [ -e $GITHUB_WORKSPACE/patch/files ] && mv $GITHUB_WORKSPACE/patch/files ./files
           fi
-          
-          make defconfig
+          cat /bin/sh
 
       - name: 下载编译依赖
         working-directory: ./openwrt
         run: |
+          make defconfig
           make download -j$(nproc)
           #make download -j8
           #make -j16 download
