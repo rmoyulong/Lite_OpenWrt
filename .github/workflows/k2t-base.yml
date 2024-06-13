@@ -101,7 +101,7 @@ jobs:
       # linux 内核
       CORE_LINUX: 6.6.30
       # 固件初始设置 -- patch 目录 不执行: false
-      CORE_FILES: k2/files
+      CORE_FILES: k2t/files
       #打包的一些设置
       #save/temp
       kernel_repo: ophub/kernel
