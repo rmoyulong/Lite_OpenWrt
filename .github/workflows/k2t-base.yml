@@ -72,7 +72,7 @@ jobs:
       # 头部 配置文件 --- header 目录
       CORE_header: ath79_generic_DEVICE_phicomm_k2t.config
       # 配置文件 -- config 目录
-      CORE_config: k2t.config
+      CORE_config: k2-K2t.config
       # 补丁脚本 -- patch 目录 不执行: false 没有执行cd openwrt
       #前置补丁 -- 在【更新订阅源】前执行
       CORE_patch: false
