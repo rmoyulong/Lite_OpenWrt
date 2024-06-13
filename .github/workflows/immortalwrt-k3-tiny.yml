@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/coolsnowwolf/lede
+      CORE_URL: https://github.com/immortalwrt/immortalwrt
       #源码版本
       CORE_BRANCH: master
       CORE_tag_name: 升级版
