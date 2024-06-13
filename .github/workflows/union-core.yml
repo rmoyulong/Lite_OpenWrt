@@ -106,7 +106,7 @@ env:
   CORE_BRANCH: ${{inputs.CORE_BRANCH}}
   CORE_tag_name: ${{inputs.CORE_tag_name}}
   CORE_header: header/${{inputs.CORE_header}}
-  CORE_config: config/${{inputs.CORE_config}}
+  CORE_config: Config/${{inputs.CORE_config}}
   CORE_patch: patch/${{inputs.CORE_patch}}
   CORE_patch_after: patch/${{inputs.CORE_patch_after}}
   CORE_SOC_P1_SH: soc/${{inputs.CORE_SOC_P1_SH}}
