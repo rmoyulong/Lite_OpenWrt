@@ -1,1 +1,1 @@
-rm -rf openwrt/ package/qca
+rm -rf openwrt/package/qca
