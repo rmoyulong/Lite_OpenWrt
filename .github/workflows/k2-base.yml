@@ -82,14 +82,14 @@ jobs:
       CORE_DIY_P2_SH: Settings.sh
       ########################################################
       #soc初始化 比如onecloud_ini.sh ./files/xxx
-      CORE_DIY_P3_SH: false
+      CORE_DIY_P3_SH: universal_init.sh
       ########################################################
       ##openclash
       CORE_DIY_P4_SH: false
       # 删除不兼容的插件 -- remove 目录 不执行: false 已经执行cd openwrt
       CORE_remove: lede_remove.sh
       # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
-      CORE_Files_SH: false
+      CORE_Files_SH: edit_files.sh
       # linux 内核
       CORE_LINUX: 6.6.30
       # 固件初始设置 -- patch 目录 不执行: false
