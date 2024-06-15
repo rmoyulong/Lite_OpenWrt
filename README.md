@@ -5,3 +5,5 @@ About
 目前支持：
 
 k2   k2t  k3  ax5  ax6  优酷路由宝L1
+
+AX5 AX6支持NSS openwrt库
