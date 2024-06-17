@@ -8,6 +8,7 @@ rm -rf feeds/luci/applications/luci-app-turboacc
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-kodexplorer
 rm -rf feeds/luci/applications/luci-app-zerotier
+rm -rf feeds/packages/lang/ruby
 ###############################
 rm -rf  package/openwrt-passwall/shadowsocks-rust
 rm -rf  package/openwrt-passwall/hysteria

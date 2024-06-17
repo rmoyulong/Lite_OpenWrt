@@ -4,6 +4,7 @@ rm -rf feeds/kenzo/homeproxy
 rm -rf feeds/kenzo/luci-app-homeproxy
 rm -rf feeds/luci/applications/luci-app-turboacc
 rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/lang/ruby
 ###############################
 rm -rf  package/openwrt-passwall/shadowsocks-rust
 rm -rf  package/openwrt-passwall/hysteria
