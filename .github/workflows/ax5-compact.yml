@@ -112,7 +112,7 @@ jobs:
       #特殊固件的方式 使用默认的：false
       CORE_Pack: false
       #feeds.conf.default  -- patch 目录 使用默认的：false
-      CORE_feeds_conf: false
+      CORE_feeds_conf: ax6-nss-feeds.conf.default
       #######################################################
       #openclash类型 CORE_DIY_P4_SH: false此设置失效
       #CORE_META: ${{ github.event.inputs.openclash_meta }}
