@@ -16,10 +16,3 @@ else
   cp -rf AX6-Actions_Lede/union_files${word/patch/}/* ./files
   rm -rf AX6-Actions_Lede
 fi
-
-############################################################################################
-#lede使用
-if [[ "$3" == *"lede"* ]]; then
-  sed -i 's/REENTRANT -D_GNU_SOURCE/LARGEFILE64_SOURCE/g' feeds/packages/lang/perl/perlmod.mk
-  sed -i 's#GO_PKG_TARGET_VARS.*# #g' feeds/packages/utils/v2dat/Makefile
-fi
