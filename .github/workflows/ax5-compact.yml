@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/breeze303/openwrt-6.x.git
+      CORE_URL: https://github.com/rmoyulong/breeze303-NSS
       #源码版本
       CORE_BRANCH: main
       CORE_tag_name: 紧凑版
