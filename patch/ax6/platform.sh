@@ -43,19 +43,6 @@ platform_pre_upgrade() {
 
 platform_do_upgrade() {
 	case "$(board_name)" in
-	arcadyan,aw1000|\
-	cmcc,rm2-6|\
-	compex,wpq873|\
-	dynalink,dl-wrx36|\
-	edimax,cax1800|\
-	netgear,rax120v2|\
-	netgear,sxr80|\
-	netgear,sxs80|\
-	netgear,wax218|\
-	netgear,wax620|\
-	netgear,wax630)
-		nand_do_upgrade "$1"
-		;;
 	buffalo,wxr-5950ax12)
 		CI_KERN_UBIPART="rootfs"
 		CI_ROOT_UBIPART="user_property"
@@ -63,6 +50,9 @@ platform_do_upgrade() {
 		nand_do_flash_file "$1" || nand_do_upgrade_failed
 		nand_do_restore_config || nand_do_upgrade_failed
 		buffalo_upgrade_optvol
+		;;
+	dynalink,dl-wrx36)
+		nand_do_upgrade "$1"
 		;;
 	edgecore,eap102)
 		active="$(fw_printenv -n active)"
@@ -76,29 +66,33 @@ platform_do_upgrade() {
 		fw_setenv upgrade_available 1
 		nand_do_upgrade "$1"
 		;;
-	linksys,mx4200v1|\
-	linksys,mx4200v2|\
-	linksys,mx5300|\
-	linksys,mx8500)
-		boot_part="$(fw_printenv -n boot_part)"
-		if [ "$boot_part" -eq "1" ]; then
-			fw_setenv boot_part 2
-			CI_KERNPART="alt_kernel"
-			CI_UBIPART="alt_rootfs"
-		else
-			fw_setenv boot_part 1
-			CI_UBIPART="rootfs"
-		fi
-		fw_setenv boot_part_ready 3
-		fw_setenv auto_recovery yes
+	compex,wpq873|\
+	edimax,cax1800|\
+	netgear,rax120v2|\
+	netgear,wax218|\
+	netgear,wax620|\
+	netgear,wax630)
 		nand_do_upgrade "$1"
 		;;
 	prpl,haze|\
-	qnap,301w|\
-	spectrum,sax1v1k)
+	qnap,301w)
 		kernelname="0:HLOS"
 		rootfsname="rootfs"
 		mmc_do_upgrade "$1"
+		;;
+	zyxel,nbg7815)
+		local config_mtdnum="$(find_mtd_index 0:bootconfig)"
+		[ -z "$config_mtdnum" ] && reboot
+		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd$config_mtdnum | cut -f 1 -d "|" | head -n1)"
+		if [ "$part_num" -eq "0" ]; then
+			kernelname="0:HLOS"
+			rootfsname="rootfs"
+			mmc_do_upgrade "$1"
+		else
+			kernelname="0:HLOS_1"
+			rootfsname="rootfs_1"
+			mmc_do_upgrade "$1"
+		fi
 		;;
 	redmi,ax6|\
 	xiaomi,ax3600|\
@@ -118,6 +112,21 @@ platform_do_upgrade() {
 		CI_KERN_UBIPART="ubi_kernel"
 		CI_ROOT_UBIPART="rootfs"
 		nand_do_upgrade "$1"
+		;;
+	yuncore,ax880)
+		active="$(fw_printenv -n active)"
+		if [ "$active" -eq "1" ]; then
+			CI_UBIPART="rootfs_1"
+		else
+			CI_UBIPART="rootfs"
+		fi
+		# force altbootcmd which handles partition change in u-boot
+		fw_setenv bootcount 3
+		fw_setenv upgrade_available 1
+		nand_do_upgrade "$1"
+		;;
+	*)
+		default_do_upgrade "$1"
 		;;
 	redmi,ax6-stock|\
 	xiaomi,ax3600-stock)
@@ -145,56 +154,6 @@ platform_do_upgrade() {
 		fw_setenv flag_boot_success 0
 
 		nand_do_upgrade "$1"
-		;;
-	yuncore,ax880)
-		active="$(fw_printenv -n active)"
-		if [ "$active" -eq "1" ]; then
-			CI_UBIPART="rootfs_1"
-		else
-			CI_UBIPART="rootfs"
-		fi
-		# force altbootcmd which handles partition change in u-boot
-		fw_setenv bootcount 3
-		fw_setenv upgrade_available 1
-		nand_do_upgrade "$1"
-		;;
-	zbtlink,zbt-z800ax)
-		local mtdnum="$(find_mtd_index 0:bootconfig)"
-		local alt_mtdnum="$(find_mtd_index 0:bootconfig1)"
-		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd$mtdnum | cut -f 1 -d "|" | head -n1)"
-		# vendor firmware may swap the rootfs partition location, u-boot append: ubi.mtd=rootfs
-		# since we use fixed-partitions, need to force boot from the first rootfs partition
-		if [ "$part_num" -eq "1" ]; then
-			mtd erase /dev/mtd$mtdnum
-			mtd erase /dev/mtd$alt_mtdnum
-		fi
-		nand_do_upgrade "$1"
-		;;
-	zte,mf269)
-		CI_KERN_UBIPART="ubi_kernel"
-		CI_ROOT_UBIPART="rootfs"
-		nand_do_upgrade "$1"
-		;;
-	zte,mf269-stock)
-		CI_UBIPART="rootfs"
-		nand_do_upgrade "$1"
-		;;
-	zyxel,nbg7815)
-		local config_mtdnum="$(find_mtd_index 0:bootconfig)"
-		[ -z "$config_mtdnum" ] && reboot
-		part_num="$(hexdump -e '1/1 "%01x|"' -n 1 -s 168 -C /dev/mtd$config_mtdnum | cut -f 1 -d "|" | head -n1)"
-		if [ "$part_num" -eq "0" ]; then
-			kernelname="0:HLOS"
-			rootfsname="rootfs"
-			mmc_do_upgrade "$1"
-		else
-			kernelname="0:HLOS_1"
-			rootfsname="rootfs_1"
-			mmc_do_upgrade "$1"
-		fi
-		;;
-	*)
-		default_do_upgrade "$1"
 		;;
 	esac
 }
