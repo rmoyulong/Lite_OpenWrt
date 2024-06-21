@@ -9,6 +9,6 @@ k2   k2t  k3  ax5  ax6  优酷路由宝L1
 AX5 AX6支持NSS openwrt库<br>
 ---------------------------------------------------------------------<br>
 Nss openwrt库 => https://github.com/darkrain88/openwrt-6.x   分支 main <br>
-Nss openwrt库 => https://github.com/King-Of-Knights/nss-packages.git   分支 NSS-12.5-K6.x <br>
+Nss openwrt库 => https://github.com/King-Of-Knights/openwrt-6.x    分支 main <br>
 Nss 依赖 => https://github.com/qosmio/nss-packages.git    分支 NSS-12.5-K6.x <br>
 
