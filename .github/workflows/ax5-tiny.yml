@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/rmoyulong/breeze303-NSS
+      CORE_URL: https://github.com/King-Of-Knights/openwrt-6.x
       #源码版本
       CORE_BRANCH: main
       CORE_tag_name: 经典版
@@ -112,7 +112,7 @@ jobs:
       #特殊固件的方式 使用默认的：false
       CORE_Pack: false
       #feeds.conf.default  -- patch 目录 使用默认的：false
-      CORE_feeds_conf: ax6-nss-feeds.conf.default
+      CORE_feeds_conf: ax5-nss-feeds.conf.default
       #######################################################
       #openclash类型 CORE_DIY_P4_SH: false此设置失效
       #CORE_META: ${{ github.event.inputs.openclash_meta }}
