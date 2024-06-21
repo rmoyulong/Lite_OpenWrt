@@ -32,4 +32,4 @@ wget -nv https://github.com/yangxu52/Phicomm-k3-Wireless-Firmware/raw/master/brc
 echo '=========Replace k3 wireless firmware OK!========='
 
 # 取消主题默认设置
-find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
+#find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
