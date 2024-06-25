@@ -71,7 +71,7 @@ jobs:
       #后置补丁 -- 在【更新订阅源】后执行
       CORE_patch_after: false
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
-      CORE_SOC_P1_SH: k2.sh
+      CORE_SOC_P1_SH: K2.sh
       CORE_SOC_P2_SH: false
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
