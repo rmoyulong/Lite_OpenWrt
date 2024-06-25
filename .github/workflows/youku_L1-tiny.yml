@@ -2,7 +2,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 #CI项目名
-name: 优酷L1精英版-lede
+name: 优酷L1经典版-openwrt
 
 on:
   #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月1日/15日12点编译一次
@@ -65,10 +65,10 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/coolsnowwolf/lede
+      CORE_URL: https://github.com/openwrt/openwrt
       #源码版本
-      CORE_BRANCH: master
-      CORE_tag_name: 精英版
+      CORE_BRANCH: openwrt-23.05
+      CORE_tag_name: 经典版
       # 头部 配置文件 --- header 目录
       CORE_header: ramips_mt7620_DEVICE_youku_yk-l1.config
       # 配置文件 -- config 目录
@@ -99,7 +99,7 @@ jobs:
       # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
       CORE_Files_SH: edit_files.sh
       # linux 内核
-      CORE_LINUX: 6.6.30
+      CORE_LINUX: 5.15.x
       # 固件初始设置 -- patch 目录 不执行: false
       CORE_FILES: youku_L1/files
       #打包的一些设置
