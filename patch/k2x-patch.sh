@@ -10,4 +10,4 @@ rm -rf package/network/services/hostapd
 cp -rf $GITHUB_WORKSPACE/patch/k2x/package.tar.gz .
 tar zxvfp package.tar.gz
 
-git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede qca
+git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede luci-theme-argon
