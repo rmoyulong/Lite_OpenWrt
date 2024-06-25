@@ -2,7 +2,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 #CI项目名
-name: K2t紧凑版-openwrt
+name: K2t紧凑版-lede
 
 on:
   #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月1日/15日12点编译一次
@@ -57,9 +57,9 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/openwrt/openwrt
+      CORE_URL: https://github.com/coolsnowwolf/lede
       #源码版本
-      CORE_BRANCH: openwrt-23.05
+      CORE_BRANCH: master
       CORE_tag_name: 紧凑版
       # 头部 配置文件 --- header 目录
       CORE_header: ath79_generic_DEVICE_phicomm_k2t.config
@@ -69,14 +69,14 @@ jobs:
       #前置补丁 -- 在【更新订阅源】前执行
       CORE_patch: before-lower-turboacc-patch.sh
       #后置补丁 -- 在【更新订阅源】后执行
-      CORE_patch_after: k2x-patch.sh
+      CORE_patch_after: false
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
       CORE_SOC_P1_SH: false
       CORE_SOC_P2_SH: false
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
       #自定义扩展源定义
-      CORE_DIY_P1_SH: openwrt-base.sh
+      CORE_DIY_P1_SH: false
       ########################################################
       #固件通用设置
       CORE_DIY_P2_SH: Settings.sh
@@ -87,7 +87,7 @@ jobs:
       ##openclash
       CORE_DIY_P4_SH: false
       # 删除不兼容的插件 -- remove 目录 不执行: false 已经执行cd openwrt
-      CORE_remove: openwrt_remove.sh
+      CORE_remove: false
       # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
       CORE_Files_SH: edit_files.sh
       # linux 内核
