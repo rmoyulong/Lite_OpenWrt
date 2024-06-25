@@ -1,7 +1,7 @@
 #========================================================================================================================
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
-# CI项目名
+#CI项目名
 name: K2紧凑版-lede
 
 on:
@@ -67,7 +67,7 @@ jobs:
       CORE_config: k2-K2t.config
       # 补丁脚本 -- patch 目录 不执行: false 没有执行cd openwrt
       #前置补丁 -- 在【更新订阅源】前执行
-      CORE_patch: before-lower-turboacc-patch.sh
+      CORE_patch: false
       #后置补丁 -- 在【更新订阅源】后执行
       CORE_patch_after: false
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
