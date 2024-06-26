@@ -297,7 +297,11 @@ jobs:
             cp -rf $GITHUB_WORKSPACE/${{ env.CORE_feeds_conf }} ./feeds.conf.default
           fi
           
-          ${GITHUB_WORKSPACE}/${CORE_DIY_P1_SH}
+          if [[ "${{ inputs.CORE_DIY_P1_SH }}" == *"false"* ]]; then
+            echo "不需要执行 CORE_DIY_P1_SH"
+          else
+            ${GITHUB_WORKSPACE}/${CORE_DIY_P1_SH}
+          fi          
           echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
           
       - name: 前置补丁
