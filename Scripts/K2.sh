@@ -1,5 +1,29 @@
+#!/bin/bash
+
+# 移除要替换的包
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/packages/net/msd_lite
+rm -rf feeds/luci/applications/luci-app-serverchan
+rm -rf feeds/luci/applications/luci-app-msd_lite
+
+
 #公用函数
 source $GITHUB_WORKSPACE/Scripts/functions.sh
 
-rm -rf package/kernel/cryptodev-linux
-merge_package openwrt-22.03 https://github.com/openwrt/openwrt package package/kernel/cryptodev-linux
+echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
+echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
+
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
+
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+
+# 在线用户
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-onliner
+sudo chmod -Rf 755 package/luci-app-onliner
+
+# msd_lite
+git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
+git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
