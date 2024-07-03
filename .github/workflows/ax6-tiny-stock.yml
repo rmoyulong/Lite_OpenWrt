@@ -65,9 +65,9 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/TerryLip/AX6NSS
+      CORE_URL: https://github.com/rmoyulong/openwrt-6.x
       #源码版本
-      CORE_BRANCH: qualcommax-6.x-nss-wifi
+      CORE_BRANCH: main
       CORE_tag_name: 精英版
       # 头部 配置文件 --- header 目录
       CORE_header: qualcommax_ipq807x_DEVICE_redmi_ax6-stock.config
@@ -75,7 +75,7 @@ jobs:
       CORE_config: ax6.config
       # 补丁脚本 -- patch 目录 不执行: false 没有执行cd openwrt
       #前置补丁 -- 在【更新订阅源】前执行
-      CORE_patch: false
+      CORE_patch: openwrt-ax6.sh
       #后置补丁 -- 在【更新订阅源】后执行
       CORE_patch_after: false
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
