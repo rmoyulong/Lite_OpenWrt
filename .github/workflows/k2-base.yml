@@ -68,7 +68,7 @@ jobs:
       #默认源码
       CORE_URL: https://github.com/openwrt/openwrt
       #源码版本
-      CORE_BRANCH: openwrt-22.03
+      CORE_BRANCH: openwrt-23.05
       CORE_tag_name: 紧凑版
       # 头部 配置文件 --- header 目录
       CORE_header: ramips_mt7620_DEVICE_phicomm_psg1218a.config
@@ -101,7 +101,7 @@ jobs:
       CORE_Files_SH: edit_files.sh
       # linux 内核
       ######填写其他只是标识 当设为5.15时，会触发使用CORE_BRANCH 源码分支
-      CORE_LINUX: 5.15.x
+      CORE_LINUX: 5.10.x
       # 固件初始设置 -- patch 目录 不执行: false
       CORE_FILES: k2/files
       #打包的一些设置
