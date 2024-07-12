@@ -9,8 +9,7 @@ rm -rf feeds/luci/applications/luci-app-msd_lite
 #公用函数
 source $GITHUB_WORKSPACE/Scripts/functions.sh
 
-echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >> feeds.conf.default
-echo 'src-git small https://github.com/kenzok8/small' >> feeds.conf.default
+echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf.default
 
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 
