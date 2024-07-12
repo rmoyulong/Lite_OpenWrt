@@ -11,7 +11,7 @@ source $GITHUB_WORKSPACE/Scripts/functions.sh
 
 echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf.default
 
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
@@ -25,3 +25,6 @@ sudo chmod -Rf 755 package/luci-app-onliner
 # msd_lite
 git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
 git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
+
+#dos2unix
+merge_package master https://github.com/immortalwrt/packages package utils/dos2unix
