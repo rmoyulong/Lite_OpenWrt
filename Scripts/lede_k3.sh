@@ -4,6 +4,9 @@ rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
 rm -rf package/libs/uclient
 
+#sudo curl -L -o rmoyulong.tar.gz https://github.com/rmoyulong/AX6-Actions_Lede/releases/download/union_package/lede.tar.gz
+#tar zxvfp rmoyulong.tar.gz
+
 #lede
 echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
 echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
@@ -11,6 +14,7 @@ echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
 echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
 echo 'src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02' >> feeds.conf.default
 echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf.default
+
 
 echo '添加lwz322的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
