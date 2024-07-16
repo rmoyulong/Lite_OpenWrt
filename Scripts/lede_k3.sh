@@ -7,6 +7,10 @@ rm -rf package/libs/uclient
 sudo curl -L -o rmoyulong.tar.gz https://github.com/rmoyulong/AX6-Actions_Lede/releases/download/union_package/lede.tar.gz
 tar zxvfp rmoyulong.tar.gz
 
+# 回退源码
+git checkout 78c0839c9b27a0414d34752a3ece487f17d0a6b9
+git checkout -b 78c0839
+
 #lede
 echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
 echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
@@ -33,6 +37,3 @@ echo '=========Replace k3 wireless firmware OK!========='
 
 # 取消主题默认设置
 #find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
-
-# 回退源码
-git reset --hard 78c0839c9b27a0414d34752a3ece487f17d0a6b9
