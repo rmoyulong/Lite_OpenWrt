@@ -8,15 +8,18 @@ sudo curl -L -o rmoyulong.tar.gz https://github.com/rmoyulong/AX6-Actions_Lede/r
 tar zxvfp rmoyulong.tar.gz
 
 # 回退源码2024-06-27
-git checkout b75357d1a07386e356256e7840eb287cf7cf4d01
-git checkout -b b75357d
+#git checkout b75357d1a07386e356256e7840eb287cf7cf4d01
+#git checkout -b b75357d
+
+# 回退源码2024-07-03
+git checkout b4fe0e2919f1dd83374812c7d68e98c9de349f31
+git checkout -b b4fe0e2
 
 #lede
-echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
-echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
-#src-git routing https://github.com/coolsnowwolf/routing
-echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
-echo 'src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02' >> feeds.conf.default
+#echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
+#echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
+#echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
+#echo 'src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02' >> feeds.conf.default
 
 
 echo '添加lwz322的K3屏幕插件'
