@@ -7,13 +7,9 @@ rm -rf package/libs/uclient
 sudo curl -L -o rmoyulong.tar.gz https://github.com/rmoyulong/AX6-Actions_Lede/releases/download/union_package/lede.tar.gz
 tar zxvfp rmoyulong.tar.gz
 
-# 回退源码2024-06-27
-#git checkout b75357d1a07386e356256e7840eb287cf7cf4d01
-#git checkout -b b75357d
-
-# 回退源码2024-07-03
-git checkout b4fe0e2919f1dd83374812c7d68e98c9de349f31
-git checkout -b b4fe0e2
+# 回退源码2024-07-01
+git checkout 03835617b9b73e9b3fe0c600d957be1eefc212e1
+git checkout -b 0383561
 
 #lede
 #echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
