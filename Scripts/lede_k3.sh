@@ -33,3 +33,6 @@ echo '=========Replace k3 wireless firmware OK!========='
 
 # 取消主题默认设置
 #find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
+
+# 回退源码
+git reset --hard 78c0839c9b27a0414d34752a3ece487f17d0a6b9
