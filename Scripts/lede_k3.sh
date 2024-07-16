@@ -1,15 +1,15 @@
 #!/bin/bash
 
+# 回退源码2024-07-01
+git checkout 03835617b9b73e9b3fe0c600d957be1eefc212e1
+git checkout -b 0383561
+
 rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
 rm -rf package/libs/uclient
 
 sudo curl -L -o rmoyulong.tar.gz https://github.com/rmoyulong/AX6-Actions_Lede/releases/download/union_package/lede.tar.gz
 tar zxvfp rmoyulong.tar.gz
-
-# 回退源码2024-07-01
-git checkout 03835617b9b73e9b3fe0c600d957be1eefc212e1
-git checkout -b 0383561
 
 #lede
 #echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
