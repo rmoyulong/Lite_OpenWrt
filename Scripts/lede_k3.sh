@@ -2,7 +2,7 @@
 
 # 回退源码2024-07-01
 #git reset --hard 141a53a0299961b3d19abcbb3562d5ac0a506c5e
-git checkout -b d96fcb36dfd42d37786934c787fee34ce29e52ff
+#git checkout -b d96fcb36dfd42d37786934c787fee34ce29e52ff
 
 rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
