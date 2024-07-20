@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 回退源码2024-07-01
-git reset --hard 0383561
+git checkout 03835617b9b73e9b3fe0c600d957be1eefc212e1
 #git checkout -b 0383561
 
 rm -rf package/libs/mbedtls
