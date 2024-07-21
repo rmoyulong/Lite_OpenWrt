@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # 回退源码2024-07-01
-#git reset --hard 141a53a0299961b3d19abcbb3562d5ac0a506c5e
-#git checkout -b d96fcb36dfd42d37786934c787fee34ce29e52ff
+#git reset --hard 781b3b4c0b5991a55811b1ac13524786fe81ba5a
+#git checkout -b 781b3b
+cp -f $GITHUB_WORKSPACE/patch/k3/kernel-5.4 include
 
 rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
