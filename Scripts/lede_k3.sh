@@ -4,6 +4,7 @@
 #git reset --hard 781b3b4c0b5991a55811b1ac13524786fe81ba5a
 #git checkout -b 781b3b
 #cp -f $GITHUB_WORKSPACE/patch/k3/kernel-5.4 include
+cp -f $GITHUB_WORKSPACE/patch/k3/782-net-next-1-of-net-pass-the-dst-buffer-to-of_get_mac_address.patch target/linux/generic/backport-5.4
 
 rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
