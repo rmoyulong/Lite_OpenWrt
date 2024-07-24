@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/darkrain88/openwrt-6.x
+      CORE_URL: https://github.com/LiBwrt-op/openwrt-6.x
       #源码版本
       CORE_BRANCH: main
       CORE_tag_name: 精英版
@@ -75,7 +75,7 @@ jobs:
       CORE_config: ax6.config
       # 补丁脚本 -- patch 目录 不执行: false 没有执行cd openwrt
       #前置补丁 -- 在【更新订阅源】前执行
-      CORE_patch: openwrt-ax6.sh
+      CORE_patch: false
       #后置补丁 -- 在【更新订阅源】后执行
       CORE_patch_after: false
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
