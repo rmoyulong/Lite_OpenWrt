@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/King-Of-Knights/openwrt-6.x
+      CORE_URL: https://github.com/LiBwrt-op/openwrt-6.x
       #源码版本
       CORE_BRANCH: main
       CORE_tag_name: 经典版
