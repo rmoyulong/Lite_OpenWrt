@@ -432,7 +432,9 @@ jobs:
       - name: 获得固件信息
         run: |
           cd openwrt/bin/targets/*/*
-          echo "KERNEL=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" >> $GITHUB_ENV
+          kword=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')
+          KERNEL=${kword%~*}
+          echo "KERNEL=$KERNEL" >> $GITHUB_ENV
           cat sha256sums
           
       - name: 整理固件
