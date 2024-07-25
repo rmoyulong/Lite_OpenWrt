@@ -14,5 +14,5 @@ Nss 依赖 => https://github.com/qosmio/nss-packages.git    分支 NSS-12.5-K6.x
 
 ipq60xx增强<br>
 Nss openwrt库 => https://github.com/LiBwrt-op/openwrt-6.x    分支 main <br> 
-Nss 依赖 => https://github.com/LiBwrt-op/openwrt-6.x  分支 NSS-12.5-K6.x <br>
+Nss 依赖 => https://github.com/qosmio/nss-packages.git  分支 NSS-12.5-K6.x <br>
 
