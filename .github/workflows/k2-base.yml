@@ -66,7 +66,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/openwrt/openwrt
+      CORE_URL: https://github.com/immortalwrt/immortalwrt
       #源码版本
       CORE_BRANCH: main
       CORE_tag_name: 紧凑版
@@ -85,7 +85,7 @@ jobs:
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
       #自定义扩展源定义
-      CORE_DIY_P1_SH: openwrt_k2.sh
+      CORE_DIY_P1_SH: openwrt_orther.sh
       ########################################################
       #固件通用设置
       CORE_DIY_P2_SH: Settings.sh
