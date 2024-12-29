@@ -491,12 +491,11 @@ jobs:
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           
       - name: 生成标签，上传固件
-        uses: rmoyulong/action-gh-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{env.show_tag_name}}
-          files: ${{ env.FIRMWARE }}/*
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{env.show_tag_name}}
           body: |
             ====================🧊固件信息🧊=======================
             ➦ 📒 固件名称：${{env.CORE_NAME}} ${{env.CORE_tag_name}}
@@ -506,7 +505,8 @@ jobs:
             ➦ 🚀 内核版本：${{ env.KERNEL }}
             ➦ 🌐 默认地址：${{env.CORE_IP}}
             ➦ 🔑 默认密码：password            
-
+          artifacts: ${{ env.FIRMWARE }}/*
+          
       - name: 清理Releases
         uses: rmoyulong/delete-older-releases@master
         with:
