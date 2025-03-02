@@ -10,8 +10,6 @@ rm -rf feeds/luci/applications/luci-app-msd_lite
 source $GITHUB_WORKSPACE/Scripts/functions.sh
 
 echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf.default
-git_sparse_clone main https://github.com/kiddin9/kwrt-packages shadowsocks-rust
-merge_package master https://github.com/coolsnowwolf/packages package net/shadowsocks-libev
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
