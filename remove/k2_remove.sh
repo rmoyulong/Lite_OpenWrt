@@ -1,4 +1,4 @@
-rm -rf  package/openwrt-passwall/shadowsocks-rust
+rm -rf  feeds/helloworld/shadowsocks-rust
 ####################################################
 #解决shadowsocks-libev编译错误
 rm -rf feeds/packages/net/shadowsocks-libev
