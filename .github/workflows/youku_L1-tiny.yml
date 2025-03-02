@@ -84,7 +84,7 @@ jobs:
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
       #自定义扩展源定义
-      CORE_DIY_P1_SH: K2.sh
+      CORE_DIY_P1_SH: openwrt_orther.sh
       ########################################################
       #固件通用设置
       CORE_DIY_P2_SH: Settings.sh
@@ -95,7 +95,7 @@ jobs:
       ##openclash
       CORE_DIY_P4_SH: false
       # 删除不兼容的插件 -- remove 目录 不执行: false 已经执行cd openwrt
-      CORE_remove: k2_remove.sh
+      CORE_remove: openwrt_remove.sh
       # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
       CORE_Files_SH: edit_files.sh
       # linux 内核
