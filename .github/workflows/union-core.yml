@@ -131,7 +131,7 @@ env:
 
 jobs:
   union_core:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: 清理服务器空间(Ubuntu)
         uses: rmoyulong/free-disk-space@main
