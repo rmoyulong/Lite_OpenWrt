@@ -185,9 +185,9 @@ jobs:
         run: |
           sudo -E apt-get -qq update --fix-missing
           sudo -E apt-get -qq full-upgrade
-          #sudo -E apt-get -y install $(cat $GITHUB_WORKSPACE/Ubuntu-2204.txt)
-          sudo -E apt -yqq install dos2unix
-          sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+          sudo -E apt-get -y install $(cat $GITHUB_WORKSPACE/Ubuntu-2204.txt)
+          #sudo -E apt -yqq install dos2unix
+          #sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.org/init_build_environment.sh)'
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo -E systemctl daemon-reload
