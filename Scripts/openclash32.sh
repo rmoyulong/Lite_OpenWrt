@@ -25,7 +25,7 @@ CLASH_TUN_URL=$(curl -fsSL https://api.github.com/repos/vernesong/OpenClash/cont
 if [ "${meta}" == *"openclash"* ];then
   CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-armv7.tar.gz"
 else
-  CLASH_META_URL="https://github.com/DustinWin/clash_singbox-tools/raw/main/mihomo-meta/mihomo-linux-armv7.tar.gz"
+  CLASH_META_URL="https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv7.tar.gz"
 fi
 GEOIP_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
 GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"

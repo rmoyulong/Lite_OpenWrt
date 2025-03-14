@@ -44,7 +44,7 @@ if [ "${meta}" == *"openclash"* ];then
   curl -sfL -o ./meta.tar.gz "$CORE_MATE"-"$CORE_TYPE".tar.gz
   tar -zxf ./meta.tar.gz && cp -rf ./clash ./core/clash_meta
 else
-  curl -sfL -o ./meta.tar.gz "https://github.com/DustinWin/clash_singbox-tools/raw/main/mihomo-meta/mihomo-linux-armv8.tar.gz"
+  curl -sfL -o ./meta.tar.gz "https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz"
   tar -zxf ./meta.tar.gz && cp -rf ./CrashCore ./core/clash_meta
 fi
 
