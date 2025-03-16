@@ -66,7 +66,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/lydasia/immortalwrt
+      CORE_URL: https://github.com/fagnjie88366/immortalwrt
       #源码版本
       CORE_BRANCH: master
       CORE_tag_name: 紧凑版
