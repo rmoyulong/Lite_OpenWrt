@@ -67,7 +67,7 @@ jobs:
       #默认源码
       CORE_URL: https://github.com/darkrain88/openwrt-6.x-libwrt
       #源码版本
-      CORE_BRANCH: main
+      CORE_BRANCH: kernel-6.12
       CORE_tag_name: 精英版
       # 头部 配置文件 --- header 目录
       CORE_header: qualcommax_ipq807x_DEVICE_redmi_ax6-stock.config
@@ -84,7 +84,7 @@ jobs:
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
       #自定义扩展源定义
-      CORE_DIY_P1_SH: openwrt.sh
+      CORE_DIY_P1_SH: openwrt_orther.sh
       ########################################################
       #固件通用设置
       CORE_DIY_P2_SH: Settings.sh
@@ -112,7 +112,7 @@ jobs:
       #特殊固件的方式 使用默认的：false
       CORE_Pack: false
       #feeds.conf.default  -- patch 目录 使用默认的：false
-      CORE_feeds_conf: ax6-nss-feeds.conf.default
+      CORE_feeds_conf: false
       #######################################################
       #openclash类型 CORE_DIY_P4_SH: false此设置失效
       #CORE_META: ${{ github.event.inputs.openclash_meta }}
