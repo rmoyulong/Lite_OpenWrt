@@ -14,7 +14,7 @@ if [ -f "$NSS_DRV" ]; then
 fi
 
 #修改qca-nss-pbuf启动顺序
-NSS_PBUF="./kernel/mac80211/files/qca-nss-pbuf.init"
+NSS_PBUF="package/kernel/mac80211/files/qca-nss-pbuf.init"
 if [ -f "$NSS_PBUF" ]; then
 	sed -i 's/START=.*/START=86/g' $NSS_PBUF
 
