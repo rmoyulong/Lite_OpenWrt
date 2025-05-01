@@ -2,7 +2,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 #CI项目名
-name: ax5紧凑版-breeze303-无科学
+name: ax5紧凑版-满血nss-无科学
 
 on:
   #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月1日/15日12点编译一次
@@ -65,9 +65,9 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/LiBwrt-op/openwrt-6.x
+      CORE_URL: https://github.com/VIKINGYFY/immortalwrt
       #源码版本
-      CORE_BRANCH: kernel-6.12
+      CORE_BRANCH: main 
       CORE_tag_name: 紧凑版
       # 头部 配置文件 --- header 目录
       CORE_header: qualcommax_ipq60xx_DEVICE_redmi_ax5.config
