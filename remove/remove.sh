@@ -7,6 +7,7 @@ rm -rf feeds/packages/lang/ruby
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/net/aria2
 ###############################
 rm -rf  package/openwrt-passwall/shadowsocks-rust
 rm -rf  package/openwrt-passwall/hysteria
