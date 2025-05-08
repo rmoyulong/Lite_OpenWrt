@@ -1,22 +1,11 @@
 #!/bin/bash
 
-# 回退源码2024-07-01
-#git reset --hard 781b3b4c0b5991a55811b1ac13524786fe81ba5a
-#git checkout -b 781b3b
-#cp -f $GITHUB_WORKSPACE/patch/k3/kernel-5.4 include
-
 rm -rf package/libs/mbedtls
 rm -rf package/libs/ustream-ssl
 rm -rf package/libs/uclient
 
 sudo curl -L -o rmoyulong.tar.gz https://github.com/rmoyulong/AX6-Actions_Lede/releases/download/union_package/lede.tar.gz
 tar zxvfp rmoyulong.tar.gz
-
-#lede
-#echo 'src-git packages https://github.com/coolsnowwolf/packages' > feeds.conf.default
-#echo 'src-git luci https://github.com/coolsnowwolf/luci' >> feeds.conf.default
-#echo 'src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02' >> feeds.conf.default
-#echo 'src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02' >> feeds.conf.default
 
 echo '添加lwz322的K3屏幕插件'
 rm -rf package/lean/luci-app-k3screenctrl
@@ -28,13 +17,13 @@ rm -rf package/lean/k3screenctrl
 git clone https://github.com/li1507/k3screenctrl_build.git package/lean/k3screenctrl/
 echo '========= K3屏幕驱动插件 加载完成！ ========='
 
+
 echo '移除bcm53xx中的其他机型'
 sed -i '421,453d' target/linux/bcm53xx/image/Makefile
 sed -i '140,412d' target/linux/bcm53xx/image/Makefile
 sed -i 's/$(USB3_PACKAGES) k3screenctrl/luci-app-k3screenctrl/g' target/linux/bcm53xx/image/Makefile
 echo '========= 移除bcm53xx中的其他机型完成！ ========='
 
-# 1.'asus_dhd24' 2.'ac88u_20' 3.'69027'
 firmware='69027'
 echo '替换无线驱动'
 wget -nv https://github.com/li1507/Phicomm-k3-Wireless-Firmware/raw/master/brcmfmac4366c-pcie.bin.${firmware} -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
