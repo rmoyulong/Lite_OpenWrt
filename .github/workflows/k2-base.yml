@@ -69,7 +69,7 @@ jobs:
       #CORE_URL: https://github.com/fagnjie88366/immortalwrt
       CORE_URL: https://github.com/immortalwrt/immortalwrt
       #源码版本
-      CORE_BRANCH: master
+      CORE_BRANCH: openwrt-23.05
       CORE_tag_name: 紧凑版
       # 头部 配置文件 --- header 目录
       CORE_header: ramips_mt7620_DEVICE_phicomm_psg1218a.config
