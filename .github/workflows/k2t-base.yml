@@ -68,7 +68,7 @@ jobs:
       #默认源码
       CORE_URL: https://github.com/immortalwrt/immortalwrt
       #源码版本
-      CORE_BRANCH: openwrt-23.05
+      CORE_BRANCH: openwrt-24.10
       CORE_tag_name: 紧凑版
       # 头部 配置文件 --- header 目录
       CORE_header: ath79_generic_DEVICE_phicomm_k2t.config
