@@ -1,0 +1,123 @@
+#========================================================================================================================
+# Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
+#========================================================================================================================
+#CI项目名
+name: 优酷L1经典版-immortalwrt
+
+on:
+  #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月1日/15日12点编译一次
+  #关闭则手动编译
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: '主题'     
+        required: true
+        default: 'material' 
+        type: choice
+        options:
+        - material
+        - argon
+
+      OP_IP:
+        description: 'IP选项'     
+        required: true
+        default: '192.168.31.1'
+        type: string
+        
+      OP_router:
+        description: '路由器类型'     
+        required: true
+        default: '主路由' 
+        type: choice
+        options:
+        - 主路由
+        - 旁路由
+
+      #openclash_meta:
+        #description: 'meta内核'     
+        #required: true
+        #default: 'openclash' 
+        #type: choice
+        #options:
+        #- openclash
+        #- opencrash
+        
+  #schedule:
+    #- cron: 0 4 1,15 * *
+
+#CI权限
+permissions: write-all
+
+#CI任务
+jobs:
+  core_config:
+    #调用公用编译核心OWRT-CORE.yml
+    uses: ./.github/workflows/union-core.yml
+    with:
+      #编译平台，X64包含X86
+      CORE_TARGET: Youku_L1
+      #默认主题
+      CORE_THEME: ${{ github.event.inputs.theme }}
+      #默认主机名
+      CORE_NAME: 优酷路由宝
+      #默认密码，仅作展示，更改无效
+      CORE_PW: password
+      #默认地址
+      CORE_IP: ${{ github.event.inputs.OP_IP }}
+      #默认源码
+      CORE_URL: https://github.com/immortalwrt/immortalwrt
+      #源码版本
+      CORE_BRANCH: master
+      CORE_tag_name: 经典版
+      # 头部 配置文件 --- header 目录
+      CORE_header: ramips_mt7620_DEVICE_youku_yk-l1.config
+      # 配置文件 -- config 目录
+      CORE_config: youku_L1.config
+      # 补丁脚本 -- patch 目录 不执行: false 没有执行cd openwrt
+      #前置补丁 -- 在【更新订阅源】前执行
+      CORE_patch: false
+      #后置补丁 -- 在【更新订阅源】后执行
+      CORE_patch_after: false
+      # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
+      CORE_SOC_P1_SH: false
+      CORE_SOC_P2_SH: false
+      ########################################################
+      # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
+      #自定义扩展源定义
+      CORE_DIY_P1_SH: immortalwrt.sh
+      ########################################################
+      #固件通用设置
+      CORE_DIY_P2_SH: Settings.sh
+      ########################################################
+      #soc初始化 比如onecloud_ini.sh ./files/xxx
+      CORE_DIY_P3_SH: universal_init.sh
+      ########################################################
+      ##openclash
+      CORE_DIY_P4_SH: false
+      # 删除不兼容的插件 -- remove 目录 不执行: false 已经执行cd openwrt
+      CORE_remove: remove.sh
+      # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
+      CORE_Files_SH: edit_files.sh
+      # linux 内核
+      ######填写其他只是标识 当设为5.15时，会触发使用CORE_BRANCH 源码分支
+      CORE_LINUX: 5.15.x
+      # 固件初始设置 -- patch 目录 不执行: false
+      CORE_FILES: youku_L1/files
+      #打包的一些设置
+      #save/temp
+      kernel_repo: ophub/kernel
+      #stable/flippy/dev/beta
+      kernel_usage: stable
+      builder_name: ophub
+      auto_kernel: true
+      #特殊固件的方式 使用默认的：false
+      CORE_Pack: false
+      #feeds.conf.default  -- patch 目录 使用默认的：false
+      CORE_feeds_conf: false
+      #######################################################
+      #openclash类型 CORE_DIY_P4_SH: false此设置失效
+      #CORE_META: ${{ github.event.inputs.openclash_meta }}
+      CORE_META: openclash
+      #######################################################
+      #旁路由还是主路由
+      OP_router: ${{ github.event.inputs.OP_router }}
