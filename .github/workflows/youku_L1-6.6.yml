@@ -65,9 +65,9 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/immortalwrt/immortalwrt
+      CORE_URL: https://github.com/openwrt/openwrt
       #源码版本
-      CORE_BRANCH: master
+      CORE_BRANCH: main
       CORE_tag_name: 经典版
       # 头部 配置文件 --- header 目录
       CORE_header: ramips_mt7620_DEVICE_youku_yk-l1.config
@@ -84,7 +84,7 @@ jobs:
       ########################################################
       # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
       #自定义扩展源定义
-      CORE_DIY_P1_SH: immortalwrt.sh
+      CORE_DIY_P1_SH: openwrt.sh
       ########################################################
       #固件通用设置
       CORE_DIY_P2_SH: Settings.sh
@@ -95,7 +95,7 @@ jobs:
       ##openclash
       CORE_DIY_P4_SH: false
       # 删除不兼容的插件 -- remove 目录 不执行: false 已经执行cd openwrt
-      CORE_remove: remove.sh
+      CORE_remove: openwrt_remove.sh
       # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
       CORE_Files_SH: edit_files.sh
       # linux 内核
