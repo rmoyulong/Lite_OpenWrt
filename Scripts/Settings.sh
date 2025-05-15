@@ -15,7 +15,9 @@ fi
 #修改默认主题
 #替换主题为原版argon
 if [[ "$4" == *"lede"* ]]; then
-  rm -rf feeds/luci/themes/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
+  rm -rf feeds/luci/themes/luci-theme-argon
+  rm -rf package/luci-theme-argon
+  git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
   
   #修改lede默认时间格式
   sed -i 's/os.date()/os.date("%Y-%m-%d %H:%M:%S %A")/g' $(find ./package/*/autocore/files/ -type f -name "index.htm")
