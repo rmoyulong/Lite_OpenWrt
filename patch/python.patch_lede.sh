@@ -6,7 +6,9 @@ cd openwrt
 
 #merge_package master https://github.com/coolsnowwolf/packages feeds/packages/lang lang/python
 
-git clone -q --single-branch --depth=1 --branch=master https://github.com/immortalwrt/immortalwrt immortalwrt
-rm -rf target/linux/bcm53xx
-cp -rf ./immortalwrt/target/linux/bcm53xx target/linux/
-rm -rf immortalwrt
+#git clone -q --single-branch --depth=1 --branch=master https://github.com/immortalwrt/immortalwrt immortalwrt
+#rm -rf target/linux/bcm53xx
+#cp -rf ./immortalwrt/target/linux/bcm53xx target/linux/
+#rm -rf immortalwrt
+
+mv $GITHUB_WORKSPACE/patch/Makefile.k3 target/linux/bcm53xx/Makefile
