@@ -1,5 +1,5 @@
 #公用函数
-source $GITHUB_WORKSPACE/Scripts/functions.sh
+#source $GITHUB_WORKSPACE/Scripts/functions.sh
 
 cd openwrt
 #rm -rf feeds/packages/lang/python
@@ -11,4 +11,4 @@ cd openwrt
 #cp -rf ./immortalwrt/target/linux/bcm53xx target/linux/
 #rm -rf immortalwrt
 
-mv $GITHUB_WORKSPACE/patch/Makefile.k3 target/linux/bcm53xx/Makefile
+mv $GITHUB_WORKSPACE/patch/k3/Makefile target/linux/bcm53xx
