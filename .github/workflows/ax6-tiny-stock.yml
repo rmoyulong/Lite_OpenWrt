@@ -65,7 +65,7 @@ jobs:
       #默认地址
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
-      CORE_URL: https://github.com/rmoyulong/immortalwrt-ax3600
+      CORE_URL: https://github.com/VIKINGYFY/immortalwrt
       #源码版本
       CORE_BRANCH: main 
       CORE_tag_name: 精英版
@@ -121,3 +121,4 @@ jobs:
       #旁路由还是主路由
 
       OP_router: ${{ github.event.inputs.OP_router }}
+
