@@ -77,7 +77,7 @@ jobs:
       #前置补丁 -- 在【更新订阅源】前执行
       CORE_patch: false
       #后置补丁 -- 在【更新订阅源】后执行
-      CORE_patch_after: false
+      CORE_patch_after:  python.patch.sh
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
       CORE_SOC_P1_SH: false
       CORE_SOC_P2_SH: false
