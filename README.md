@@ -1,4 +1,5 @@
 # Lite_OpenWrt
+[![build](https://img.shields.io/github/actions/workflow/status/rmoyulong/Lite_OpenWrt/youku_L1-tiny.yml)](https://github.com/rmoyulong/Lite_OpenWrt/actions/workflows/youku_L1-tiny.yml) [![downloads](https://img.shields.io/github/downloads/rmoyulong/Lite_OpenWrt/total)](https://github.com/rmoyulong/Lite_OpenWrt/releases) [![downloads@latest](https://img.shields.io/github/downloads/rmoyulong/Lite_OpenWrt/latest/total)](https://github.com/rmoyulong/Lite_OpenWrt/releases/latest)<br>
 About
 自用固件，家里吃灰的路由设备，编译固件只为了怀旧-比如K2、K3、ax5、ax6！！！！
 
