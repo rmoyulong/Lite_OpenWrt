@@ -5,7 +5,7 @@
 echo 'src-git kenzo  https://github.com/kiddin9/kwrt-packages' >> feeds.conf.default
 
 #rm libs/mbedtls/Makefile
-cp -f $GITHUB_WORKSPACE/patch/mbedtls/Makefile package/libs/mbedtls/Makefile
+#cp -f $GITHUB_WORKSPACE/patch/mbedtls/Makefile package/libs/mbedtls/Makefile
 
 #cd package
 #$GITHUB_WORKSPACE/patch/Packages.sh
