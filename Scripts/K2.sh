@@ -12,10 +12,10 @@ source $GITHUB_WORKSPACE/Scripts/functions.sh
 echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf.default
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
+#git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+#git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
+#git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+#git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 
 # 在线用户
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-onliner
