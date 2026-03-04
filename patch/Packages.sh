@@ -75,6 +75,9 @@ UPDATE_PACKAGE "quickfile" "sbwml/luci-app-quickfile" "main"
 UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
 UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "onliner" "rmoyulong/luci-app-onliner" "main"
+UPDATE_PACKAGE "istore-ui" "linkease/istore-ui" "main"
+UPDATE_PACKAGE "istore-luci" "linkease/istore" "main"
+UPDATE_PACKAGE "amlogic" "ophub/luci-app-amlogic.git" "main"
 
 #更新软件包版本
 UPDATE_VERSION() {
