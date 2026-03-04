@@ -41,5 +41,3 @@ git_sparse_clone main https://github.com/Openwrt-Passwall/openwrt-passwall-packa
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
-
-xray-core
