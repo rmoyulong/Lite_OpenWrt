@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 移除要替换的包
-rm -rf feeds/luci/applications/luci-app-netdata
-rm -rf feeds/packages/net/msd_lite
-rm -rf feeds/luci/applications/luci-app-serverchan
-rm -rf feeds/luci/applications/luci-app-msd_lite
+#rm -rf feeds/luci/applications/luci-app-netdata
+#rm -rf feeds/packages/net/msd_lite
+#rm -rf feeds/luci/applications/luci-app-serverchan
+#rm -rf feeds/luci/applications/luci-app-msd_lite
 
 #公用函数
 source $GITHUB_WORKSPACE/Scripts/functions.sh
@@ -18,12 +18,16 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFil
 git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush package/luci-app-serverchan
 
 # 在线用户
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-onliner
-sudo chmod -Rf 755 package/luci-app-onliner
+#git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-onliner
+#sudo chmod -Rf 755 package/luci-app-onliner
 
 # msd_lite
-git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
-git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
+#git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
+#git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
 #dos2unix
 merge_package master https://github.com/immortalwrt/packages package utils/dos2unix
+
+cd package
+$GITHUB_WORKSPACE/patch/Packages.sh
+$GITHUB_WORKSPACE/patch/Handles.sh
