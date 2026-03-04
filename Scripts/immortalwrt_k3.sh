@@ -23,5 +23,6 @@ wget -nv https://github.com/li1507/Phicomm-k3-Wireless-Firmware/raw/master/brcmf
 echo '========= 替换无线驱动替换完成！ ========='
 
 cd package
-$GITHUB_WORKSPACE/patch/Packages.sh
-$GITHUB_WORKSPACE/patch/Handles.sh
+$GITHUB_WORKSPACE/Scripts/Packages.sh
+
+$GITHUB_WORKSPACE/Scripts/Handles.sh
