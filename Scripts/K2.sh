@@ -27,7 +27,8 @@ echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf
 
 #dos2unix
 merge_package master https://github.com/immortalwrt/packages package utils/dos2unix
+git_sparse_clone master https://github.com/kenzok8/small luci-app-ssr-plus
 
 cd package
-$GITHUB_WORKSPACE/patch/Packages.sh
-$GITHUB_WORKSPACE/patch/Handles.sh
+$GITHUB_WORKSPACE/Scripts/Packages.sh
+$GITHUB_WORKSPACE/Scripts/Handles.sh
