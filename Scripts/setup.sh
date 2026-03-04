@@ -9,5 +9,5 @@ source $GITHUB_WORKSPACE/Scripts/functions.sh
 git_sparse_clone master https://github.com/kenzok8/small luci-app-ssr-plus
 
 cd package
-$GITHUB_WORKSPACE/sh/Packages.sh
-$GITHUB_WORKSPACE/sh/Handles.sh
+$GITHUB_WORKSPACE/Scripts/Packages.sh
+$GITHUB_WORKSPACE/Scripts/Handles.sh
