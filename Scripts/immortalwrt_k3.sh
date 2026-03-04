@@ -22,7 +22,17 @@ echo '替换无线驱动'
 wget -nv https://github.com/li1507/Phicomm-k3-Wireless-Firmware/raw/master/brcmfmac4366c-pcie.bin.${firmware} -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
 echo '========= 替换无线驱动替换完成！ ========='
 
+#公用函数
+source $GITHUB_WORKSPACE/Scripts/functions.sh
+
+#echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
+#echo 'src-git kenzo  https://github.com/kiddin9/kwrt-packages' >> feeds.conf.default
+
+#rm libs/mbedtls/Makefile
+#cp -f $GITHUB_WORKSPACE/patch/mbedtls/Makefile package/libs/mbedtls/Makefile
+git_sparse_clone master https://github.com/kenzok8/small luci-app-ssr-plus
+
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
-
 $GITHUB_WORKSPACE/Scripts/Handles.sh
+
