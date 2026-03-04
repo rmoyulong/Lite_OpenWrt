@@ -35,7 +35,11 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf package/helloworld/shadowsocks-rust
 merge_package master https://github.com/kenzok8/small/ package shadowsocks-rust
 
+rm -rf package/helloworld/xray-core
+merge_package main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package xray-core
+
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
 
+xray-core
