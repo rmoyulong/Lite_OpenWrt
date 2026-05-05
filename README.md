@@ -13,6 +13,3 @@ ipq80xx ipq60xx<br>
 Nss openwrt库 => https://github.com/VIKINGYFY/immortalwrt 分支 main <br> 
 Nss 依赖 => https://github.com/qosmio/nss-packages.git 分支 nss_packages <br>
 nss scripts => https://github.com/qosmio/sqm-scripts-nss.git 分支 sqm_scripts_nss <br>
----------------------------------------------------------------------<br>
-如果homeproxy无法启动，请将homeproxy.7z下载解压，然后用winscp类型的工具上传到路由器，替换路由器上的相同文件。<br>
-然后执行/etc/init.d/homeproxy restart 并重启路由器即可！
