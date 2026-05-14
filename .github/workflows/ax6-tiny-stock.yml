@@ -67,7 +67,7 @@ jobs:
       #默认源码
       CORE_URL: https://github.com/VIKINGYFY/immortalwrt
       #源码版本
-      CORE_BRANCH: owrt 
+      CORE_BRANCH: main 
       CORE_tag_name: 精英版
       # 头部 配置文件 --- header 目录
       CORE_header: qualcommax_ipq807x_DEVICE_redmi_ax6-stock.config
@@ -77,7 +77,7 @@ jobs:
       #前置补丁 -- 在【更新订阅源】前执行
       CORE_patch: false
       #后置补丁 -- 在【更新订阅源】后执行
-      CORE_patch_after: python.patch.sh
+      CORE_patch_after: python-imm.patch.sh
       # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
       CORE_SOC_P1_SH: false
       CORE_SOC_P2_SH: false
