@@ -391,17 +391,14 @@ jobs:
         working-directory: ./openwrt
         run: |
           make defconfig
-          make download -j$(nproc)
-          #make download -j8
-          #make -j16 download
-          find dl -size -1024c -exec ls -l {} \;
-          find dl -size -1024c -exec rm -f {} \;
+          make download -j$(( $(nproc) * 2 ))
+          find dl -size -1k -exec rm -f {} \;
 
       - name: 编译固件
         working-directory: ./openwrt
         run: |     
           echo -e "$(nproc) thread compile"
-          make -j$(nproc) || make -j1 || make -j1 V=s
+          make -j$(( $(nproc) + 1 )) || make -j1 V=s
           echo "status=success" >> $GITHUB_OUTPUT
           echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV 
  
