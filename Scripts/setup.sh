@@ -13,6 +13,7 @@ git_sparse_clone main https://github.com/kiddin9/op-packages dns2socks-rust
 
 git clone  https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall-packages
 rm -rf package/passwall-packages/geoview
+rm -rf package/passwall-packages/hysteria
 
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
