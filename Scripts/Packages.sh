@@ -76,9 +76,9 @@ UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "onliner" "rmoyulong/luci-app-onliner" "main"
 UPDATE_PACKAGE "istore-ui" "linkease/istore-ui" "main"
 UPDATE_PACKAGE "istore-luci" "linkease/istore" "main"
-UPDATE_PACKAGE "kiddin9" "kiddin9/op-packagese" "main" "luci-app-ssr-plus luci-app-mosdns mosdns v2dat daed luci-app-daed luci-app-ddns luci-app-dae luci-app-daed-next"
+UPDATE_PACKAGE "luci-app-ssr-plus" "https://github.com/kenzok8/small" "master" "luci-app-ssr-plus"
 UPDATE_PACKAGE "passwallpack" "Openwrt-Passwall/openwrt-passwall-packages" "main"
-UPDATE_PACKAGE "amlogic" "ophub/luci-app-amlogic" "main"
+UPDATE_PACKAGE "luci-app-amlogic" "ophub/luci-app-amlogic" "main"
 
 #更新软件包版本
 UPDATE_VERSION() {
