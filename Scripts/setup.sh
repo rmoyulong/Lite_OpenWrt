@@ -11,8 +11,12 @@ git clone https://github.com/stupidloud/helloworld package/helloworld
 rm -rf package/helloworld/geoview
 rm -rf package/helloworld/hysteria
 rm -rf package/helloworld/xray-core
+rm -rf package/helloworld/sing-box
+rm -rf package/helloworld/v2ray-geodata 
 
-git_sparse_clone master https://github.com/kenzok8/small sing-box
+merge_package master https://github.com/immortalwrt/packages package net/sing-box
+rm -f package/sing-box/Makefile
+curl -L -o package/sing-box/Makefile https://raw.githubusercontent.com/kiddin9/op-packages/refs/heads/main/sing-box/Makefile
 
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
