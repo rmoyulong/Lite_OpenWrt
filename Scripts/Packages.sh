@@ -76,7 +76,7 @@ UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "onliner" "rmoyulong/luci-app-onliner" "main"
 UPDATE_PACKAGE "istore-ui" "linkease/istore-ui" "main"
 UPDATE_PACKAGE "istore-luci" "linkease/istore" "main"
-UPDATE_PACKAGE "luci-app-ssr-plus" "https://github.com/kenzok8/small" "master" "luci-app-ssr-plus"
+UPDATE_PACKAGE "luci-app-ssr-plus" "kenzok8/small" "master" "luci-app-ssr-plus"
 UPDATE_PACKAGE "passwallpack" "Openwrt-Passwall/openwrt-passwall-packages" "main"
 UPDATE_PACKAGE "luci-app-amlogic" "ophub/luci-app-amlogic" "main"
 
