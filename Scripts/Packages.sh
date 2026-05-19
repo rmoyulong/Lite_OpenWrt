@@ -14,17 +14,17 @@ UPDATE_PACKAGE() {
 	# 删除本地可能存在的不同名称的软件包
 	for NAME in "${PKG_LIST[@]}"; do
 		# 查找匹配的目录
-		echo "Search directory: $NAME"
+		echo "搜索目录: $NAME"
 		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
 
 		# 删除找到的目录
 		if [ -n "$FOUND_DIRS" ]; then
 			while read -r DIR; do
 				rm -rf "$DIR"
-				echo "Delete directory: $DIR"
+				echo "删除目录: $DIR"
 			done <<< "$FOUND_DIRS"
 		else
-			echo "Not fonud directory: $NAME"
+			echo "目录中没有发现: $NAME"
 		fi
 	done
 
@@ -76,6 +76,9 @@ UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
 UPDATE_PACKAGE "onliner" "rmoyulong/luci-app-onliner" "main"
 UPDATE_PACKAGE "istore-ui" "linkease/istore-ui" "main"
 UPDATE_PACKAGE "istore-luci" "linkease/istore" "main"
+UPDATE_PACKAGE "kiddin9" "kiddin9/op-packagese" "main" "luci-app-ssr-plus luci-app-mosdns mosdns v2dat daed luci-app-daed luci-app-ddns luci-app-dae luci-app-daed-next"
+UPDATE_PACKAGE "passwallpack" "Openwrt-Passwall/openwrt-passwall-packages" "main"
+UPDATE_PACKAGE "amlogic" "ophub/luci-app-amlogic" "main"
 
 #更新软件包版本
 UPDATE_VERSION() {
