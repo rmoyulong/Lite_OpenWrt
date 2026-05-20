@@ -7,17 +7,28 @@ git clone https://github.com/VIKINGYFY/homeproxy package/homeproxy
 rm -rf feeds/luci/applications/luci-app-amlogic
 git clone https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 
+rm -rf feeds/luci/applications/luci-app-ssr-plus
+rm -rf feeds/packages/net/geoview/*
+rm -rf feeds/packages/net/hysteria/*
+rm -rf feeds/packages/net/v2ray-core/*
+rm -rf feeds/packages/net/xray-core/*
+rm -rf feeds/packages/net/v2ray-geodata/*
 git clone https://github.com/stupidloud/helloworld package/helloworld
-rm -rf package/helloworld/geoview
-rm -rf package/helloworld/hysteria
-rm -rf package/helloworld/xray-core
-rm -rf package/helloworld/sing-box
-rm -rf package/helloworld/v2ray-geodata 
+#rm -rf package/helloworld/geoview
+#rm -rf package/helloworld/hysteria
+#rm -rf package/helloworld/xray-core
+#rm -rf package/helloworld/v2ray-geodata 
+cp -rf package/helloworld/geoview/* feeds/packages/net/geoview
+cp -rf package/helloworld/hysteria/* feeds/packages/net/hysteria
+cp -rf package/helloworld/v2ray-core/* feeds/packages/net/v2ray-core
+cp -rf package/helloworld/xray-core/* feeds/packages/net/xray-core
+cp -rf package/helloworld/v2ray-geodata/* feeds/packages/net/v2ray-geodata
 
-merge_package master https://github.com/immortalwrt/packages package net/sing-box
-rm -f package/sing-box/Makefile
-curl -L -o package/sing-box/Makefile https://raw.githubusercontent.com/kiddin9/op-packages/refs/heads/main/sing-box/Makefile
-
+rm -rf feeds/packages/net/sing-box/*
+#mkdir -p feeds/packages/net/sing-box
+git_sparse_clone main https://github.com/kiddin9/op-packages sing-box
+cp -rf package/sing-box/* feeds/packages/net/sing-box
+rm -rf package/sing-box
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh

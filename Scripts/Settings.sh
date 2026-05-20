@@ -25,7 +25,8 @@ fi
 
 #最新golang
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+
 
 #修改默认IP地址
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/${ip}/g" ./package/base-files/files/bin/config_generate
