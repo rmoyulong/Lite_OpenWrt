@@ -287,13 +287,6 @@ jobs:
             cp -rf $GITHUB_WORKSPACE/${{ env.CORE_feeds_conf }} ./feeds.conf.default
           fi
           
-          if [[ "${{ inputs.CORE_DIY_P1_SH }}" == *"false"* ]]; then
-            echo "不需要执行 CORE_DIY_P1_SH"
-          else
-            ${GITHUB_WORKSPACE}/${CORE_DIY_P1_SH}
-          fi          
-          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
-          
       - name: 前置补丁
         run: |
           if [[ "${{ inputs.CORE_patch }}" == *"false"* ]]; then
@@ -328,6 +321,13 @@ jobs:
         run: |
           cd openwrt
           
+          if [[ "${{ inputs.CORE_DIY_P1_SH }}" == *"false"* ]]; then
+            echo "不需要执行 CORE_DIY_P1_SH"
+          else
+            ${GITHUB_WORKSPACE}/${CORE_DIY_P1_SH}
+          fi          
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          
           curl -L -o package/base-files/files/etc/banner https://raw.githubusercontent.com/rmoyulong/AX6-Actions_Lede/master/ax6/cats_banner
           ${GITHUB_WORKSPACE}/${CORE_DIY_P2_SH} "${{ env.CORE_IP }}" "${{ env.CORE_NAME }}" "${{ env.CORE_THEME }}" "${{ env.CORE_SOURCE }}"
           
@@ -348,7 +348,7 @@ jobs:
           cd openwrt
           
           if [[ "${{ inputs.CORE_remove }}" == *"false"* ]]; then
-            echo "不需要删除冲突的插件"
+            echo "不需要执行 CORE_remove"
           else
             ${GITHUB_WORKSPACE}/${CORE_remove}
           fi
