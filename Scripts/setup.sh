@@ -11,22 +11,17 @@ rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/packages/net/hysteria/*
 rm -rf feeds/packages/net/xray-core/*
 rm -rf feeds/packages/net/v2ray-core/*
-rm -rf feeds/packages/net/v2ray-geodata/*
 git clone https://github.com/stupidloud/helloworld package/helloworld
 cp -rf package/helloworld/hysteria/* feeds/packages/net/hysteria
 cp -rf package/helloworld/xray-core/* feeds/packages/net/xray-core
 cp -rf package/helloworld/v2ray-core/* feeds/packages/net/v2ray-core
-cp -rf package/helloworld/v2ray-geodata/* feeds/packages/net/v2ray-geodata
-#rm -rf package/helloworld/hysteria
-#rm -rf package/helloworld/xray-core
-#rm -rf package/helloworld/v2ray-core
-#rm -rf package/helloworld/v2ray-geodata 
 
-rm -rf feeds/packages/net/sing-box/*
-#mkdir -p feeds/packages/net/sing-box
-git_sparse_clone main https://github.com/kiddin9/op-packages sing-box
-cp -rf package/sing-box/* feeds/packages/net/sing-box
-rm -rf package/sing-box
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf package/helloworld/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+rm -rf feeds/packages/net/sing-box
+merge_package main https://github.com/kiddin9/op-packages  feeds/packages/net sing-box
 
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
