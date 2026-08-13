@@ -2,15 +2,13 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 #CI项目名
-name: K2t紧凑版-immortalwrt【无科学】
+name: K2T纯AP固件-ImmortalWrt【802.11kvr漫游版】
 
 on:
-  #对应的是 UTC 时间，需要转换，0 代表北京时间8点，每个月1日/15日12点编译一次
-  #关闭则手动编译
   workflow_dispatch:
     inputs:
       theme:
-        description: '主题'     
+        description: '主题'      
         required: true
         default: 'material' 
         type: choice
@@ -19,106 +17,82 @@ on:
         - argon
 
       OP_IP:
-        description: 'IP选项'     
+        description: 'AP默认管理IP (需与hAP ax3同网段但不冲突)'      
         required: true
-        default: '192.168.31.1'
+        default: '192.168.88.2'
         type: string
         
       OP_router:
-        description: '路由器类型'     
+        description: '路由器类型'      
         required: true
-        default: '主路由' 
+        default: '旁路由'  # AP 模式等同于旁路由/网桥模式，关闭默认WAN/DHCP服务
         type: choice
         options:
-        - 主路由
         - 旁路由
+        - 主路由
 
-      #openclash_meta:
-        #description: 'meta内核'     
-        #required: true
-        #default: 'openclash' 
-        #type: choice
-        #options:
-        #- openclash
-        #- opencrash
-        
-  #schedule:
-    #- cron: 0 4 1,15 * *
-
-#CI权限
 permissions: write-all
 
-#CI任务
 jobs:
   core_config:
     #调用公用编译核心OWRT-CORE.yml
     uses: ./.github/workflows/union-core.yml
     with:
-      #编译平台，X64包含X86
+      #编译平台
       CORE_TARGET: Phicomm_K2T
       #默认主题
-      #CORE_THEME: ${{ github.event.inputs.theme }}
       CORE_THEME: ${{ github.event.inputs.theme }}
       #默认主机名
-      CORE_NAME: Phicomm_K2T
-      #默认密码，仅作展示，更改无效
+      CORE_NAME: K2T-AP
+      #默认密码
       CORE_PW: password
-      #默认地址
+      #默认管理IP (推荐填入你网络规划中的 AP 固定静态 IP)
       CORE_IP: ${{ github.event.inputs.OP_IP }}
-      #默认源码
+      #默认源码 (ImmortalWrt 针对无线驱动优化较好，非常适合做 AP)
       CORE_URL: https://github.com/immortalwrt/immortalwrt
       #源码版本
       CORE_BRANCH: openwrt-24.10
-      CORE_tag_name: 紧凑版
+      CORE_tag_name: K2T-AP-kvr
       # 头部 配置文件 --- header 目录
       CORE_header: ath79_generic_DEVICE_phicomm_k2t.config
-      # 配置文件 -- config 目录
+      # 配置文件 -- config 目录 (即你刚才修改好的配置文件)
       CORE_config: k2-K2t.config
-      # 补丁脚本 -- patch 目录 不执行: false 没有执行cd openwrt
-      #前置补丁 -- 在【更新订阅源】前执行
+      # 补丁脚本 -- patch 目录 不执行: false
       CORE_patch: false
-      #后置补丁 -- 在【更新订阅源】后执行
       CORE_patch_after: false
-      # 单独处理脚本 -- soc 目录 不执行: false 没有执行cd openwrt
       CORE_SOC_P1_SH: false
       CORE_SOC_P2_SH: false
       ########################################################
-      # 通用脚本 -- Scripts  目录 不执行: false 已经执行cd openwrt
-      #自定义扩展源定义
+      # 通用脚本 -- Scripts 目录
+      # 自定义扩展源定义
       CORE_DIY_P1_SH: K2.sh
       ########################################################
-      #固件通用设置
+      # 固件通用设置
       CORE_DIY_P2_SH: Settings.sh
       ########################################################
-      #soc初始化 比如onecloud_ini.sh ./files/xxx
+      # soc初始化
       CORE_DIY_P3_SH: universal_init.sh
       ########################################################
-      ##openclash
+      ## 彻底禁用 OpenClash / 科学上网相关脚本处理
       CORE_DIY_P4_SH: false
-      # 删除不兼容的插件 -- remove 目录 不执行: false 已经执行cd openwrt
+      # 删除不兼容的插件
       CORE_remove: false
-      # 修正files配置文件脚本 -- remove  目录 不执行: false 已经执行cd openwrt
+      # 修正files配置文件脚本
       CORE_Files_SH: edit_files.sh
       # linux 内核
-      ######填写其他只是标识 当设为5.15时，会触发使用CORE_BRANCH 源码分支
       CORE_LINUX: 5.15.x
-      # 固件初始设置 -- patch 目录 不执行: false
+      # 固件初始预设文件目录
       CORE_FILES: k2t/files
-      #打包的一些设置
-      #save/temp
+      # 打包设置 (K2T 为 MIPS 架构闪存直刷，无需 ophub 的打包打包逻辑)
       kernel_repo: ophub/kernel
-      #stable/flippy/dev/beta
       kernel_usage: stable
       builder_name: ophub
-      auto_kernel: true
-      #特殊固件的方式 使用默认的：false
+      auto_kernel: false
       CORE_Pack: false
-      #feeds.conf.default  -- patch 目录 使用默认的：false
       CORE_feeds_conf: false
       #######################################################
-      #openclash类型 CORE_DIY_P4_SH: false此设置失效
-      #CORE_META: ${{ github.event.inputs.openclash_meta }}
-      CORE_META: openclash
+      # 明确关闭 OpenClash 逻辑
+      CORE_META: false
       #######################################################
-      #旁路由还是主路由
+      # 传入旁路由/AP模式参数
       OP_router: ${{ github.event.inputs.OP_router }}
