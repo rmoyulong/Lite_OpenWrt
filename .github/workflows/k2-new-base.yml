@@ -67,7 +67,7 @@ jobs:
       CORE_IP: ${{ github.event.inputs.OP_IP }}
       #默认源码
       #CORE_URL: https://github.com/fagnjie88366/immortalwrt
-      CORE_URL: https://github.com/immortalwrt/immortalwrt
+      CORE_URL: https://github.com/openwrt/openwrt
       #源码版本
       CORE_BRANCH: openwrt-24.10
       CORE_tag_name: 最新版
