@@ -31,10 +31,12 @@ git clone https://github.com/stupidloud/helloworld package/helloworld
 rm -rf feeds/packages/net/hysteria/*
 rm -rf feeds/packages/net/xray-core/*
 rm -rf feeds/packages/net/v2ray-core/*
+rm -rf feeds/packages/net/shadowsocks-rus/*
 cp -rf package/helloworld/hysteria/* feeds/packages/net/hysteria
 cp -rf package/helloworld/xray-core/* feeds/packages/net/xray-core
 cp -rf package/helloworld/v2ray-core/* feeds/packages/net/v2ray-core
-rm -rf package/helloworld/shadowsocks-rus
+rm -rf package/helloworld/shadowsocks-rus/*
+merge_package main https://github.com/kiddin9/op-packages package/helloworld shadowsocks-rus
 
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf package/helloworld/v2ray-geodata
