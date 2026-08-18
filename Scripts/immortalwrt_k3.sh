@@ -34,6 +34,7 @@ rm -rf feeds/packages/net/v2ray-core/*
 cp -rf package/helloworld/hysteria/* feeds/packages/net/hysteria
 cp -rf package/helloworld/xray-core/* feeds/packages/net/xray-core
 cp -rf package/helloworld/v2ray-core/* feeds/packages/net/v2ray-core
+rm -rf package/helloworld/shadowsocks-rus
 
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf package/helloworld/v2ray-geodata
