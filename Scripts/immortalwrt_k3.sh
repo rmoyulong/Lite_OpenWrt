@@ -25,6 +25,9 @@ echo '========= 替换无线驱动替换完成！ ========='
 #公用函数
 source $GITHUB_WORKSPACE/Scripts/functions.sh
 
+./scripts/feeds update -a
+./scripts/feeds install -a
+
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 git clone https://github.com/stupidloud/helloworld package/helloworld
 
