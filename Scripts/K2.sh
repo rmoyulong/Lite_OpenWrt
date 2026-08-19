@@ -9,6 +9,9 @@
 #公用函数
 source $GITHUB_WORKSPACE/Scripts/functions.sh
 
+./scripts/feeds update -a
+./scripts/feeds install -a
+
 #echo 'src-git helloworld https://github.com/stupidloud/helloworld' >> feeds.conf.default
 #git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-turboacc
 
