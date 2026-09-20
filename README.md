@@ -11,6 +11,6 @@ AX5 AX6支持NSS openwrt库<br>
 ---------------------------------------------------------------------<br>
 ipq80xx ipq60xx<br>
 Nss openwrt库 => https://github.com/VIKINGYFY/immortalwrt 分支 main <br> 
-#Nss openwrt库 => https://github.com/LiBwrt/openwrt-6.x 分支 25.12-nss <br>
+#Nss openwrt库 => https://github.com/LiBwrt/LibWrt 分支 25.12-nss <br>
 Nss 依赖 => https://github.com/qosmio/nss-packages.git 分支 nss_packages <br>
 nss scripts => https://github.com/qosmio/sqm-scripts-nss.git 分支 sqm_scripts_nss <br>
