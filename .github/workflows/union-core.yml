@@ -371,7 +371,15 @@ jobs:
              cat $GITHUB_WORKSPACE/${CORE_config} >> .config
           fi
           #cat .config          
-
+          
+          if [[ "${{ inputs.CORE_URL }}" == *"VIKINGYFY/immortalwrt"* ]]; then
+            # 在 feeds install 之后，make defconfig 之前执行
+            ./scripts/feeds install -a
+            # 卸载可能存在的 nftables 变体，安装 iptables 变体
+            ./scripts/feeds uninstall miniupnpd-nftables
+            ./scripts/feeds install miniupnpd-iptables
+          fi
+          
       - name: 修正files文件配置
         run: |
           cd openwrt
