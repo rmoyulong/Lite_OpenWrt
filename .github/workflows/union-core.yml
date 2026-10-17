@@ -373,12 +373,12 @@ jobs:
           #cat .config          
           
           if [[ "${{ inputs.CORE_URL }}" == *"VIKINGYFY/immortalwrt"* ]]; then
-            echo -e '# CONFIG_PACKAGE_miniupnpd-nftables is not set\nCONFIG_PACKAGE_miniupnpd-iptables=y' >> .config
+            echo -e '# CONFIG_PACKAGE_miniupnpd-iptables is not set\nCONFIG_PACKAGE_miniupnpd-nftables=y' >> .config
             # 在 feeds install 之后，make defconfig 之前执行
             ./scripts/feeds install -a
-            # 卸载可能存在的 nftables 变体，安装 iptables 变体
-            ./scripts/feeds uninstall miniupnpd-nftables
-            ./scripts/feeds install miniupnpd-iptables
+            # 卸载可能存在的 iptables 变体，安装 nftables 变体
+            ./scripts/feeds install miniupnpd-nftables
+            ./scripts/feeds uninstall miniupnpd-iptables
           fi
           
       - name: 修正files文件配置
