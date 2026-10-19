@@ -27,6 +27,11 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 rm -rf feeds/packages/net/sing-box
 merge_package main https://github.com/VIKINGYFY/packages  feeds/packages/net sing-box
 
+rm -rf feeds/packages/net/miniupnpd
+merge_package main https://github.com/kiddin9/op-packages feeds/packages/net miniupnpd
+rm -rf feeds/luci/applications/luci-app-upnp
+merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
+
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
