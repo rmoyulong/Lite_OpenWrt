@@ -25,21 +25,21 @@ GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/dow
 GEO_MMDB_URL="https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country.mmdb"
 
 echo ">>> 下载 clash_meta 内核"
-wget ${CORE_URL}
-gunzip  mihomo-linux-arm64-alpha-smart-83e67d0.gz 
-mv mihomo-linux-arm64-alpha-smart-83e67d0 ./files/tmp/clash_meta
-#ln -s  /usr/bin bin
-# ${{ env.FIRMWARE }}
-echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-cd files/etc/openclash/core
-ln -s /tmp/clash_meta clash_meta
-cd ${{ env.FIRMWARE }}
-
-chmod +x files/tmp/clash_meta
+wget ${CORE_URL} -O armv8.gz
+gunzip  armv8.gz 
+mv armv8 ./files/tmp/clash_meta
+chmod +x ./files/tmp/clash_meta
 
 echo ">>> 下载地理数据（失败不中断，刷好后可在界面里再下载）"
-wget -qO- "$GEOIP_URL"    > files/etc/openclash/GeoIP.dat    || { echo "  GeoIP 失败，跳过";       rm -f files/etc/openclash/GeoIP.dat; }
-wget -qO- "$GEOSITE_URL"  > files/etc/openclash/GeoSite.dat  || { echo "  GeoSite 失败，跳过";     rm -f files/etc/openclash/GeoSite.dat; }
-wget -qO- "$GEO_MMDB_URL" > files/etc/openclash/Country.mmdb || { echo "  Country.mmdb 失败，跳过"; rm -f files/etc/openclash/Country.mmdb; }
+wget ${$GEOIP_URL}    > files/etc/openclash/GeoIP.dat    || { echo "  GeoIP 失败，跳过";       rm -f files/etc/openclash/GeoIP.dat; }
+wget ${$GEOSITE_URL}  > files/etc/openclash/GeoSite.dat  || { echo "  GeoSite 失败，跳过";     rm -f files/etc/openclash/GeoSite.dat; }
+wget ${$GEO_MMDB_URL} > files/etc/openclash/Country.mmdb || { echo "  Country.mmdb 失败，跳过"; rm -f files/etc/openclash/Country.mmdb; }
 
-ls -lh files/etc/openclash/core files/etc/openclash
+ls -lh files/etc/openclash
+
+#添加链接
+#ln -s  /usr/bin bin
+cd files/etc/openclash/core
+ln -s /tmp/clash_meta clash_meta
+
+ls -lh 
