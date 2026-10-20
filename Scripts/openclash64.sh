@@ -1,9 +1,4 @@
-#!/bin/bash
-#
-meta="openclash"
-if [ ! -z "$1" ];then
-    meta=$1
-fi
+#设置armv8 64位的openclash
 
 #删除以前设置的所有openclash
 rm -rf ./package/OpenClash
@@ -11,45 +6,35 @@ rm -rf ./package/luci-app-openclash
 rm -rf feeds/kenzo/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 
-cd ./package
-
-#Open Clash
-git clone --depth=1 --single-branch --branch "dev" https://github.com/vernesong/OpenClash.git
-
-#预置OpenClash内核和GEO数据
-export CORE_VER=https://raw.githubusercontent.com/vernesong/OpenClash/core/dev/core_version
-export CORE_TUN=https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux
-export CORE_DEV=https://github.com/vernesong/OpenClash/raw/core/dev/dev/clash-linux
-export CORE_MATE=https://github.com/vernesong/OpenClash/raw/core/dev/meta/clash-linux
-
-export CORE_TYPE=$(echo $OWRT_TARGET | grep -Eiq "64|86" && echo "amd64" || echo "arm64")
-export TUN_VER=$(curl -sfL $CORE_VER | sed -n "2{s/\r$//;p;q}")
-
-export GEO_MMDB=https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country.mmdb
-export GEO_SITE=https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat
-export GEO_IP=https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat
-
-cd ./OpenClash/luci-app-openclash/root/etc/openclash
-
-curl -sfL -o ./Country.mmdb $GEO_MMDB
-curl -sfL -o ./GeoSite.dat $GEO_SITE
-curl -sfL -o ./GeoIP.dat $GEO_IP
-
-mkdir -p ./core
-
-curl -sfL -o ./tun.gz "$CORE_TUN"-"$CORE_TYPE"-"$TUN_VER".gz
-gzip -d ./tun.gz && cp -rf ./tun ./core/clash_tun
-
-if [ "${meta}" == *"openclash"* ];then
-  curl -sfL -o ./meta.tar.gz "$CORE_MATE"-"$CORE_TYPE".tar.gz
-  tar -zxf ./meta.tar.gz && cp -rf ./clash ./core/clash_meta
-else
-  curl -sfL -o ./meta.tar.gz "https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz"
-  tar -zxf ./meta.tar.gz && cp -rf ./CrashCore ./core/clash_meta
+#如果 core 文件夹不存在，创建文件夹
+if [ ! -d "./files/etc/openclash/core" ]; then
+  mkdir -p files/etc/openclash/core
 fi
 
-cd core
-curl -sfL -o ./dev.tar.gz "$CORE_DEV"-"$CORE_TYPE".tar.gz
-tar -zxf ./dev.tar.gz
+#Open Clash
+git clone --depth=1 --single-branch --branch "dev" https://github.com/vernesong/OpenClash.git package/OpenClash
 
-chmod +x ./clash* ; rm -rf ./*.gz
+CORE_URL="https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-arm64-alpha-smart-83e67d0.gz"
+GEOIP_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+GEO_MMDB_URL="https://github.com/alecthw/mmdb_china_ip_list/raw/release/lite/Country.mmdb"
+
+echo ">>> 下载 clash_meta 内核"
+wget ${CORE_URL}
+gunzip  mihomo-linux-arm64-alpha-smart-83e67d0.gz 
+mv mihomo-linux-arm64-alpha-smart-83e67d0 ./files/tmp/clash_meta
+#ln -s  /usr/bin bin
+# ${{ env.FIRMWARE }}
+echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+cd files/etc/openclash/core
+ln -s /tmp/clash_meta clash_meta
+cd ${{ env.FIRMWARE }}
+
+chmod +x files/tmp/clash_meta
+
+echo ">>> 下载地理数据（失败不中断，刷好后可在界面里再下载）"
+wget -qO- "$GEOIP_URL"    > files/etc/openclash/GeoIP.dat    || { echo "  GeoIP 失败，跳过";       rm -f files/etc/openclash/GeoIP.dat; }
+wget -qO- "$GEOSITE_URL"  > files/etc/openclash/GeoSite.dat  || { echo "  GeoSite 失败，跳过";     rm -f files/etc/openclash/GeoSite.dat; }
+wget -qO- "$GEO_MMDB_URL" > files/etc/openclash/Country.mmdb || { echo "  Country.mmdb 失败，跳过"; rm -f files/etc/openclash/Country.mmdb; }
+
+ls -lh files/etc/openclash/core files/etc/openclash
