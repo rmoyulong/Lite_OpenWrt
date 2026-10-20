@@ -11,6 +11,11 @@ if [ ! -d "./files/etc/openclash/core" ]; then
   mkdir -p files/etc/openclash/core
 fi
 
+#如果 temp 文件夹不存在，创建文件夹
+if [ ! -d "./files/tmp" ]; then
+  mkdir -p files/tmp
+fi
+
 #Open Clash
 git clone --depth=1 --single-branch --branch "dev" https://github.com/vernesong/OpenClash.git package/OpenClash
 
