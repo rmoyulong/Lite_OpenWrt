@@ -36,6 +36,10 @@ rm -rf feeds/packages/utils/attr
 rm -rf package/feeds/packages/attr
 merge_package master https://github.com/immortalwrt/packages/ feeds/packages/utils utils/attr
 
+rm -rf feeds/packages/utils/acl
+rm -rf package/feeds/packages/acl
+merge_package master https://github.com/immortalwrt/packages/ feeds/packages/utils utils/acl
+
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
