@@ -34,7 +34,7 @@ merge_package main https://github.com/kiddin9/op-packages feeds/luci/application
 
 rm -rf feeds/packages/utils/attr
 rm -rf package/feeds/packages/attr
-merge_package master https://github.com/immortalwrt/packages/ feeds/packages/utils attr
+merge_package master https://github.com/immortalwrt/packages/ feeds/packages/utils utils/attr
 
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
