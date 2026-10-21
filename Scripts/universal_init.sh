@@ -11,7 +11,7 @@ fi
 word=$1
 if [ ! -d "AX6-Actions_Lede/union_files${word/patch/}" ]; then
   echo "该固件的自定义files文件夹不存在，无需拷贝！"
-  rm -rf ./files
+  #rm -rf ./files
 else
   cp -rf AX6-Actions_Lede/union_files${word/patch/}/* ./files
   rm -rf AX6-Actions_Lede
