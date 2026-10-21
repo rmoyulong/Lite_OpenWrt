@@ -32,6 +32,10 @@ merge_package main https://github.com/kiddin9/op-packages feeds/packages/net min
 rm -rf feeds/luci/applications/luci-app-upnp
 merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
 
+rm -rf feeds/packages/utils/attr
+rm -rf package/feeds/packages/attr
+merge_package master https://github.com/immortalwrt/packages/ feeds/packages/utils attr
+
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
