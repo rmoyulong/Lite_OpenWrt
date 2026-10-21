@@ -371,16 +371,7 @@ jobs:
              cat $GITHUB_WORKSPACE/${CORE_header}  > .config
              cat $GITHUB_WORKSPACE/${CORE_config} >> .config
           fi
-          #cat .config          
-          
-          if [[ "${{ inputs.CORE_URL }}" == *"VIKINGYFY/immortalwrt"* ]]; then
-            #公用函数
-            source $GITHUB_WORKSPACE/Scripts/functions.sh
-            rm -rf feeds/packages/net/miniupnpd
-            merge_package main https://github.com/kiddin9/op-packages feeds/packages/net miniupnpd
-            rm -rf feeds/luci/applications/luci-app-upnp
-            merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
-          fi
+          #cat .config
           
       - name: 修正files文件配置
         run: |
