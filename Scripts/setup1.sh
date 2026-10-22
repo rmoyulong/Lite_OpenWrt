@@ -33,10 +33,10 @@ rm -rf feeds/luci/applications/luci-app-upnp
 merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
 
 rm -rf feeds/packages/utils
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages utils
+merge_package openwrt-25.12 https://github.com/openwrt/packages/ feeds/packages utils
 
 rm -rf feeds/packages/lang
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages lang
+merge_package openwrt-25.12 https://github.com/openwrt/packages/ feeds/packages lang
 
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
