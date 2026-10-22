@@ -32,18 +32,6 @@ merge_package main https://github.com/kiddin9/op-packages feeds/packages/net min
 rm -rf feeds/luci/applications/luci-app-upnp
 merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
 
-rm -rf feeds/packages/utils/attr
-rm -rf package/feeds/packages/attr
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/attr
-
-rm -rf feeds/packages/utils/acl
-rm -rf package/feeds/packages/acl
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/acl
-
-rm -rf feeds/packages/utils/coreutils
-rm -rf package/feeds/packages/coreutils
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/coreutils
-
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
