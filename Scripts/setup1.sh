@@ -36,7 +36,7 @@ rm -rf feeds/packages/utils
 merge_package openwrt-25.12 https://github.com/openwrt/packages/ feeds/packages utils
 
 rm -rf feeds/packages/lang
-merge_package openwrt-25.12 https://github.com/openwrt/packages/ feeds/packages lang
+merge_package openwrt-24.10 https://github.com/openwrt/packages/ feeds/packages lang
 
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
