@@ -46,8 +46,7 @@ merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/ut
 
 rm -rf feeds/packages/lang/python
 rm -rf package/feeds/packages/python3
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/lang/python lang/python
+merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/lang lang/python
 
-cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
