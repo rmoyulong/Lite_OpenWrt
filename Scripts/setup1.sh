@@ -44,9 +44,9 @@ rm -rf feeds/packages/utils/coreutils
 rm -rf package/feeds/packages/coreutils
 merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/coreutils
 
-rm -rf feeds/packages/lang/python
+rm -rf feeds/packages/lang/python/python3
 rm -rf package/feeds/packages/python3
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/lang lang/python
+merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/lang/python lang/python/python3
 
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
