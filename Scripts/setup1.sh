@@ -39,7 +39,7 @@ rm -rf feeds/packages/lang
 merge_package openwrt-25.12  https://github.com/openwrt/packages/ feeds/packages lang
 
 rm -rf feeds/packages/lang/python
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/lang lang/python
-cd package
+merge_package master https://github.com/immortalwrt/ feeds/packages/lang lang/python
+
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
