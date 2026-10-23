@@ -32,11 +32,17 @@ merge_package main https://github.com/kiddin9/op-packages feeds/packages/net min
 rm -rf feeds/luci/applications/luci-app-upnp
 merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
 
-rm -rf feeds/packages
-rm -rf feeds/luci
+rm -rf feeds/packages/utils/attr
+rm -rf package/feeds/packages/attr
+merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/attr
 
-git clone --branch master https://github.com/immortalwrt/packages feeds/packages
-git clone --branch master https://github.com/immortalwrt/luci feeds/luci
+rm -rf feeds/packages/utils/coreutils
+rm -rf package/feeds/packages/coreutils
+merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/coreutils
+
+rm -rf feeds/packages/libs/libffi
+rm -rf package/feeds/packages/libffi
+merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/libs libs/libffi
 
 ./scripts/feeds install -a
 
