@@ -44,6 +44,8 @@ rm -rf feeds/packages/utils/coreutils
 rm -rf package/feeds/packages/coreutils
 merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/coreutils
 
+./scripts/feeds install -a
+
 cd package
 $GITHUB_WORKSPACE/Scripts/Packages.sh
 $GITHUB_WORKSPACE/Scripts/Handles.sh
