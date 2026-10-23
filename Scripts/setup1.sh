@@ -32,8 +32,8 @@ merge_package main https://github.com/kiddin9/op-packages feeds/packages/net min
 rm -rf feeds/luci/applications/luci-app-upnp
 merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
 
-rm -rf feeds/packages/*
-rm -rf feeds/luci/*
+rm -rf feeds/packages
+rm -rf feeds/luci
 
 git clone --branch master https://github.com/immortalwrt/packages feeds/packages
 git clone --branch master https://github.com/immortalwrt/luci feeds/luci
