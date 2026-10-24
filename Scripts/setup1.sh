@@ -36,6 +36,10 @@ rm -rf feeds/packages/utils/attr
 rm -rf package/feeds/packages/attr
 merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/attr
 
+rm -rf feeds/packages/utils/acl
+rm -rf package/feeds/packages/acl
+merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/acl
+
 rm -rf feeds/packages/utils/coreutils
 rm -rf package/feeds/packages/coreutils
 merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/coreutils
