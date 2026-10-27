@@ -32,21 +32,22 @@ merge_package main https://github.com/kiddin9/op-packages feeds/packages/net min
 rm -rf feeds/luci/applications/luci-app-upnp
 merge_package main https://github.com/kiddin9/op-packages feeds/luci/applications luci-app-upnp
 
+git clone https://github.com/coolsnowwolf/packages coolsnowwolf
+                
 rm -rf feeds/packages/utils/attr
-rm -rf package/feeds/packages/attr
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/attr
-
+cp -rf ./coolsnowwolf/utils/attr feeds/packages/utils
+                
 rm -rf feeds/packages/utils/acl
-rm -rf package/feeds/packages/acl
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/acl
-
+cp -rf ./coolsnowwolf/utils/acl feeds/packages/utils
+                
 rm -rf feeds/packages/utils/coreutils
-rm -rf package/feeds/packages/coreutils
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/utils utils/coreutils
-
+cp -rf ./coolsnowwolf/utils/coreutils feeds/packages/utils
+                
 rm -rf feeds/packages/libs/libffi
-rm -rf package/feeds/packages/libffi
-merge_package master https://github.com/coolsnowwolf/packages/ feeds/packages/libs libs/libffi
+cp -rf ./coolsnowwolf/libs/libffi feeds/packages/libs
+cp -rf ./coolsnowwolf/libs/libffi package
+                
+rm -rf coolsnowwolf
 
 ./scripts/feeds install -a
 
